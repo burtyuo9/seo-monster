@@ -1,211 +1,181 @@
-# SEO Monster - Installation Guide
+'''
+# SEO Monster - Инструкция по установке
 
-**Author:** Manus AI
-**Version:** 1.0.0
-**Last Updated:** 2026-01-27
+**Автор:** Manus AI
+**Версия:** 3.0 (Автономная)
+**Последнее обновление:** 27.01.2026
 
-## Introduction
+## 1. Ключевые особенности
 
-This guide provides comprehensive instructions for installing SEO Monster on various operating systems. Choose the method that best suits your environment.
+-   **Полная автономность:** SEO Monster работает **без внешних AI API** по умолчанию. Он использует собственный движок для анализа и генерации контента.
+-   **Опциональный AI:** Вы можете *по желанию* подключить внешних AI-провайдеров (бесплатных или платных) для расширения возможностей.
+-   **Кроссплатформенность:** Работает на Linux, macOS и Windows (через Docker или WSL).
 
-## 1. Quick Installation (Recommended)
+## 2. Требования
 
-This method uses a single command to auto-detect your OS and install SEO Monster. It is the fastest and easiest way to get started.
+-   **Сервер/VPS/Локальная машина** с 2+ GB RAM.
+-   **Docker** и **Docker Compose** (для рекомендуемого способа установки).
+-   *Или* **Python 3.9+**, **Node.js 18+** и **pnpm** (для ручной установки).
+-   **Git**.
 
-**Supported OS:** Ubuntu, Debian, CentOS, RHEL, Rocky Linux, AlmaLinux, Fedora
+## 3. Установка
+
+### Docker (Рекомендуется)
+
+Это самый простой и надежный способ. Все зависимости изолированы в контейнерах.
+
+**Шаг 1: Клонировать репозиторий**
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/burtyuo9/seo-monster/master/scripts/quick-install.sh | bash
+git clone https://github.com/burtyuo9/seo-monster.git
+cd seo-monster
 ```
 
-## 2. Docker Installation (Universal)
+**Шаг 2: Создать файл конфигурации**
 
-This is the most reliable and recommended method for all operating systems, as it provides a consistent and isolated environment.
+Скопируйте пример файла `.env`.
 
-### Prerequisites
+```bash
+cp .env.example .env
+```
 
-- **Docker:** [Install Docker](https://docs.docker.com/get-docker/)
-- **Docker Compose:** (Included with Docker Desktop)
-- **Git:** [Install Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+**Шаг 3: Запустить Docker Compose**
 
-### Steps
+Эта команда скачает образы, создаст контейнеры и запустит приложение в фоновом режиме.
 
-1.  **Clone the repository:**
+```bash
+docker compose up -d
+```
 
-    ```bash
-    git clone https://github.com/burtyuo9/seo-monster.git
-    cd seo-monster
-    ```
+Приложение будет доступно через несколько минут.
 
-2.  **Create `.env` file:**
+-   **Frontend:** `http://localhost:5173`
+-   **Backend API:** `http://localhost:8000`
 
-    Copy the example file and add your API keys.
+### Ручная установка
 
-    ```bash
-    cp .env.example .env
-    nano .env
-    ```
+Этот способ требует ручной установки всех зависимостей.
 
-3.  **Run with Docker Compose:**
+**Шаг 1: Клонировать репозиторий**
 
-    This command will build the images and start all services.
+```bash
+git clone https://github.com/burtyuo9/seo-monster.git
+cd seo-monster
+```
 
-    ```bash
-    docker compose up -d
-    ```
+**Шаг 2: Настройка Backend**
 
-4.  **Access SEO Monster:**
+```bash
+# Перейдите в директорию backend
+cd backend
 
-    -   **Frontend:** `http://localhost`
-    -   **Backend API:** `http://localhost:8000`
+# Создайте и активируйте виртуальное окружение
+python3 -m venv venv
+source venv/bin/activate
 
-### Docker Compose Profiles
+# Установите зависимости
+pip install --upgrade pip
+pip install -r requirements.txt
 
--   **Default:** Runs only the core `backend` and `frontend` services.
--   **Full:** Runs all services, including `redis` and `postgres`.
+# Создайте файл .env
+cp ../.env.example .env
+```
 
-    ```bash
-    # Run with all optional services
-    docker compose --profile full up -d
-    ```
+**Шаг 3: Настройка Frontend**
 
-## 3. Manual Installation
+```bash
+# Вернитесь в корневую директорию и перейдите в frontend
+cd ../frontend
 
-This method is for advanced users or unsupported operating systems.
+# Установите pnpm (если не установлен)
+npm install -g pnpm
 
-### System Requirements
+# Установите зависимости
+pnpm install
 
-| Component | Minimum | Recommended |
-|-----------|---------|-------------|
-| **CPU** | 2 Cores | 4+ Cores |
-| **RAM** | 4 GB | 8+ GB |
-| **Disk** | 20 GB SSD | 50+ GB SSD |
-| **Python** | 3.10+ | 3.11+ |
-| **Node.js** | 18+ | 20+ |
+# Соберите проект
+pnpm build
+```
 
-### Installation Steps
+## 4. Конфигурация
 
-#### A. Ubuntu / Debian
+Основной файл конфигурации - `.env` в корневой директории проекта.
 
-1.  **Update system:**
+```ini
+# Основные настройки
+APP_SECRET_KEY=your_strong_secret_key
 
-    ```bash
-    sudo apt-get update && sudo apt-get upgrade -y
-    ```
+# Настройки базы данных (для Docker)
+DB_HOST=db
+DB_PORT=3306
+DB_USER=user
+DB_PASSWORD=password
+DB_NAME=seomonster
 
-2.  **Install dependencies:**
+# --- Опциональные AI Провайдеры ---
+# SEO Monster работает автономно. Эти ключи НЕ обязательны.
 
-    ```bash
-    sudo apt-get install -y python3.11 nodejs npm git
-    ```
+# OpenAI
+OPENAI_API_KEY=
 
-3.  **Clone repository:**
+# Anthropic
+ANTHROPIC_API_KEY=
 
-    ```bash
-    git clone https://github.com/burtyuo9/seo-monster.git
-    cd seo-monster
-    ```
+# Google Gemini
+GEMINI_API_KEY=
 
-4.  **Install backend dependencies:**
+# Другие провайдеры...
+GROQ_API_KEY=
+MISTRAL_API_KEY=
+```
 
-    ```bash
-    cd backend
-    pip3 install -r requirements.txt
-    cd ..
-    ```
+**Важно:** Вам **не нужно** заполнять ключи AI для базовой работы. Система полностью автономна.
 
-5.  **Install frontend dependencies:**
+## 5. Запуск приложения
 
-    ```bash
-    cd frontend
-    npm install
-    npm run build
-    cd ..
-    ```
+Если вы использовали **ручную установку**, вам нужно запустить два процесса в двух разных терминалах.
 
-6.  **Run the application:**
+**Терминал 1: Запуск Backend**
 
-    ```bash
-    # Terminal 1: Backend
-    cd backend
-    uvicorn main:app --host 0.0.0.0 --port 8000
+```bash
+cd seo-monster/backend
+source venv/bin/activate
+uvicorn main:app --host 0.0.0.0 --port 8000
+```
 
-    # Terminal 2: Frontend
-    cd frontend
-    npm run dev -- --port 3000
-    ```
+**Терминал 2: Запуск Frontend**
 
-#### B. CentOS / RHEL
+```bash
+cd seo-monster/frontend
+pnpm dev --host
+```
 
-1.  **Update system:**
+Откройте `http://localhost:5173` в вашем браузере.
 
-    ```bash
-    sudo dnf update -y
-    ```
+## 6. Обновление
 
-2.  **Install dependencies:**
+**Для Docker:**
 
-    ```bash
-    sudo dnf install -y python3.11 nodejs npm git
-    ```
+```bash
+cd seo-monster
+docker compose pull
+docker compose up -d --force-recreate
+```
 
-3.  Follow steps 3-6 from the Ubuntu/Debian section.
+**Для ручной установки:**
 
-#### C. macOS
+```bash
+cd seo-monster
+git pull origin main
 
-1.  **Install Homebrew:**
+# Обновить backend
+cd backend
+source venv/bin/activate
+pip install -r requirements.txt
 
-    ```bash
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    ```
-
-2.  **Install dependencies:**
-
-    ```bash
-    brew install python@3.11 node@20 git
-    ```
-
-3.  Follow steps 3-6 from the Ubuntu/Debian section.
-
-#### D. Windows (with WSL2)
-
-1.  **Install WSL2:**
-
-    Follow the official [Microsoft guide](https://docs.microsoft.com/en-us/windows/wsl/install).
-
-2.  **Install Ubuntu from Microsoft Store:**
-
-    Open the Microsoft Store and search for "Ubuntu".
-
-3.  **Open Ubuntu terminal:**
-
-    Launch the installed Ubuntu application.
-
-4.  **Follow Ubuntu/Debian instructions:**
-
-    Inside the WSL2 Ubuntu terminal, follow the manual installation steps for Ubuntu.
-
-## 4. Configuration
-
-SEO Monster is configured via environment variables. Create a `.env` file in the root directory by copying `.env.example`.
-
-| Variable | Description | Default |
-|-----------------------|-------------------------------------------|-----------------------------------|
-| `BACKEND_PORT` | Port for the backend API | `8000` |
-| `FRONTEND_PORT` | Port for the frontend UI | `80` (Docker) / `3000` (Manual) |
-| `OPENAI_API_KEY` | Your OpenAI API key | `null` |
-| `AWS_ACCESS_KEY_ID` | Your AWS access key | `null` |
-| `AWS_SECRET_ACCESS_KEY` | Your AWS secret key | `null` |
-| `TELEGRAM_BOT_TOKEN` | Your Telegram bot token | `null` |
-| `DATABASE_URL` | Database connection string | `sqlite:///./data/seo_monster.db` |
-| `SECRET_KEY` | Secret key for JWT tokens | `change-this...` |
-
-## 5. Troubleshooting
-
--   **Port conflicts:** Change `BACKEND_PORT` or `FRONTEND_PORT` in your `.env` file.
--   **Dependency issues:** Ensure you are using the correct versions of Python and Node.js.
--   **Docker issues:** Run `docker compose logs -f` to view logs for all services.
-
----
-
-For further assistance, please open an issue on the [GitHub repository](https://github.com/burtyuo9/seo-monster/issues).
+# Обновить frontend
+cd ../frontend
+pnpm install
+pnpm build
+```
+'''

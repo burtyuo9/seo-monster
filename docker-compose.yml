@@ -1,0 +1,120 @@
+# SEO Monster - Docker Compose Configuration
+# Full stack deployment: Backend + Frontend + Optional services
+
+version: '3.8'
+
+services:
+  # ===========================================
+  # Backend - FastAPI Python Application
+  # ===========================================
+  backend:
+    build:
+      context: .
+      dockerfile: docker/backend.Dockerfile
+    container_name: seo-monster-backend
+    restart: unless-stopped
+    ports:
+      - "${BACKEND_PORT:-8000}:8000"
+    environment:
+      - PYTHONPATH=/app
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID:-}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY:-}
+      - AWS_REGION=${AWS_REGION:-us-east-1}
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN:-}
+      - DATABASE_URL=${DATABASE_URL:-sqlite:///./data/seo_monster.db}
+    volumes:
+      - backend_data:/app/data
+      - backend_logs:/app/logs
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    networks:
+      - seo-monster-network
+
+  # ===========================================
+  # Frontend - React + Vite + Nginx
+  # ===========================================
+  frontend:
+    build:
+      context: .
+      dockerfile: docker/frontend.Dockerfile
+    container_name: seo-monster-frontend
+    restart: unless-stopped
+    ports:
+      - "${FRONTEND_PORT:-80}:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks:
+      - seo-monster-network
+
+  # ===========================================
+  # Redis - Cache & Session Storage (Optional)
+  # ===========================================
+  redis:
+    image: redis:7-alpine
+    container_name: seo-monster-redis
+    restart: unless-stopped
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - seo-monster-network
+    profiles:
+      - full
+
+  # ===========================================
+  # PostgreSQL - Database (Optional)
+  # ===========================================
+  postgres:
+    image: postgres:15-alpine
+    container_name: seo-monster-postgres
+    restart: unless-stopped
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER:-seomonster}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-seomonster_secret}
+      - POSTGRES_DB=${POSTGRES_DB:-seomonster}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-seomonster}"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - seo-monster-network
+    profiles:
+      - full
+
+# ===========================================
+# Networks
+# ===========================================
+networks:
+  seo-monster-network:
+    driver: bridge
+
+# ===========================================
+# Volumes
+# ===========================================
+volumes:
+  backend_data:
+    driver: local
+  backend_logs:
+    driver: local
+  redis_data:
+    driver: local
+  postgres_data:
+    driver: local

@@ -1,844 +1,5 @@
 [
   {
-    "check_id": "api_keys",
-    "category": "configuration",
-    "name": "API Keys Check",
-    "status": "ok",
-    "message": "API keys are configured",
-    "details": null,
-    "fix_available": false,
-    "fix_applied": false,
-    "severity": "critical",
-    "recommendations": [],
-    "timestamp": "2026-01-27T04:02:25.062397",
-    "duration_ms": 0.029802322387695312
-  },
-  {
-    "check_id": "python_packages",
-    "category": "dependencies",
-    "name": "Python Packages Check",
-    "status": "error",
-    "message": "2 packages are missing",
-    "details": {
-      "missing": [
-        "pillow",
-        "beautifulsoup4"
-      ],
-      "installed": [
-        "fastapi",
-        "uvicorn",
-        "aiohttp",
-        "openai",
-        "pydantic",
-        "requests",
-        "boto3"
-      ]
-    },
-    "fix_available": false,
-    "fix_applied": false,
-    "severity": "high",
-    "recommendations": [
-      "Install missing packages: pip install pillow beautifulsoup4"
-    ],
-    "timestamp": "2026-01-27T04:02:25.068677",
-    "duration_ms": 0.3886222839355469
-  },
-  {
-    "check_id": "frontend_build",
-    "category": "dependencies",
-    "name": "Frontend Build Check",
-    "status": "ok",
-    "message": "Frontend build is valid",
-    "details": null,
-    "fix_available": false,
-    "fix_applied": false,
-    "severity": "medium",
-    "recommendations": [],
-    "timestamp": "2026-01-27T04:02:25.074438",
-    "duration_ms": 0.1900196075439453
-  },
-  {
-    "check_id": "memory_usage",
-    "category": "performance",
-    "name": "Memory Usage Check",
-    "status": "ok",
-    "message": "Memory usage OK: 53.4%",
-    "details": {
-      "total_gb": 3.85,
-      "available_gb": 1.79,
-      "percent_used": 53.4
-    },
-    "fix_available": false,
-    "fix_applied": false,
-    "severity": "high",
-    "recommendations": [],
-    "timestamp": "2026-01-27T04:02:25.080456",
-    "duration_ms": 0.1766681671142578
-  },
-  {
-    "check_id": "cpu_usage",
-    "category": "performance",
-    "name": "CPU Usage Check",
-    "status": "ok",
-    "message": "CPU usage OK: 1.7%",
-    "details": {
-      "cpu_percent": 1.7,
-      "cpu_count": 6
-    },
-    "fix_available": false,
-    "fix_applied": false,
-    "severity": "medium",
-    "recommendations": [],
-    "timestamp": "2026-01-27T04:02:26.086476",
-    "duration_ms": 1000.5035400390625
-  },
-  {
-    "check_id": "process_count",
-    "category": "performance",
-    "name": "Process Count Check",
-    "status": "ok",
-    "message": "264 total processes, 4 Python",
-    "details": {
-      "total": 264,
-      "python": 4
-    },
-    "fix_available": false,
-    "fix_applied": false,
-    "severity": "low",
-    "recommendations": [],
-    "timestamp": "2026-01-27T04:02:26.100073",
-    "duration_ms": 7.52711296081543
-  },
-  {
-    "check_id": "network_connectivity",
-    "category": "network",
-    "name": "Network Connectivity Check",
-    "status": "ok",
-    "message": "Internet connection is working",
-    "details": {
-      "connected_to": [
-        "Google DNS",
-        "Cloudflare DNS"
-      ]
-    },
-    "fix_available": false,
-    "fix_applied": false,
-    "severity": "critical",
-    "recommendations": [],
-    "timestamp": "2026-01-27T04:02:26.107298",
-    "duration_ms": 1.3718605041503906
-  },
-  {
-    "check_id": "port_availability",
-    "category": "network",
-    "name": "Port Availability Check",
-    "status": "ok",
-    "message": "Backend running, 2 services active",
-    "details": {
-      "in_use": [
-        {
-          "port": 8000,
-          "name": "Backend API"
-        },
-        {
-          "port": 5200,
-          "name": "Frontend Alt"
-        }
-      ],
-      "available": [
-        {
-          "port": 5173,
-          "name": "Frontend Dev"
-        }
-      ]
-    },
-    "fix_available": false,
-    "fix_applied": false,
-    "severity": "high",
-    "recommendations": [],
-    "timestamp": "2026-01-27T04:02:26.113775",
-    "duration_ms": 0.9114742279052734
-  },
-  {
-    "check_id": "external_apis",
-    "category": "network",
-    "name": "External APIs Check",
-    "status": "ok",
-    "message": "All 3 external APIs reachable",
-    "details": {
-      "reachable": [
-        "OpenAI API",
-        "Google",
-        "GitHub API"
-      ]
-    },
-    "fix_available": false,
-    "fix_applied": false,
-    "severity": "medium",
-    "recommendations": [],
-    "timestamp": "2026-01-27T04:02:27.670511",
-    "duration_ms": 1550.5120754241943
-  },
-  {
-    "check_id": "file_permissions",
-    "category": "security",
-    "name": "File Permissions Check",
-    "status": "ok",
-    "message": "File permissions are secure",
-    "details": null,
-    "fix_available": false,
-    "fix_applied": false,
-    "severity": "medium",
-    "recommendations": [],
-    "timestamp": "2026-01-27T04:02:27.676940",
-    "duration_ms": 0.10657310485839844
-  },
-  {
-    "check_id": "sensitive_data",
-    "category": "security",
-    "name": "Sensitive Data Check",
-    "status": "ok",
-    "message": "No sensitive data patterns found in data files",
-    "details": null,
-    "fix_available": false,
-    "fix_applied": false,
-    "severity": "high",
-    "recommendations": [],
-    "timestamp": "2026-01-27T04:02:27.684969",
-    "duration_ms": 2.2749900817871094
-  },
-  {
-    "check_id": "api_health",
-    "category": "api",
-    "name": "API Health Check",
-    "status": "ok",
-    "message": "API is healthy and responding",
-    "details": {
-      "response": {
-        "status": "healthy",
-        "ai_configured": true
-      },
-      "response_time_ms": 14.471769332885742
-    },
-    "fix_available": false,
-    "fix_applied": false,
-    "severity": "critical",
-    "recommendations": [],
-    "timestamp": "2026-01-27T04:13:41.463534",
-    "duration_ms": 18.51654052734375
-  },
-  {
-    "check_id": "api_health",
-    "category": "api",
-    "name": "API Health Check",
-    "status": "ok",
-    "message": "API is healthy and responding",
-    "details": {
-      "response": {
-        "status": "healthy",
-        "ai_configured": true
-      },
-      "response_time_ms": 29.66165542602539
-    },
-    "fix_available": false,
-    "fix_applied": false,
-    "severity": "critical",
-    "recommendations": [],
-    "timestamp": "2026-01-27T04:13:41.477457",
-    "duration_ms": 30.280113220214844
-  },
-  {
-    "check_id": "api_endpoints",
-    "category": "api",
-    "name": "API Endpoints Check",
-    "status": "warning",
-    "message": "3 endpoints have warnings",
-    "details": {
-      "warnings": [
-        "TDS Stats (/api/tds/stats): not found",
-        "Ad Campaigns (/api/ads/campaigns): not found",
-        "Tracker Stats (/api/tracker/stats): not found"
-      ],
-      "checked": 13
-    },
-    "fix_available": false,
-    "fix_applied": false,
-    "severity": "medium",
-    "recommendations": [],
-    "timestamp": "2026-01-27T04:13:41.576623",
-    "duration_ms": 79.35714721679688
-  },
-  {
-    "check_id": "api_endpoints",
-    "category": "api",
-    "name": "API Endpoints Check",
-    "status": "warning",
-    "message": "3 endpoints have warnings",
-    "details": {
-      "warnings": [
-        "TDS Stats (/api/tds/stats): not found",
-        "Ad Campaigns (/api/ads/campaigns): not found",
-        "Tracker Stats (/api/tracker/stats): not found"
-      ],
-      "checked": 13
-    },
-    "fix_available": false,
-    "fix_applied": false,
-    "severity": "medium",
-    "recommendations": [],
-    "timestamp": "2026-01-27T04:13:41.592098",
-    "duration_ms": 110.1677417755127
-  },
-  {
-    "check_id": "api_response_time",
-    "category": "api",
-    "name": "API Response Time",
-    "status": "ok",
-    "message": "API response time is good: 9ms avg",
-    "details": {
-      "avg_ms": 9.137916564941406,
-      "max_ms": 21.538257598876953,
-      "samples": 5
-    },
-    "fix_available": false,
-    "fix_applied": false,
-    "severity": "medium",
-    "recommendations": [],
-    "timestamp": "2026-01-27T04:13:41.634889",
-    "duration_ms": 47.16658592224121
-  },
-  {
-    "check_id": "data_directories",
-    "category": "file_system",
-    "name": "Data Directories Check",
-    "status": "ok",
-    "message": "All 11 required directories exist",
-    "details": {
-      "checked_dirs": 11
-    },
-    "fix_available": false,
-    "fix_applied": false,
-    "severity": "high",
-    "recommendations": [],
-    "timestamp": "2026-01-27T04:13:41.644804",
-    "duration_ms": 0.33926963806152344
-  },
-  {
-    "check_id": "json_files_integrity",
-    "category": "file_system",
-    "name": "JSON Files Integrity",
-    "status": "ok",
-    "message": "All 40 JSON files are valid",
-    "details": {
-      "checked_files": 40
-    },
-    "fix_available": false,
-    "fix_applied": false,
-    "severity": "high",
-    "recommendations": [],
-    "timestamp": "2026-01-27T04:13:41.671281",
-    "duration_ms": 14.638662338256836
-  },
-  {
-    "check_id": "disk_space",
-    "category": "file_system",
-    "name": "Disk Space Check",
-    "status": "ok",
-    "message": "Disk space OK: 31.11 GB free (75.2%)",
-    "details": {
-      "total_gb": 41.42,
-      "used_gb": 10.29,
-      "free_gb": 31.11,
-      "used_percent": 24.8
-    },
-    "fix_available": false,
-    "fix_applied": false,
-    "severity": "critical",
-    "recommendations": [],
-    "timestamp": "2026-01-27T04:13:41.684977",
-    "duration_ms": 0.1068115234375
-  },
-  {
-    "check_id": "log_files",
-    "category": "file_system",
-    "name": "Log Files Check",
-    "status": "ok",
-    "message": "Log files OK (0.1 MB total)",
-    "details": {
-      "total_mb": 0.06223583221435547
-    },
-    "fix_available": false,
-    "fix_applied": false,
-    "severity": "low",
-    "recommendations": [],
-    "timestamp": "2026-01-27T04:13:41.695704",
-    "duration_ms": 1.1527538299560547
-  },
-  {
-    "check_id": "temp_files",
-    "category": "file_system",
-    "name": "Temp Files Check",
-    "status": "ok",
-    "message": "Temp files OK (0.1 MB)",
-    "details": null,
-    "fix_available": false,
-    "fix_applied": false,
-    "severity": "low",
-    "recommendations": [],
-    "timestamp": "2026-01-27T04:13:41.705830",
-    "duration_ms": 0.8258819580078125
-  },
-  {
-    "check_id": "indexing_service",
-    "category": "services",
-    "name": "Indexing Service Check",
-    "status": "ok",
-    "message": "Indexing service is working",
-    "details": {
-      "total_requests": 10,
-      "submitted": 0,
-      "indexed": 0,
-      "not_indexed": 0,
-      "errors": 0,
-      "queue_pending": 3,
-      "queue_total": 3,
-      "unique_domains": 3
-    },
-    "fix_available": false,
-    "fix_applied": false,
-    "severity": "high",
-    "recommendations": [],
-    "timestamp": "2026-01-27T04:13:41.716037",
-    "duration_ms": 0.3972053527832031
-  },
-  {
-    "check_id": "sessions_service",
-    "category": "services",
-    "name": "Sessions Service Check",
-    "status": "ok",
-    "message": "Sessions service is working",
-    "details": {
-      "total_accounts": 0,
-      "active_sessions": 0,
-      "successful_logins": 0,
-      "failed_logins": 0,
-      "last_activity": null
-    },
-    "fix_available": false,
-    "fix_applied": false,
-    "severity": "high",
-    "recommendations": [],
-    "timestamp": "2026-01-27T04:13:41.726490",
-    "duration_ms": 0.4477500915527344
-  },
-  {
-    "check_id": "autopilot_service",
-    "category": "services",
-    "name": "Autopilot Service Check",
-    "status": "ok",
-    "message": "Autopilot service is working",
-    "details": {
-      "total_campaigns": 1,
-      "running_campaigns": 1,
-      "total_content_generated": 0,
-      "total_urls_indexed": 0,
-      "learning_strategies": 0
-    },
-    "fix_available": false,
-    "fix_applied": false,
-    "severity": "high",
-    "recommendations": [],
-    "timestamp": "2026-01-27T04:13:41.807473",
-    "duration_ms": 72.2038745880127
-  },
-  {
-    "check_id": "position_tracker",
-    "category": "services",
-    "name": "Position Tracker Check",
-    "status": "ok",
-    "message": "Position tracker is working",
-    "details": null,
-    "fix_available": false,
-    "fix_applied": false,
-    "severity": "medium",
-    "recommendations": [],
-    "timestamp": "2026-01-27T04:13:41.817778",
-    "duration_ms": 0.3113746643066406
-  },
-  {
-    "check_id": "ai_providers",
-    "category": "ai",
-    "name": "AI Providers Check",
-    "status": "ok",
-    "message": "7 AI providers available",
-    "details": {
-      "providers": [
-        "groq",
-        "together",
-        "huggingface",
-        "ollama",
-        "cohere",
-        "deepseek",
-        "openrouter"
-      ]
-    },
-    "fix_available": false,
-    "fix_applied": false,
-    "severity": "high",
-    "recommendations": [],
-    "timestamp": "2026-01-27T04:13:41.828818",
-    "duration_ms": 3.378152847290039
-  },
-  {
-    "check_id": "ai_agent_core",
-    "category": "ai",
-    "name": "AI Agent Core Check",
-    "status": "ok",
-    "message": "AI Agent Core is working",
-    "details": {
-      "memory_size": {
-        "conversations": 0,
-        "successful_solutions": 0,
-        "failed_attempts": 0,
-        "knowledge_items": 0
-      },
-      "learning": {
-        "patterns_learned": 0,
-        "error_solutions": 0
-      },
-      "code_changes": 0,
-      "config": {
-        "auto_improve": true,
-        "auto_fix_errors": true,
-        "learning_enabled": true,
-        "max_iterations": 10,
-        "safety_mode": true
-      },
-      "tools_available": [
-        "read_file",
-        "write_file",
-        "execute_python",
-        "shell_command",
-        "list_files",
-        "search_code"
-      ]
-    },
-    "fix_available": false,
-    "fix_applied": false,
-    "severity": "high",
-    "recommendations": [],
-    "timestamp": "2026-01-27T04:13:41.899508",
-    "duration_ms": 63.3082389831543
-  },
-  {
-    "check_id": "ai_learning",
-    "category": "ai",
-    "name": "AI Learning System Check",
-    "status": "ok",
-    "message": "AI Learning system is working",
-    "details": {
-      "learning_enabled": true,
-      "auto_update_enabled": true,
-      "total_records": 0,
-      "agent_evolutions": 0,
-      "success_rate": 0.0,
-      "last_update": null
-    },
-    "fix_available": false,
-    "fix_applied": false,
-    "severity": "medium",
-    "recommendations": [],
-    "timestamp": "2026-01-27T04:13:41.916612",
-    "duration_ms": 7.483482360839844
-  },
-  {
-    "check_id": "ai_seo_integration",
-    "category": "ai",
-    "name": "AI SEO Integration Check",
-    "status": "ok",
-    "message": "AI SEO Integration is working",
-    "details": null,
-    "fix_available": false,
-    "fix_applied": false,
-    "severity": "medium",
-    "recommendations": [],
-    "timestamp": "2026-01-27T04:13:41.928837",
-    "duration_ms": 6.394386291503906
-  },
-  {
-    "check_id": "ses_service",
-    "category": "email",
-    "name": "AWS SES Service Check",
-    "status": "warning",
-    "message": "No AWS SES keys configured",
-    "details": null,
-    "fix_available": false,
-    "fix_applied": false,
-    "severity": "high",
-    "recommendations": [
-      "Add AWS SES credentials in Email SES module"
-    ],
-    "timestamp": "2026-01-27T04:13:41.936530",
-    "duration_ms": 0.12922286987304688
-  },
-  {
-    "check_id": "ses_warmup",
-    "category": "email",
-    "name": "SES Warmup Check",
-    "status": "ok",
-    "message": "Warmup system OK (0 in progress)",
-    "details": {
-      "total_plans": 0,
-      "in_progress": 0,
-      "completed": 0,
-      "paused": 0,
-      "failed": 0,
-      "not_started": 0,
-      "total_emails_sent": 0,
-      "total_delivered": 0,
-      "total_bounced": 0,
-      "overall_delivery_rate": 0,
-      "scheduler_running": false
-    },
-    "fix_available": false,
-    "fix_applied": false,
-    "severity": "medium",
-    "recommendations": [],
-    "timestamp": "2026-01-27T04:13:41.942789",
-    "duration_ms": 0.06794929504394531
-  },
-  {
-    "check_id": "email_ab_testing",
-    "category": "email",
-    "name": "Email A/B Testing Check",
-    "status": "ok",
-    "message": "A/B Testing service is working",
-    "details": {
-      "total_tests": 0,
-      "running_tests": 0,
-      "completed_tests": 0,
-      "draft_tests": 0,
-      "total_variants": 0,
-      "total_opens_tracked": 0,
-      "total_clicks_tracked": 0,
-      "auto_optimization_enabled": true
-    },
-    "fix_available": false,
-    "fix_applied": false,
-    "severity": "low",
-    "recommendations": [],
-    "timestamp": "2026-01-27T04:13:41.950071",
-    "duration_ms": 0.08440017700195312
-  },
-  {
-    "check_id": "recipient_manager",
-    "category": "email",
-    "name": "Recipient Manager Check",
-    "status": "ok",
-    "message": "0 lists with 0 recipients",
-    "details": {
-      "lists_count": 0,
-      "total_recipients": 0
-    },
-    "fix_available": false,
-    "fix_applied": false,
-    "severity": "medium",
-    "recommendations": [],
-    "timestamp": "2026-01-27T04:13:41.959256",
-    "duration_ms": 0.15974044799804688
-  },
-  {
-    "check_id": "tds_core",
-    "category": "tds",
-    "name": "TDS Core Check",
-    "status": "ok",
-    "message": "TDS Core is working",
-    "details": {
-      "totals": {
-        "total_campaigns": 0,
-        "total_clicks": null,
-        "total_unique": null,
-        "total_conversions": null,
-        "total_revenue": null,
-        "total_cost": null
-      },
-      "today": {
-        "clicks": 0,
-        "unique_clicks": null,
-        "conversions": null,
-        "revenue": null
-      },
-      "top_campaigns": [],
-      "top_countries": []
-    },
-    "fix_available": false,
-    "fix_applied": false,
-    "severity": "high",
-    "recommendations": [],
-    "timestamp": "2026-01-27T04:13:41.970461",
-    "duration_ms": 1.3082027435302734
-  },
-  {
-    "check_id": "tds_routing",
-    "category": "tds",
-    "name": "TDS Routing Check",
-    "status": "ok",
-    "message": "TDS Routing is working",
-    "details": null,
-    "fix_available": false,
-    "fix_applied": false,
-    "severity": "high",
-    "recommendations": [],
-    "timestamp": "2026-01-27T04:13:41.979670",
-    "duration_ms": 0.10347366333007812
-  },
-  {
-    "check_id": "tds_antifraud",
-    "category": "tds",
-    "name": "TDS Antifraud Check",
-    "status": "ok",
-    "message": "TDS Antifraud is working",
-    "details": null,
-    "fix_available": false,
-    "fix_applied": false,
-    "severity": "medium",
-    "recommendations": [],
-    "timestamp": "2026-01-27T04:13:41.998785",
-    "duration_ms": 0.1800060272216797
-  },
-  {
-    "check_id": "tds_statistics",
-    "category": "tds",
-    "name": "TDS Statistics Check",
-    "status": "ok",
-    "message": "TDS Statistics is working",
-    "details": null,
-    "fix_available": false,
-    "fix_applied": false,
-    "severity": "low",
-    "recommendations": [],
-    "timestamp": "2026-01-27T04:13:42.010935",
-    "duration_ms": 0.19431114196777344
-  },
-  {
-    "check_id": "cloaking_system",
-    "category": "tds",
-    "name": "Cloaking System Check",
-    "status": "ok",
-    "message": "Cloaking system is working",
-    "details": null,
-    "fix_available": false,
-    "fix_applied": false,
-    "severity": "medium",
-    "recommendations": [],
-    "timestamp": "2026-01-27T04:13:42.021966",
-    "duration_ms": 0.30231475830078125
-  },
-  {
-    "check_id": "ads_integration",
-    "category": "integrations",
-    "name": "Ads Integration Check",
-    "status": "ok",
-    "message": "Ads integration is working",
-    "details": {
-      "tracking_links": 0,
-      "total_clicks": 0,
-      "total_conversions": 0,
-      "total_revenue": 0,
-      "conversion_rate": 0,
-      "postbacks": {
-        "total": 0,
-        "active": 0,
-        "total_sent": 0,
-        "total_success": 0,
-        "total_failed": 0
-      },
-      "cloaking": {
-        "total_rules": 0,
-        "active_rules": 0,
-        "total_hits": 0,
-        "total_blocks": 0,
-        "block_rate": 0
-      }
-    },
-    "fix_available": false,
-    "fix_applied": false,
-    "severity": "medium",
-    "recommendations": [],
-    "timestamp": "2026-01-27T04:13:42.029026",
-    "duration_ms": 0.10943412780761719
-  },
-  {
-    "check_id": "ad_campaigns",
-    "category": "integrations",
-    "name": "Ad Campaigns Check",
-    "status": "ok",
-    "message": "Ad campaigns service is working",
-    "details": {
-      "total_accounts": 0,
-      "total_campaigns": 0,
-      "active_campaigns": 0,
-      "total_balance": 0,
-      "total_spent": 0.0,
-      "total_impressions": 0,
-      "total_clicks": 0,
-      "total_conversions": 0,
-      "avg_ctr": 0,
-      "avg_cpc": 0,
-      "blocked_bots": 0,
-      "fraud_prevented": 0.0,
-      "by_platform": {}
-    },
-    "fix_available": false,
-    "fix_applied": false,
-    "severity": "medium",
-    "recommendations": [],
-    "timestamp": "2026-01-27T04:13:42.035658",
-    "duration_ms": 0.225067138671875
-  },
-  {
-    "check_id": "image_providers",
-    "category": "integrations",
-    "name": "Image Providers Check",
-    "status": "warning",
-    "message": "Image providers error: 'ImageProviderManager' object has no attribute 'get_available_providers'",
-    "details": null,
-    "fix_available": false,
-    "fix_applied": false,
-    "severity": "low",
-    "recommendations": [],
-    "timestamp": "2026-01-27T04:13:42.050966",
-    "duration_ms": 0.5996227264404297
-  },
-  {
-    "check_id": "wordpress_manager",
-    "category": "integrations",
-    "name": "WordPress Manager Check",
-    "status": "ok",
-    "message": "WordPress manager is working",
-    "details": null,
-    "fix_available": false,
-    "fix_applied": false,
-    "severity": "medium",
-    "recommendations": [],
-    "timestamp": "2026-01-27T04:13:42.072496",
-    "duration_ms": 0.21314620971679688
-  },
-  {
-    "check_id": "cpanel_manager",
-    "category": "integrations",
-    "name": "cPanel Manager Check",
-    "status": "error",
-    "message": "cPanel manager error: cannot import name 'CpanelManager' from 'services.cpanel_manager' (/home/ubuntu/seo_monster/backend/services/cpanel_manager.py)",
-    "details": null,
-    "fix_available": false,
-    "fix_applied": false,
-    "severity": "medium",
-    "recommendations": [],
-    "timestamp": "2026-01-27T04:13:42.083902",
-    "duration_ms": 0.08940696716308594
-  },
-  {
     "check_id": "config_files",
     "category": "configuration",
     "name": "Config Files Check",
@@ -19710,5 +18871,857 @@
     "recommendations": [],
     "timestamp": "2026-01-27T04:39:31.551848",
     "duration_ms": 2.855062484741211
+  },
+  {
+    "check_id": "api_health",
+    "category": "api",
+    "name": "API Health Check",
+    "status": "ok",
+    "message": "API is healthy and responding",
+    "details": {
+      "response": {
+        "status": "healthy",
+        "ai_configured": true
+      },
+      "response_time_ms": 3.982067108154297
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "critical",
+    "recommendations": [],
+    "timestamp": "2026-01-27T04:44:17.202011",
+    "duration_ms": 4.24957275390625
+  },
+  {
+    "check_id": "api_endpoints",
+    "category": "api",
+    "name": "API Endpoints Check",
+    "status": "ok",
+    "message": "All 8 critical endpoints working (3 optional not configured)",
+    "details": {
+      "checked": 13,
+      "info": [
+        "TDS Stats (/api/tds/stats): not configured (optional)",
+        "Ad Campaigns (/api/ads/campaigns): not configured (optional)",
+        "Tracker Stats (/api/tracker/stats): not configured (optional)"
+      ]
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "high",
+    "recommendations": [],
+    "timestamp": "2026-01-27T04:44:17.233587",
+    "duration_ms": 15.25115966796875
+  },
+  {
+    "check_id": "api_response_time",
+    "category": "api",
+    "name": "API Response Time",
+    "status": "ok",
+    "message": "API response time is good: 1ms avg",
+    "details": {
+      "avg_ms": 1.4974117279052734,
+      "max_ms": 3.013134002685547,
+      "samples": 5
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "medium",
+    "recommendations": [],
+    "timestamp": "2026-01-27T04:44:17.257266",
+    "duration_ms": 7.851600646972656
+  },
+  {
+    "check_id": "data_directories",
+    "category": "file_system",
+    "name": "Data Directories Check",
+    "status": "ok",
+    "message": "All 11 required directories exist",
+    "details": {
+      "checked_dirs": 11
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "high",
+    "recommendations": [],
+    "timestamp": "2026-01-27T04:44:17.273094",
+    "duration_ms": 0.15091896057128906
+  },
+  {
+    "check_id": "json_files_integrity",
+    "category": "file_system",
+    "name": "JSON Files Integrity",
+    "status": "ok",
+    "message": "All 41 JSON files are valid",
+    "details": {
+      "checked_files": 41
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "high",
+    "recommendations": [],
+    "timestamp": "2026-01-27T04:44:17.295503",
+    "duration_ms": 6.677865982055664
+  },
+  {
+    "check_id": "disk_space",
+    "category": "file_system",
+    "name": "Disk Space Check",
+    "status": "ok",
+    "message": "Disk space OK: 31.10 GB free (75.1%)",
+    "details": {
+      "total_gb": 41.42,
+      "used_gb": 10.3,
+      "free_gb": 31.1,
+      "used_percent": 24.9
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "critical",
+    "recommendations": [],
+    "timestamp": "2026-01-27T04:44:17.311251",
+    "duration_ms": 0.07796287536621094
+  },
+  {
+    "check_id": "log_files",
+    "category": "file_system",
+    "name": "Log Files Check",
+    "status": "ok",
+    "message": "Log files OK (0.1 MB total)",
+    "details": {
+      "total_mb": 0.06833267211914062
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "low",
+    "recommendations": [],
+    "timestamp": "2026-01-27T04:44:17.326758",
+    "duration_ms": 0.49233436584472656
+  },
+  {
+    "check_id": "temp_files",
+    "category": "file_system",
+    "name": "Temp Files Check",
+    "status": "ok",
+    "message": "Temp files OK (0.2 MB)",
+    "details": null,
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "low",
+    "recommendations": [],
+    "timestamp": "2026-01-27T04:44:17.341825",
+    "duration_ms": 0.6892681121826172
+  },
+  {
+    "check_id": "indexing_service",
+    "category": "services",
+    "name": "Indexing Service Check",
+    "status": "ok",
+    "message": "Indexing service is working",
+    "details": {
+      "total_requests": 10,
+      "submitted": 0,
+      "indexed": 0,
+      "not_indexed": 0,
+      "errors": 0,
+      "queue_pending": 3,
+      "queue_total": 3,
+      "unique_domains": 3
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "high",
+    "recommendations": [],
+    "timestamp": "2026-01-27T04:44:17.358970",
+    "duration_ms": 0.24509429931640625
+  },
+  {
+    "check_id": "sessions_service",
+    "category": "services",
+    "name": "Sessions Service Check",
+    "status": "ok",
+    "message": "Sessions service is working",
+    "details": {
+      "total_accounts": 0,
+      "active_sessions": 0,
+      "successful_logins": 0,
+      "failed_logins": 0,
+      "last_activity": null
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "high",
+    "recommendations": [],
+    "timestamp": "2026-01-27T04:44:17.374040",
+    "duration_ms": 0.22339820861816406
+  },
+  {
+    "check_id": "autopilot_service",
+    "category": "services",
+    "name": "Autopilot Service Check",
+    "status": "ok",
+    "message": "Autopilot service is working",
+    "details": {
+      "total_campaigns": 1,
+      "running_campaigns": 1,
+      "total_content_generated": 0,
+      "total_urls_indexed": 0,
+      "learning_strategies": 0
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "high",
+    "recommendations": [],
+    "timestamp": "2026-01-27T04:44:17.438739",
+    "duration_ms": 50.125837326049805
+  },
+  {
+    "check_id": "position_tracker",
+    "category": "services",
+    "name": "Position Tracker Check",
+    "status": "ok",
+    "message": "Position tracker is working",
+    "details": null,
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "medium",
+    "recommendations": [],
+    "timestamp": "2026-01-27T04:44:17.457724",
+    "duration_ms": 0.28228759765625
+  },
+  {
+    "check_id": "ai_providers",
+    "category": "ai",
+    "name": "AI Providers Check",
+    "status": "ok",
+    "message": "7 AI providers available",
+    "details": {
+      "providers": [
+        "groq",
+        "together",
+        "huggingface",
+        "ollama",
+        "cohere",
+        "deepseek",
+        "openrouter"
+      ]
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "high",
+    "recommendations": [],
+    "timestamp": "2026-01-27T04:44:17.473089",
+    "duration_ms": 0.3001689910888672
+  },
+  {
+    "check_id": "ai_agent_core",
+    "category": "ai",
+    "name": "AI Agent Core Check",
+    "status": "ok",
+    "message": "AI Agent Core is working",
+    "details": {
+      "memory_size": {
+        "conversations": 0,
+        "successful_solutions": 0,
+        "failed_attempts": 0,
+        "knowledge_items": 0
+      },
+      "learning": {
+        "patterns_learned": 0,
+        "error_solutions": 0
+      },
+      "code_changes": 0,
+      "config": {
+        "auto_improve": true,
+        "auto_fix_errors": true,
+        "learning_enabled": true,
+        "max_iterations": 10,
+        "safety_mode": true
+      },
+      "tools_available": [
+        "read_file",
+        "write_file",
+        "execute_python",
+        "shell_command",
+        "list_files",
+        "search_code"
+      ]
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "high",
+    "recommendations": [],
+    "timestamp": "2026-01-27T04:44:17.537485",
+    "duration_ms": 51.097869873046875
+  },
+  {
+    "check_id": "ai_learning",
+    "category": "ai",
+    "name": "AI Learning System Check",
+    "status": "ok",
+    "message": "AI Learning system is working",
+    "details": {
+      "learning_enabled": true,
+      "auto_update_enabled": true,
+      "total_records": 0,
+      "agent_evolutions": 0,
+      "success_rate": 0.0,
+      "last_update": null
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "medium",
+    "recommendations": [],
+    "timestamp": "2026-01-27T04:44:17.553000",
+    "duration_ms": 0.09894371032714844
+  },
+  {
+    "check_id": "ai_seo_integration",
+    "category": "ai",
+    "name": "AI SEO Integration Check",
+    "status": "ok",
+    "message": "AI SEO Integration is working",
+    "details": null,
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "medium",
+    "recommendations": [],
+    "timestamp": "2026-01-27T04:44:17.568485",
+    "duration_ms": 0.2002716064453125
+  },
+  {
+    "check_id": "ses_service",
+    "category": "email",
+    "name": "AWS SES Service Check",
+    "status": "ok",
+    "message": "AWS SES not configured (optional feature)",
+    "details": {
+      "configured": false,
+      "note": "Add AWS SES keys to enable email functionality"
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "low",
+    "recommendations": [
+      "Add AWS SES credentials in Email SES module to enable email sending"
+    ],
+    "timestamp": "2026-01-27T04:44:17.583223",
+    "duration_ms": 0.1780986785888672
+  },
+  {
+    "check_id": "ses_warmup",
+    "category": "email",
+    "name": "SES Warmup Check",
+    "status": "ok",
+    "message": "Warmup system OK (0 in progress)",
+    "details": {
+      "total_plans": 0,
+      "in_progress": 0,
+      "completed": 0,
+      "paused": 0,
+      "failed": 0,
+      "not_started": 0,
+      "total_emails_sent": 0,
+      "total_delivered": 0,
+      "total_bounced": 0,
+      "overall_delivery_rate": 0,
+      "scheduler_running": false
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "medium",
+    "recommendations": [],
+    "timestamp": "2026-01-27T04:44:17.596629",
+    "duration_ms": 0.16164779663085938
+  },
+  {
+    "check_id": "email_ab_testing",
+    "category": "email",
+    "name": "Email A/B Testing Check",
+    "status": "ok",
+    "message": "A/B Testing service is working",
+    "details": {
+      "total_tests": 0,
+      "running_tests": 0,
+      "completed_tests": 0,
+      "draft_tests": 0,
+      "total_variants": 0,
+      "total_opens_tracked": 0,
+      "total_clicks_tracked": 0,
+      "auto_optimization_enabled": true
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "low",
+    "recommendations": [],
+    "timestamp": "2026-01-27T04:44:17.610190",
+    "duration_ms": 0.18286705017089844
+  },
+  {
+    "check_id": "recipient_manager",
+    "category": "email",
+    "name": "Recipient Manager Check",
+    "status": "ok",
+    "message": "0 lists with 0 recipients",
+    "details": {
+      "lists_count": 0,
+      "total_recipients": 0
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "medium",
+    "recommendations": [],
+    "timestamp": "2026-01-27T04:44:17.623579",
+    "duration_ms": 0.1952648162841797
+  },
+  {
+    "check_id": "tds_core",
+    "category": "tds",
+    "name": "TDS Core Check",
+    "status": "ok",
+    "message": "TDS Core is working",
+    "details": {
+      "totals": {
+        "total_campaigns": 0,
+        "total_clicks": null,
+        "total_unique": null,
+        "total_conversions": null,
+        "total_revenue": null,
+        "total_cost": null
+      },
+      "today": {
+        "clicks": 0,
+        "unique_clicks": null,
+        "conversions": null,
+        "revenue": null
+      },
+      "top_campaigns": [],
+      "top_countries": []
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "high",
+    "recommendations": [],
+    "timestamp": "2026-01-27T04:44:17.638465",
+    "duration_ms": 1.199960708618164
+  },
+  {
+    "check_id": "tds_routing",
+    "category": "tds",
+    "name": "TDS Routing Check",
+    "status": "ok",
+    "message": "TDS Routing is working",
+    "details": null,
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "high",
+    "recommendations": [],
+    "timestamp": "2026-01-27T04:44:17.656296",
+    "duration_ms": 0.13566017150878906
+  },
+  {
+    "check_id": "tds_antifraud",
+    "category": "tds",
+    "name": "TDS Antifraud Check",
+    "status": "ok",
+    "message": "TDS Antifraud is working",
+    "details": null,
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "medium",
+    "recommendations": [],
+    "timestamp": "2026-01-27T04:44:17.674718",
+    "duration_ms": 0.08988380432128906
+  },
+  {
+    "check_id": "tds_statistics",
+    "category": "tds",
+    "name": "TDS Statistics Check",
+    "status": "ok",
+    "message": "TDS Statistics is working",
+    "details": null,
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "low",
+    "recommendations": [],
+    "timestamp": "2026-01-27T04:44:17.689363",
+    "duration_ms": 0.12373924255371094
+  },
+  {
+    "check_id": "cloaking_system",
+    "category": "tds",
+    "name": "Cloaking System Check",
+    "status": "ok",
+    "message": "Cloaking system is working",
+    "details": null,
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "medium",
+    "recommendations": [],
+    "timestamp": "2026-01-27T04:44:17.702959",
+    "duration_ms": 0.11658668518066406
+  },
+  {
+    "check_id": "ads_integration",
+    "category": "integrations",
+    "name": "Ads Integration Check",
+    "status": "ok",
+    "message": "Ads integration is working",
+    "details": {
+      "tracking_links": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0,
+      "conversion_rate": 0,
+      "postbacks": {
+        "total": 0,
+        "active": 0,
+        "total_sent": 0,
+        "total_success": 0,
+        "total_failed": 0
+      },
+      "cloaking": {
+        "total_rules": 0,
+        "active_rules": 0,
+        "total_hits": 0,
+        "total_blocks": 0,
+        "block_rate": 0
+      }
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "medium",
+    "recommendations": [],
+    "timestamp": "2026-01-27T04:44:17.719130",
+    "duration_ms": 0.09655952453613281
+  },
+  {
+    "check_id": "ad_campaigns",
+    "category": "integrations",
+    "name": "Ad Campaigns Check",
+    "status": "ok",
+    "message": "Ad campaigns service is working",
+    "details": {
+      "total_accounts": 0,
+      "total_campaigns": 0,
+      "active_campaigns": 0,
+      "total_balance": 0,
+      "total_spent": 0.0,
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "avg_ctr": 0,
+      "avg_cpc": 0,
+      "blocked_bots": 0,
+      "fraud_prevented": 0.0,
+      "by_platform": {}
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "medium",
+    "recommendations": [],
+    "timestamp": "2026-01-27T04:44:17.733634",
+    "duration_ms": 0.25773048400878906
+  },
+  {
+    "check_id": "image_providers",
+    "category": "integrations",
+    "name": "Image Providers Check",
+    "status": "ok",
+    "message": "8 image providers available",
+    "details": {
+      "providers": [
+        "nano_banana",
+        "unsplash",
+        "pexels",
+        "pixabay",
+        "pinterest",
+        "freepik",
+        "stocksnap",
+        "burst"
+      ]
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "low",
+    "recommendations": [],
+    "timestamp": "2026-01-27T04:44:17.747983",
+    "duration_ms": 0.1201629638671875
+  },
+  {
+    "check_id": "wordpress_manager",
+    "category": "integrations",
+    "name": "WordPress Manager Check",
+    "status": "ok",
+    "message": "WordPress manager is working",
+    "details": null,
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "medium",
+    "recommendations": [],
+    "timestamp": "2026-01-27T04:44:17.762582",
+    "duration_ms": 0.06890296936035156
+  },
+  {
+    "check_id": "cpanel_manager",
+    "category": "integrations",
+    "name": "cPanel Manager Check",
+    "status": "ok",
+    "message": "cPanel manager is working",
+    "details": null,
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "medium",
+    "recommendations": [],
+    "timestamp": "2026-01-27T04:44:17.776852",
+    "duration_ms": 0.1785755157470703
+  },
+  {
+    "check_id": "config_files",
+    "category": "configuration",
+    "name": "Config Files Check",
+    "status": "ok",
+    "message": "All 4 config files exist",
+    "details": null,
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "high",
+    "recommendations": [],
+    "timestamp": "2026-01-27T04:44:17.790210",
+    "duration_ms": 0.11777877807617188
+  },
+  {
+    "check_id": "environment_vars",
+    "category": "configuration",
+    "name": "Environment Variables Check",
+    "status": "ok",
+    "message": "All required vars set (3 optional available)",
+    "details": {
+      "optional_features": [
+        {
+          "var": "AWS_ACCESS_KEY_ID",
+          "description": "For AWS SES"
+        },
+        {
+          "var": "AWS_SECRET_ACCESS_KEY",
+          "description": "For AWS SES"
+        },
+        {
+          "var": "TELEGRAM_BOT_TOKEN",
+          "description": "For Telegram notifications"
+        }
+      ],
+      "note": "Optional variables enable additional features"
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "low",
+    "recommendations": [],
+    "timestamp": "2026-01-27T04:44:17.803060",
+    "duration_ms": 0.052928924560546875
+  },
+  {
+    "check_id": "api_keys",
+    "category": "configuration",
+    "name": "API Keys Check",
+    "status": "ok",
+    "message": "API keys are configured",
+    "details": null,
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "critical",
+    "recommendations": [],
+    "timestamp": "2026-01-27T04:44:17.816203",
+    "duration_ms": 0.037670135498046875
+  },
+  {
+    "check_id": "python_packages",
+    "category": "dependencies",
+    "name": "Python Packages Check",
+    "status": "ok",
+    "message": "All 9 required packages installed",
+    "details": {
+      "installed": [
+        "fastapi",
+        "uvicorn",
+        "aiohttp",
+        "openai",
+        "pydantic",
+        "requests",
+        "boto3",
+        "pillow",
+        "beautifulsoup4"
+      ]
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "high",
+    "recommendations": [],
+    "timestamp": "2026-01-27T04:44:17.829427",
+    "duration_ms": 0.07009506225585938
+  },
+  {
+    "check_id": "frontend_build",
+    "category": "dependencies",
+    "name": "Frontend Build Check",
+    "status": "ok",
+    "message": "Frontend build is valid",
+    "details": null,
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "medium",
+    "recommendations": [],
+    "timestamp": "2026-01-27T04:44:17.842664",
+    "duration_ms": 0.14328956604003906
+  },
+  {
+    "check_id": "memory_usage",
+    "category": "performance",
+    "name": "Memory Usage Check",
+    "status": "ok",
+    "message": "Memory usage OK: 41.9%",
+    "details": {
+      "total_gb": 3.85,
+      "available_gb": 2.24,
+      "percent_used": 41.9
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "high",
+    "recommendations": [],
+    "timestamp": "2026-01-27T04:44:17.855847",
+    "duration_ms": 0.15211105346679688
+  },
+  {
+    "check_id": "cpu_usage",
+    "category": "performance",
+    "name": "CPU Usage Check",
+    "status": "ok",
+    "message": "CPU usage OK: 2.0%",
+    "details": {
+      "cpu_percent": 2.0,
+      "cpu_count": 6
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "medium",
+    "recommendations": [],
+    "timestamp": "2026-01-27T04:44:18.869396",
+    "duration_ms": 1000.5559921264648
+  },
+  {
+    "check_id": "process_count",
+    "category": "performance",
+    "name": "Process Count Check",
+    "status": "ok",
+    "message": "245 total processes, 2 Python",
+    "details": {
+      "total": 245,
+      "python": 2
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "low",
+    "recommendations": [],
+    "timestamp": "2026-01-27T04:44:18.894251",
+    "duration_ms": 7.660865783691406
+  },
+  {
+    "check_id": "network_connectivity",
+    "category": "network",
+    "name": "Network Connectivity Check",
+    "status": "ok",
+    "message": "Internet connection is working",
+    "details": {
+      "connected_to": [
+        "Google DNS",
+        "Cloudflare DNS"
+      ]
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "critical",
+    "recommendations": [],
+    "timestamp": "2026-01-27T04:44:18.908918",
+    "duration_ms": 0.9262561798095703
+  },
+  {
+    "check_id": "port_availability",
+    "category": "network",
+    "name": "Port Availability Check",
+    "status": "ok",
+    "message": "Backend running, 1 services active",
+    "details": {
+      "in_use": [
+        {
+          "port": 8000,
+          "name": "Backend API"
+        }
+      ],
+      "available": [
+        {
+          "port": 5173,
+          "name": "Frontend Dev"
+        },
+        {
+          "port": 5200,
+          "name": "Frontend Alt"
+        }
+      ]
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "high",
+    "recommendations": [],
+    "timestamp": "2026-01-27T04:44:18.923692",
+    "duration_ms": 0.7116794586181641
+  },
+  {
+    "check_id": "external_apis",
+    "category": "network",
+    "name": "External APIs Check",
+    "status": "ok",
+    "message": "All 3 external APIs reachable",
+    "details": {
+      "reachable": [
+        "OpenAI API",
+        "Google",
+        "GitHub API"
+      ]
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "medium",
+    "recommendations": [],
+    "timestamp": "2026-01-27T04:44:20.209407",
+    "duration_ms": 1271.6069221496582
+  },
+  {
+    "check_id": "file_permissions",
+    "category": "security",
+    "name": "File Permissions Check",
+    "status": "ok",
+    "message": "File permissions are secure",
+    "details": null,
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "medium",
+    "recommendations": [],
+    "timestamp": "2026-01-27T04:44:20.224543",
+    "duration_ms": 0.19311904907226562
+  },
+  {
+    "check_id": "sensitive_data",
+    "category": "security",
+    "name": "Sensitive Data Check",
+    "status": "ok",
+    "message": "No sensitive data patterns found in data files",
+    "details": null,
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "high",
+    "recommendations": [],
+    "timestamp": "2026-01-27T04:44:20.242202",
+    "duration_ms": 2.625703811645508
   }
 ]

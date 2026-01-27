@@ -1,0 +1,19 @@
+{
+  "sites": [
+    {
+      "id": "site_001",
+      "url": "https://popolnyator-znlbk4ua.manus.space",
+      "name": "Popolnyator",
+      "description": "Virtual Credit Cards for Global Payments - Crypto to Visa/Mastercard",
+      "status": "active",
+      "created_at": "2026-01-27T05:00:00Z",
+      "seo_score": 0,
+      "last_analysis": null,
+      "keywords": ["virtual credit cards", "crypto payments", "visa", "mastercard", "cryptocurrency"],
+      "meta": {
+        "title": "Popolnyator - Virtual Credit Cards for Global Payments | Crypto to Visa/Mastercard",
+        "language": "en"
+      }
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "auto_analyze": true,
+  "auto_generate": true,
+  "articles_per_day": 5,
+  "min_word_count": 800,
+  "max_word_count": 2000,
+  "languages": [
+    "en",
+    "ru"
+  ],
+  "content_types": [
+    "guide",
+    "how_to",
+    "listicle"
+  ],
+  "schedule": {
+    "enabled": true,
+    "interval_hours": 4,
+    "start_hour": 8,
+    "end_hour": 22
+  },
+  "sites": [],
+  "external_ai_enabled": false,
+  "external_ai_provider": null
+}

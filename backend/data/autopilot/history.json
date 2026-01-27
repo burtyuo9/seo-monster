@@ -1,0 +1,47 @@
+{
+  "logs": [
+    {
+      "timestamp": "2026-01-27T05:48:35.456575",
+      "level": "info",
+      "message": "Manual run started for: https://example.com",
+      "details": {}
+    },
+    {
+      "timestamp": "2026-01-27T05:48:35.456880",
+      "level": "info",
+      "message": "Pipeline: Analyzing site https://example.com",
+      "details": {}
+    },
+    {
+      "timestamp": "2026-01-27T05:48:36.501162",
+      "level": "info",
+      "message": "Pipeline: Generating article for 'domain'",
+      "details": {}
+    },
+    {
+      "timestamp": "2026-01-27T05:48:36.502328",
+      "level": "success",
+      "message": "Pipeline: Article generated - Domain: Everything You Need to Know",
+      "details": {}
+    },
+    {
+      "timestamp": "2026-01-27T05:48:36.502612",
+      "level": "info",
+      "message": "Pipeline: Generating article for 'example'",
+      "details": {}
+    },
+    {
+      "timestamp": "2026-01-27T05:48:36.503336",
+      "level": "success",
+      "message": "Pipeline: Article generated - Essential Guide to Example",
+      "details": {}
+    },
+    {
+      "timestamp": "2026-01-27T05:48:36.503478",
+      "level": "success",
+      "message": "Pipeline completed: 2 articles generated",
+      "details": {}
+    }
+  ],
+  "last_updated": "2026-01-27T05:48:36.503687"
+}

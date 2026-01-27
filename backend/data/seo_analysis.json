@@ -1,0 +1,58 @@
+{
+  "site_url": "https://popolnyator-znlbk4ua.manus.space",
+  "analysis_date": "2026-01-27T05:06:00Z",
+  "overall_score": 72,
+  "categories": {
+    "technical_seo": {
+      "score": 85,
+      "issues": [
+        {"severity": "low", "issue": "Missing sitemap.xml", "recommendation": "Create and submit XML sitemap to search engines"},
+        {"severity": "low", "issue": "No robots.txt found", "recommendation": "Add robots.txt file to control crawler access"}
+      ]
+    },
+    "on_page_seo": {
+      "score": 68,
+      "issues": [
+        {"severity": "medium", "issue": "Missing meta description", "recommendation": "Add compelling meta description with target keywords"},
+        {"severity": "medium", "issue": "H1 tag could be more descriptive", "recommendation": "Include primary keyword 'virtual credit cards' in H1"},
+        {"severity": "low", "issue": "Alt text missing on some images", "recommendation": "Add descriptive alt text to all images"}
+      ]
+    },
+    "content_quality": {
+      "score": 75,
+      "issues": [
+        {"severity": "medium", "issue": "Limited content depth", "recommendation": "Add more detailed content about services and benefits"},
+        {"severity": "low", "issue": "No blog or news section", "recommendation": "Create blog for fresh content and keyword targeting"}
+      ]
+    },
+    "mobile_optimization": {
+      "score": 90,
+      "issues": [
+        {"severity": "low", "issue": "Touch targets could be larger", "recommendation": "Increase button sizes for better mobile UX"}
+      ]
+    },
+    "page_speed": {
+      "score": 82,
+      "issues": [
+        {"severity": "low", "issue": "Images could be optimized", "recommendation": "Compress images and use WebP format"}
+      ]
+    }
+  },
+  "keywords": {
+    "primary": ["virtual credit cards", "crypto payments", "VCC"],
+    "secondary": ["cryptocurrency visa", "bitcoin mastercard", "instant virtual card"],
+    "opportunities": ["buy crypto card", "anonymous virtual card", "crypto debit card"]
+  },
+  "competitors": [
+    {"name": "Cryptopay", "domain": "cryptopay.me", "estimated_traffic": "50K/month"},
+    {"name": "Wirex", "domain": "wirexapp.com", "estimated_traffic": "200K/month"},
+    {"name": "Paybis", "domain": "paybis.com", "estimated_traffic": "100K/month"}
+  ],
+  "recommendations_priority": [
+    {"priority": 1, "action": "Add meta description with keywords", "impact": "high", "effort": "low"},
+    {"priority": 2, "action": "Create XML sitemap", "impact": "medium", "effort": "low"},
+    {"priority": 3, "action": "Optimize H1 tag with primary keyword", "impact": "medium", "effort": "low"},
+    {"priority": 4, "action": "Add blog section for content marketing", "impact": "high", "effort": "high"},
+    {"priority": 5, "action": "Create landing pages for each cryptocurrency", "impact": "high", "effort": "medium"}
+  ]
+}

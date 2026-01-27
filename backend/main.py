@@ -50,6 +50,7 @@ from app.api.ads_tracker_routes import router as ads_tracker_router
 from app.api.ses_routes import router as ses_router
 from app.api.localization_routes import router as localization_router
 from app.api.features_routes import router as features_router
+from app.api.autonomous_routes import router as autonomous_router
 
 
 @asynccontextmanager
@@ -127,6 +128,7 @@ app.include_router(ads_tracker_router)
 app.include_router(ses_router)
 app.include_router(localization_router)
 app.include_router(features_router)
+app.include_router(autonomous_router)
 
 
 # Корневой эндпоинт

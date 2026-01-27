@@ -1,0 +1,256 @@
+{
+  "industries": {
+    "crypto": {
+      "terms": [
+        "blockchain",
+        "cryptocurrency",
+        "Bitcoin",
+        "Ethereum",
+        "wallet",
+        "exchange",
+        "token",
+        "DeFi",
+        "NFT",
+        "mining"
+      ],
+      "benefits": [
+        "decentralization",
+        "security",
+        "transparency",
+        "fast transactions",
+        "low fees",
+        "global access"
+      ],
+      "pain_points": [
+        "volatility",
+        "complexity",
+        "security concerns",
+        "regulation",
+        "scams"
+      ],
+      "cta_phrases": [
+        "Get started today",
+        "Join now",
+        "Start trading",
+        "Create account",
+        "Learn more"
+      ]
+    },
+    "fintech": {
+      "terms": [
+        "payment",
+        "transaction",
+        "card",
+        "account",
+        "transfer",
+        "deposit",
+        "withdrawal",
+        "balance"
+      ],
+      "benefits": [
+        "convenience",
+        "speed",
+        "security",
+        "accessibility",
+        "cost-effective"
+      ],
+      "pain_points": [
+        "fees",
+        "delays",
+        "verification",
+        "limits",
+        "support"
+      ],
+      "cta_phrases": [
+        "Open account",
+        "Get your card",
+        "Start saving",
+        "Try free",
+        "Apply now"
+      ]
+    },
+    "ecommerce": {
+      "terms": [
+        "shopping",
+        "cart",
+        "checkout",
+        "delivery",
+        "product",
+        "order",
+        "discount",
+        "promotion"
+      ],
+      "benefits": [
+        "convenience",
+        "variety",
+        "competitive prices",
+        "home delivery",
+        "easy returns"
+      ],
+      "pain_points": [
+        "shipping costs",
+        "delivery time",
+        "product quality",
+        "returns",
+        "trust"
+      ],
+      "cta_phrases": [
+        "Shop now",
+        "Add to cart",
+        "Buy today",
+        "Get discount",
+        "Free shipping"
+      ]
+    },
+    "saas": {
+      "terms": [
+        "software",
+        "platform",
+        "tool",
+        "automation",
+        "integration",
+        "dashboard",
+        "analytics",
+        "API"
+      ],
+      "benefits": [
+        "efficiency",
+        "automation",
+        "scalability",
+        "cost savings",
+        "insights"
+      ],
+      "pain_points": [
+        "learning curve",
+        "integration",
+        "pricing",
+        "support",
+        "customization"
+      ],
+      "cta_phrases": [
+        "Start free trial",
+        "Book demo",
+        "Get started",
+        "See pricing",
+        "Contact sales"
+      ]
+    }
+  },
+  "article_structures": {
+    "how_to": {
+      "intro_templates": [
+        "In this comprehensive guide, we'll walk you through {topic} step by step.",
+        "Looking to {action}? You've come to the right place.",
+        "Many people struggle with {topic}. This guide will make it simple.",
+        "{Topic} doesn't have to be complicated. Here's how to do it right."
+      ],
+      "section_templates": [
+        "Step {n}: {action}",
+        "Phase {n}: {action}",
+        "{n}. {action}",
+        "Part {n}: {action}"
+      ],
+      "conclusion_templates": [
+        "Now you know how to {topic}. Start implementing these steps today!",
+        "Following these steps will help you {benefit}.",
+        "With this knowledge, you're ready to {action} like a pro.",
+        "Take action now and {benefit}."
+      ]
+    },
+    "listicle": {
+      "intro_templates": [
+        "Here are the top {n} {items} you need to know about.",
+        "Discover {n} {items} that will {benefit}.",
+        "We've compiled {n} essential {items} for {audience}.",
+        "Looking for the best {items}? Here are our top {n} picks."
+      ],
+      "item_templates": [
+        "{n}. {item} - {description}",
+        "#{n}: {item}",
+        "{item}: {description}",
+        "**{item}** - {description}"
+      ],
+      "conclusion_templates": [
+        "These {n} {items} will help you {benefit}.",
+        "Start with any of these {items} and see the difference.",
+        "Which {item} will you try first?",
+        "Implement these {items} to {benefit}."
+      ]
+    },
+    "comparison": {
+      "intro_templates": [
+        "Choosing between {option1} and {option2}? Let's compare them.",
+        "In this comparison, we'll analyze {option1} vs {option2}.",
+        "Which is better: {option1} or {option2}? Find out here.",
+        "A detailed comparison of {option1} and {option2}."
+      ],
+      "section_templates": [
+        "## {aspect}\n\n**{option1}:** {description1}\n\n**{option2}:** {description2}",
+        "### {aspect} Comparison",
+        "When it comes to {aspect}..."
+      ],
+      "conclusion_templates": [
+        "The winner depends on your specific needs.",
+        "Choose {option1} if you need {benefit1}. Choose {option2} for {benefit2}.",
+        "Both options have their strengths. Consider your priorities.",
+        "Make your decision based on {criteria}."
+      ]
+    },
+    "guide": {
+      "intro_templates": [
+        "This complete guide covers everything you need to know about {topic}.",
+        "Welcome to the ultimate guide to {topic}.",
+        "Everything about {topic} explained in simple terms.",
+        "Your comprehensive resource for understanding {topic}."
+      ],
+      "section_templates": [
+        "## What is {topic}?",
+        "## Why {topic} Matters",
+        "## How {topic} Works",
+        "## Benefits of {topic}",
+        "## Common Mistakes with {topic}",
+        "## Best Practices for {topic}",
+        "## FAQ about {topic}"
+      ],
+      "conclusion_templates": [
+        "You now have a solid understanding of {topic}.",
+        "Use this knowledge to {benefit}.",
+        "Start applying these concepts today.",
+        "Ready to take the next step with {topic}?"
+      ]
+    }
+  },
+  "seo_elements": {
+    "meta_templates": [
+      "{keyword} - Complete Guide [{year}]",
+      "How to {action}: Step-by-Step Guide",
+      "Top {n} {items} for {audience} [{year}]",
+      "{keyword}: Everything You Need to Know",
+      "Best {items} - Expert Recommendations"
+    ],
+    "heading_modifiers": [
+      "Complete",
+      "Ultimate",
+      "Essential",
+      "Comprehensive",
+      "Expert",
+      "Proven",
+      "Effective",
+      "Simple",
+      "Quick",
+      "Best"
+    ],
+    "power_words": [
+      "discover",
+      "unlock",
+      "master",
+      "transform",
+      "boost",
+      "maximize",
+      "optimize",
+      "streamline",
+      "accelerate",
+      "revolutionize"
+    ]
+  }
+}

@@ -32,6 +32,7 @@ import TelegramSettings from './components/TelegramSettings'
 import HostingManager from './components/HostingManager'
 import TDSManager from './components/TDSManager'
 import GitHubManager from './components/GitHubManager'
+import AIProvidersManager from './components/AIProvidersManager'
 import axios from 'axios'
 import './index.css'
 import './i18n'
@@ -110,6 +111,7 @@ const getNavigation = (t: any) => [
   { name: 'Hosting', icon: Database, id: 'hosting' },
   { name: 'TDS', icon: Target, id: 'tds' },
   { name: 'GitHub', icon: Database, id: 'github' },
+  { name: 'AI Providers', icon: Bot, id: 'ai_providers' },
   { name: t('common:navigation.settings'), icon: Settings, id: 'settings' },
 ]
 
@@ -763,6 +765,7 @@ function App() {
       case 'hosting': return <HostingManager />
       case 'tds': return <TDSManager />
       case 'github': return <GitHubManager />
+      case 'ai_providers': return <AIProvidersManager />
       case 'settings': return renderSettings()
       default: return renderDashboard()
     }

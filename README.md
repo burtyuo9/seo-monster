@@ -24,7 +24,7 @@
 
 *   **Backend:** Python, FastAPI, SQLAlchemy
 *   **Frontend:** React, TypeScript, Vite, TailwindCSS, pnpm
-*   **AI:** OpenAI GPT-4.1-mini
+*   **AI:** Groq, Together AI, HuggingFace, Ollama, Cohere, Mistral, DeepSeek, OpenRouter, Google Gemini, Cloudflare (OpenAI опционально)
 *   **База данных:** SQLite
 *   **Развёртывание:** Bash-скрипт
 
@@ -40,7 +40,7 @@ chmod +x install.sh
 ./install.sh
 ```
 
-После установки не забудьте указать ваш `OPENAI_API_KEY` в файле `seo-monster-app/backend/.env`.
+После установки укажите API ключи в файле `seo-monster-app/backend/.env`. Система работает **без OpenAI** с бесплатными провайдерами!
 
 Подробная инструкция доступна в файле [INSTALL.md](INSTALL.md).
 
@@ -62,6 +62,27 @@ chmod +x install.sh
     ```
 
 3.  Откройте `http://localhost:5200` в вашем браузере.
+
+---
+
+## 🤖 AI Providers (Бесплатные)
+
+SEO Monster работает **полностью автономно без OpenAI**:
+
+| Provider | Model | Free Tier |
+|----------|-------|----------|
+| **Groq** | Llama 3.3 70B | ✅ 30 req/min |
+| **Together AI** | Llama 3.3 70B | ✅ 60 req/min |
+| **HuggingFace** | Mixtral 8x7B | ✅ 30 req/min |
+| **Ollama** | Llama 3.2 (local) | ✅ Unlimited |
+| **Cohere** | Command R+ | ✅ 20 req/min |
+| **Mistral AI** | Mistral Large | ✅ 30 req/min |
+| **DeepSeek** | DeepSeek Chat | ✅ 60 req/min |
+| **OpenRouter** | Free models | ✅ 20 req/min |
+| **Google Gemini** | Gemini 1.5 Flash | ✅ 60 req/min |
+| **Cloudflare** | Llama 3.1 8B | ✅ 50 req/min |
+
+📖 Подробнее: [docs/AI_PROVIDERS.md](docs/AI_PROVIDERS.md)
 
 ---
 

@@ -1,0 +1,43 @@
+{
+  "title": "AI Providers & Agents",
+  "subtitle": "Manage AI providers, agents, and external services",
+  "tabs": {
+    "providers": "LLM Providers",
+    "agents": "AI Agents",
+    "external": "External AI"
+  },
+  "stats": {
+    "active_providers": "Active Providers",
+    "active_agents": "Active Agents",
+    "connected_services": "Connected Services",
+    "free_llms": "Free LLMs"
+  },
+  "provider": {
+    "rate_limit": "Rate Limit",
+    "max_tokens": "Max Tokens",
+    "priority": "Priority",
+    "api_key": "API Key",
+    "set": "Set",
+    "not_set": "Not set",
+    "enabled": "Enabled",
+    "enable": "Enable",
+    "free": "FREE",
+    "paid": "PAID"
+  },
+  "agent": {
+    "success_rate": "Success Rate",
+    "total_requests": "Total Requests",
+    "active": "Active",
+    "activate": "Activate"
+  },
+  "service": {
+    "connected": "Connected",
+    "connect": "Connect"
+  },
+  "modal": {
+    "set_api_key": "Set API Key for",
+    "enter_key": "Enter your API key...",
+    "cancel": "Cancel",
+    "save": "Save Key"
+  }
+}

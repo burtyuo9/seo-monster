@@ -1,0 +1,43 @@
+{
+  "title": "AI Провайдеры и Агенты",
+  "subtitle": "Управление AI-провайдерами, агентами и внешними сервисами",
+  "tabs": {
+    "providers": "LLM Провайдеры",
+    "agents": "AI Агенты",
+    "external": "Внешние AI"
+  },
+  "stats": {
+    "active_providers": "Активных провайдеров",
+    "active_agents": "Активных агентов",
+    "connected_services": "Подключенных сервисов",
+    "free_llms": "Бесплатных LLM"
+  },
+  "provider": {
+    "rate_limit": "Лимит запросов",
+    "max_tokens": "Макс. токенов",
+    "priority": "Приоритет",
+    "api_key": "API ключ",
+    "set": "Установлен",
+    "not_set": "Не установлен",
+    "enabled": "Включен",
+    "enable": "Включить",
+    "free": "БЕСПЛАТНО",
+    "paid": "ПЛАТНО"
+  },
+  "agent": {
+    "success_rate": "Успешность",
+    "total_requests": "Всего запросов",
+    "active": "Активен",
+    "activate": "Активировать"
+  },
+  "service": {
+    "connected": "Подключен",
+    "connect": "Подключить"
+  },
+  "modal": {
+    "set_api_key": "Установить API ключ для",
+    "enter_key": "Введите ваш API ключ...",
+    "cancel": "Отмена",
+    "save": "Сохранить"
+  }
+}

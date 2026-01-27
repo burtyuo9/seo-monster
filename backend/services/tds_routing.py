@@ -479,3 +479,7 @@ class TrafficRouter:
 
 # Глобальный экземпляр
 traffic_router = TrafficRouter()
+
+
+# Алиас для совместимости с диагностикой
+TDSRouting = TrafficRouter

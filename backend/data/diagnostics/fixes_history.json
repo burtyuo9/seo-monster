@@ -23,5 +23,14 @@
       "Created: /home/ubuntu/seo_monster/backend/data/tds/config.json"
     ],
     "timestamp": "2026-01-27T03:53:59.713277"
+  },
+  {
+    "check_id": "json_files_integrity",
+    "success": true,
+    "message": "Fixed 0 corrupted files",
+    "before_status": "error",
+    "after_status": "ok",
+    "actions_taken": [],
+    "timestamp": "2026-01-27T04:14:50.665641"
   }
 ]

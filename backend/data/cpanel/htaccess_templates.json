@@ -1,0 +1,34 @@
+{
+  "redirect_301": {
+    "name": "301 Редирект на домен",
+    "template": "# 301 Redirect to {{target_domain}}\nRewriteEngine On\nRewriteCond %{HTTP_HOST} !^{{target_domain}}$ [NC]\nRewriteRule ^(.*)$ https://{{target_domain}}/$1 [R=301,L]\n"
+  },
+  "redirect_302": {
+    "name": "302 Временный редирект",
+    "template": "# 302 Temporary Redirect\nRewriteEngine On\nRewriteRule ^(.*)$ {{target_url}} [R=302,L]\n"
+  },
+  "redirect_all_pages": {
+    "name": "Редирект всех страниц на главную",
+    "template": "# Redirect all pages to target\nRewriteEngine On\nRewriteRule ^.*$ {{target_url}} [R=301,L]\n"
+  },
+  "geo_redirect": {
+    "name": "Гео-редирект",
+    "template": "# Geo-based redirect\nRewriteEngine On\nRewriteCond %{HTTP:CF-IPCountry} ^(RU|UA|BY|KZ)$\nRewriteRule ^(.*)$ {{target_url_ru}} [R=302,L]\n\nRewriteCond %{HTTP:CF-IPCountry} ^(US|GB|CA|AU)$\nRewriteRule ^(.*)$ {{target_url_en}} [R=302,L]\n"
+  },
+  "mobile_redirect": {
+    "name": "Мобильный редирект",
+    "template": "# Mobile redirect\nRewriteEngine On\nRewriteCond %{HTTP_USER_AGENT} \"android|blackberry|iphone|ipod|iemobile|opera mobile|palmos|webos|googlebot-mobile\" [NC]\nRewriteRule ^(.*)$ {{mobile_url}} [R=302,L]\n"
+  },
+  "cloaking": {
+    "name": "Клоакинг для ботов",
+    "template": "# Cloaking - show different content to bots\nRewriteEngine On\nRewriteCond %{HTTP_USER_AGENT} (googlebot|bingbot|yandex|baiduspider|facebookexternalhit) [NC]\nRewriteRule ^(.*)$ {{bot_page}} [L]\n\nRewriteRule ^(.*)$ {{user_page}} [L]\n"
+  },
+  "block_countries": {
+    "name": "Блокировка стран",
+    "template": "# Block specific countries\nRewriteEngine On\nRewriteCond %{HTTP:CF-IPCountry} ^(CN|IN|PK)$\nRewriteRule ^(.*)$ - [F,L]\n"
+  },
+  "force_https": {
+    "name": "Принудительный HTTPS",
+    "template": "# Force HTTPS\nRewriteEngine On\nRewriteCond %{HTTPS} off\nRewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]\n"
+  }
+}

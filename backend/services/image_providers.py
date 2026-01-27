@@ -850,6 +850,10 @@ class ImageProviderManager:
             }
             for p in sorted(self.providers.values(), key=lambda x: x.priority, reverse=True)
         ]
+    
+    def get_available_providers(self) -> List[str]:
+        """Получение списка доступных провайдеров"""
+        return [p.name.value for p in self.providers.values() if p.enabled]
 
 
 # Глобальный экземпляр

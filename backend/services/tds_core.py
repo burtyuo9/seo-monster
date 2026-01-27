@@ -931,3 +931,11 @@ def get_tds_core() -> TDSCore:
     if _tds_core is None:
         _tds_core = TDSCore()
     return _tds_core
+
+
+# Добавляем метод get_stats для совместимости с диагностикой
+def _get_stats(self) -> Dict:
+    """Получение статистики TDS"""
+    return self.get_overall_stats()
+
+TDSCore.get_stats = _get_stats

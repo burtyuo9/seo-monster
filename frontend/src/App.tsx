@@ -6,15 +6,17 @@ import TrackerManager from './components/TrackerManager'
 import AdsTrackerIntegration from './components/AdsTrackerIntegration'
 import SESManager from './components/SESManager'
 import ThemeToggle, { useTheme } from './components/ThemeToggle'
+import { LanguageProvider, useLanguage, LanguageSwitcher } from './contexts/LanguageContext'
 import './theme.css'
 
 const API_URL = 'http://localhost:8000/api'
 
-function App() {
+function AppContent() {
   const [currentPage, setCurrentPage] = useState('dashboard')
   const [apiConnected, setApiConnected] = useState(false)
   const [stats, setStats] = useState<any>(null)
   const { theme, toggleTheme } = useTheme()
+  const { t, language } = useLanguage()
 
   useEffect(() => {
     const checkApi = async () => {
@@ -31,17 +33,17 @@ function App() {
   }, [])
 
   const navigation = [
-    { name: 'Dashboard', id: 'dashboard', icon: '📊' },
-    { name: 'Autopilot', id: 'autopilot', icon: '🤖' },
-    { name: 'Sites', id: 'sites', icon: '🌐' },
-    { name: 'Platforms', id: 'platforms', icon: '📱' },
-    { name: 'Content', id: 'content', icon: '📝' },
-    { name: 'Ad Campaigns', id: 'adcampaigns', icon: '📢' },
-    { name: 'Tracker', id: 'tracker', icon: '🎯' },
-    { name: 'Ads Integration', id: 'adsintegration', icon: '🔗' },
-    { name: 'Email SES', id: 'ses', icon: '📧' },
-    { name: 'Diagnostics', id: 'diagnostics', icon: '🔧' },
-    { name: 'Settings', id: 'settings', icon: '⚙️' },
+    { name: t('nav.dashboard'), id: 'dashboard', icon: '📊' },
+    { name: t('nav.autopilot'), id: 'autopilot', icon: '🤖' },
+    { name: t('nav.sites'), id: 'sites', icon: '🌐' },
+    { name: t('nav.platforms'), id: 'platforms', icon: '📱' },
+    { name: t('nav.content'), id: 'content', icon: '📝' },
+    { name: t('nav.adCampaigns'), id: 'adcampaigns', icon: '📢' },
+    { name: t('nav.tracker'), id: 'tracker', icon: '🎯' },
+    { name: t('nav.adsIntegration'), id: 'adsintegration', icon: '🔗' },
+    { name: t('nav.emailSes'), id: 'ses', icon: '📧' },
+    { name: t('nav.diagnostics'), id: 'diagnostics', icon: '🔧' },
+    { name: t('nav.settings'), id: 'settings', icon: '⚙️' },
   ]
 
   return (
@@ -50,7 +52,7 @@ function App() {
       <div className={`w-64 ${theme === 'dark' ? 'bg-gray-800' : 'bg-white border-r border-gray-200'} p-4 flex flex-col`}>
         <div className="flex items-center justify-between mb-8">
           <h1 className={`text-2xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
-            SEO Monster
+            {t('app.name')}
           </h1>
         </div>
         
@@ -59,9 +61,9 @@ function App() {
             <button
               key={item.id}
               onClick={() => setCurrentPage(item.id)}
-              className={`w-full text-left px-4 py-2 rounded flex items-center gap-2 ${
+              className={`w-full text-left px-4 py-2 rounded flex items-center gap-2 transition-all duration-200 ${
                 currentPage === item.id
-                  ? 'bg-blue-600 text-white'
+                  ? 'bg-blue-600 text-white shadow-md'
                   : theme === 'dark' 
                     ? 'text-gray-300 hover:bg-gray-700' 
                     : 'text-gray-700 hover:bg-gray-100'
@@ -73,21 +75,29 @@ function App() {
           ))}
         </nav>
         
+        {/* Language Switcher */}
+        <div className={`p-3 rounded mb-3 ${theme === 'dark' ? 'bg-gray-700' : 'bg-gray-100'}`}>
+          <div className={`text-sm mb-2 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
+            {t('settings.language')}
+          </div>
+          <LanguageSwitcher />
+        </div>
+        
         {/* Theme Toggle & Status */}
-        <div className="space-y-3 mt-auto">
+        <div className="space-y-3">
           <div className={`flex items-center justify-between p-3 rounded ${
             theme === 'dark' ? 'bg-gray-700' : 'bg-gray-100'
           }`}>
             <span className={`text-sm ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
-              Theme
+              {t('settings.theme')}
             </span>
             <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
           </div>
           
           <div className={`p-3 rounded ${theme === 'dark' ? 'bg-gray-700' : 'bg-gray-100'}`}>
-            <div className={`w-3 h-3 rounded-full inline-block mr-2 ${apiConnected ? 'bg-green-500' : 'bg-red-500'}`}></div>
+            <div className={`w-3 h-3 rounded-full inline-block mr-2 ${apiConnected ? 'bg-green-500 animate-pulse' : 'bg-red-500'}`}></div>
             <span className={`text-sm ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
-              {apiConnected ? 'API Connected' : 'API Disconnected'}
+              {apiConnected ? t('msg.apiConnected') : t('msg.apiDisconnected')}
             </span>
           </div>
         </div>
@@ -100,55 +110,183 @@ function App() {
         </h2>
         
         {currentPage === 'dashboard' && (
-          <div className="grid grid-cols-4 gap-4">
-            <div className={`p-6 rounded-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-white shadow'}`}>
-              <h3 className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>Total Sites</h3>
-              <p className={`text-3xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>{stats?.total_sites || 0}</p>
+          <div className="space-y-6">
+            {/* Stats Grid */}
+            <div className="grid grid-cols-4 gap-4">
+              <div className={`p-6 rounded-lg transition-all duration-200 hover:shadow-lg ${theme === 'dark' ? 'bg-gray-800 hover:bg-gray-750' : 'bg-white shadow hover:shadow-md'}`}>
+                <h3 className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>{t('dashboard.totalSites')}</h3>
+                <p className={`text-3xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>{stats?.total_sites || 0}</p>
+              </div>
+              <div className={`p-6 rounded-lg transition-all duration-200 hover:shadow-lg ${theme === 'dark' ? 'bg-gray-800 hover:bg-gray-750' : 'bg-white shadow hover:shadow-md'}`}>
+                <h3 className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>{t('dashboard.totalPlatforms')}</h3>
+                <p className={`text-3xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>{stats?.total_platforms || 0}</p>
+              </div>
+              <div className={`p-6 rounded-lg transition-all duration-200 hover:shadow-lg ${theme === 'dark' ? 'bg-gray-800 hover:bg-gray-750' : 'bg-white shadow hover:shadow-md'}`}>
+                <h3 className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>{t('dashboard.totalContent')}</h3>
+                <p className={`text-3xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>{stats?.total_content || 0}</p>
+              </div>
+              <div className={`p-6 rounded-lg transition-all duration-200 hover:shadow-lg ${theme === 'dark' ? 'bg-gray-800 hover:bg-gray-750' : 'bg-white shadow hover:shadow-md'}`}>
+                <h3 className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>{t('dashboard.activeTasks')}</h3>
+                <p className={`text-3xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>{stats?.active_tasks || 0}</p>
+              </div>
             </div>
+            
+            {/* Quick Actions */}
             <div className={`p-6 rounded-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-white shadow'}`}>
-              <h3 className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>Total Platforms</h3>
-              <p className={`text-3xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>{stats?.total_platforms || 0}</p>
+              <h3 className={`text-xl font-bold mb-4 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+                {t('dashboard.quickActions')}
+              </h3>
+              <div className="grid grid-cols-4 gap-4">
+                <button 
+                  onClick={() => setCurrentPage('autopilot')}
+                  className="p-4 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-colors flex flex-col items-center gap-2"
+                >
+                  <span className="text-2xl">🤖</span>
+                  <span>{t('autopilot.start')}</span>
+                </button>
+                <button 
+                  onClick={() => setCurrentPage('sites')}
+                  className="p-4 rounded-lg bg-green-600 text-white hover:bg-green-700 transition-colors flex flex-col items-center gap-2"
+                >
+                  <span className="text-2xl">🌐</span>
+                  <span>{t('sites.addSite')}</span>
+                </button>
+                <button 
+                  onClick={() => setCurrentPage('content')}
+                  className="p-4 rounded-lg bg-purple-600 text-white hover:bg-purple-700 transition-colors flex flex-col items-center gap-2"
+                >
+                  <span className="text-2xl">📝</span>
+                  <span>{t('content.generate')}</span>
+                </button>
+                <button 
+                  onClick={() => setCurrentPage('diagnostics')}
+                  className="p-4 rounded-lg bg-orange-600 text-white hover:bg-orange-700 transition-colors flex flex-col items-center gap-2"
+                >
+                  <span className="text-2xl">🔧</span>
+                  <span>{t('diagnostics.runDiagnostics')}</span>
+                </button>
+              </div>
             </div>
+            
+            {/* System Status */}
             <div className={`p-6 rounded-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-white shadow'}`}>
-              <h3 className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>Total Content</h3>
-              <p className={`text-3xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>{stats?.total_content || 0}</p>
-            </div>
-            <div className={`p-6 rounded-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-white shadow'}`}>
-              <h3 className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>Active Tasks</h3>
-              <p className={`text-3xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>{stats?.active_tasks || 0}</p>
+              <h3 className={`text-xl font-bold mb-4 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+                {t('dashboard.systemStatus')}
+              </h3>
+              <div className="grid grid-cols-3 gap-4">
+                <div className={`p-4 rounded-lg ${theme === 'dark' ? 'bg-gray-700' : 'bg-gray-50'}`}>
+                  <div className="flex items-center gap-2 mb-2">
+                    <div className={`w-3 h-3 rounded-full ${apiConnected ? 'bg-green-500' : 'bg-red-500'}`}></div>
+                    <span className={theme === 'dark' ? 'text-white' : 'text-gray-900'}>API</span>
+                  </div>
+                  <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
+                    {apiConnected ? t('common.connected') : t('common.disconnected')}
+                  </p>
+                </div>
+                <div className={`p-4 rounded-lg ${theme === 'dark' ? 'bg-gray-700' : 'bg-gray-50'}`}>
+                  <div className="flex items-center gap-2 mb-2">
+                    <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                    <span className={theme === 'dark' ? 'text-white' : 'text-gray-900'}>{t('nav.autopilot')}</span>
+                  </div>
+                  <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
+                    {t('common.active')}
+                  </p>
+                </div>
+                <div className={`p-4 rounded-lg ${theme === 'dark' ? 'bg-gray-700' : 'bg-gray-50'}`}>
+                  <div className="flex items-center gap-2 mb-2">
+                    <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                    <span className={theme === 'dark' ? 'text-white' : 'text-gray-900'}>{t('nav.emailSes')}</span>
+                  </div>
+                  <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
+                    {t('common.active')}
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         )}
 
         {currentPage === 'autopilot' && (
           <div className={`p-6 rounded-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-white shadow'}`}>
-            <p className={theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}>
-              Autopilot controls will be displayed here
-            </p>
+            <div className="space-y-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <h3 className={`text-xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+                    {t('autopilot.status')}
+                  </h3>
+                  <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
+                    {t('autopilot.stopped')}
+                  </p>
+                </div>
+                <button className="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors">
+                  {t('autopilot.start')}
+                </button>
+              </div>
+              
+              <div className="grid grid-cols-3 gap-4">
+                <div className={`p-4 rounded-lg ${theme === 'dark' ? 'bg-gray-700' : 'bg-gray-50'}`}>
+                  <h4 className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
+                    {t('autopilot.mode')}
+                  </h4>
+                  <select className={`mt-2 w-full p-2 rounded ${theme === 'dark' ? 'bg-gray-600 text-white' : 'bg-white border'}`}>
+                    <option value="conservative">{t('autopilot.conservative')}</option>
+                    <option value="moderate">{t('autopilot.moderate')}</option>
+                    <option value="aggressive">{t('autopilot.aggressive')}</option>
+                  </select>
+                </div>
+                <div className={`p-4 rounded-lg ${theme === 'dark' ? 'bg-gray-700' : 'bg-gray-50'}`}>
+                  <h4 className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
+                    {t('autopilot.tasksCompleted')}
+                  </h4>
+                  <p className={`text-2xl font-bold mt-2 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>0</p>
+                </div>
+                <div className={`p-4 rounded-lg ${theme === 'dark' ? 'bg-gray-700' : 'bg-gray-50'}`}>
+                  <h4 className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
+                    {t('autopilot.tasksInQueue')}
+                  </h4>
+                  <p className={`text-2xl font-bold mt-2 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>0</p>
+                </div>
+              </div>
+            </div>
           </div>
         )}
 
         {currentPage === 'sites' && (
           <div className={`p-6 rounded-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-white shadow'}`}>
-            <p className={theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}>
-              Sites management will be displayed here
-            </p>
+            <div className="flex items-center justify-between mb-6">
+              <p className={theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}>
+                {t('sites.noSites')}
+              </p>
+              <button className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                + {t('sites.addSite')}
+              </button>
+            </div>
           </div>
         )}
 
         {currentPage === 'platforms' && (
           <div className={`p-6 rounded-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-white shadow'}`}>
-            <p className={theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}>
-              Platforms management will be displayed here
-            </p>
+            <div className="flex items-center justify-between mb-6">
+              <p className={theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}>
+                {t('platforms.noPlatforms')}
+              </p>
+              <button className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                + {t('platforms.addPlatform')}
+              </button>
+            </div>
           </div>
         )}
 
         {currentPage === 'content' && (
           <div className={`p-6 rounded-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-white shadow'}`}>
-            <p className={theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}>
-              Content management will be displayed here
-            </p>
+            <div className="flex items-center justify-between mb-6">
+              <p className={theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}>
+                {t('content.noContent')}
+              </p>
+              <button className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                + {t('content.generate')}
+              </button>
+            </div>
           </div>
         )}
 
@@ -173,25 +311,95 @@ function App() {
         )}
 
         {currentPage === 'settings' && (
-          <div className={`p-6 rounded-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-white shadow'}`}>
-            <h3 className={`text-xl font-bold mb-4 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
-              Application Settings
-            </h3>
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className={theme === 'dark' ? 'text-white' : 'text-gray-900'}>Theme</p>
-                  <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
-                    Switch between dark and light mode
-                  </p>
+          <div className="space-y-6">
+            <div className={`p-6 rounded-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-white shadow'}`}>
+              <h3 className={`text-xl font-bold mb-4 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+                {t('settings.general')}
+              </h3>
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className={theme === 'dark' ? 'text-white' : 'text-gray-900'}>{t('settings.theme')}</p>
+                    <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
+                      {language === 'ru' ? 'Переключение между тёмной и светлой темой' : 'Switch between dark and light mode'}
+                    </p>
+                  </div>
+                  <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
                 </div>
-                <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
+                
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className={theme === 'dark' ? 'text-white' : 'text-gray-900'}>{t('settings.language')}</p>
+                    <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
+                      {language === 'ru' ? 'Выберите язык интерфейса' : 'Select interface language'}
+                    </p>
+                  </div>
+                  <LanguageSwitcher />
+                </div>
               </div>
             </div>
+            
+            <div className={`p-6 rounded-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-white shadow'}`}>
+              <h3 className={`text-xl font-bold mb-4 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+                {t('settings.api')}
+              </h3>
+              <div className="space-y-4">
+                <div>
+                  <label className={`block text-sm mb-2 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
+                    OpenAI API Key
+                  </label>
+                  <input 
+                    type="password" 
+                    placeholder="sk-..."
+                    className={`w-full p-3 rounded-lg ${theme === 'dark' ? 'bg-gray-700 text-white' : 'bg-gray-50 border'}`}
+                  />
+                </div>
+              </div>
+            </div>
+            
+            <div className={`p-6 rounded-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-white shadow'}`}>
+              <h3 className={`text-xl font-bold mb-4 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+                {t('settings.telegram')}
+              </h3>
+              <div className="space-y-4">
+                <div>
+                  <label className={`block text-sm mb-2 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
+                    {t('settings.telegramToken')}
+                  </label>
+                  <input 
+                    type="password" 
+                    placeholder="123456:ABC-DEF..."
+                    className={`w-full p-3 rounded-lg ${theme === 'dark' ? 'bg-gray-700 text-white' : 'bg-gray-50 border'}`}
+                  />
+                </div>
+                <div>
+                  <label className={`block text-sm mb-2 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
+                    {t('settings.telegramChatId')}
+                  </label>
+                  <input 
+                    type="text" 
+                    placeholder="-100123456789"
+                    className={`w-full p-3 rounded-lg ${theme === 'dark' ? 'bg-gray-700 text-white' : 'bg-gray-50 border'}`}
+                  />
+                </div>
+              </div>
+            </div>
+            
+            <button className="w-full py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+              {t('common.save')}
+            </button>
           </div>
         )}
       </div>
     </div>
+  )
+}
+
+function App() {
+  return (
+    <LanguageProvider>
+      <AppContent />
+    </LanguageProvider>
   )
 }
 

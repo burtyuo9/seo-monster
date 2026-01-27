@@ -229,5 +229,161 @@
       "Add AWS SES credentials in Email SES module"
     ],
     "timestamp": "2026-01-27T03:57:34.987014"
+  },
+  {
+    "overall_status": "warning",
+    "health_score": 96,
+    "total_checks": 43,
+    "passed_checks": 40,
+    "warning_checks": 3,
+    "error_checks": 0,
+    "critical_checks": 0,
+    "fixed_checks": 0,
+    "categories_summary": {
+      "api": {
+        "ok": 2,
+        "warning": 1,
+        "error": 0,
+        "critical": 0
+      },
+      "file_system": {
+        "ok": 5,
+        "warning": 0,
+        "error": 0,
+        "critical": 0
+      },
+      "services": {
+        "ok": 4,
+        "warning": 0,
+        "error": 0,
+        "critical": 0
+      },
+      "ai": {
+        "ok": 4,
+        "warning": 0,
+        "error": 0,
+        "critical": 0
+      },
+      "email": {
+        "ok": 3,
+        "warning": 1,
+        "error": 0,
+        "critical": 0
+      },
+      "tds": {
+        "ok": 5,
+        "warning": 0,
+        "error": 0,
+        "critical": 0
+      },
+      "integrations": {
+        "ok": 5,
+        "warning": 0,
+        "error": 0,
+        "critical": 0
+      },
+      "configuration": {
+        "ok": 2,
+        "warning": 1,
+        "error": 0,
+        "critical": 0
+      },
+      "dependencies": {
+        "ok": 2,
+        "warning": 0,
+        "error": 0,
+        "critical": 0
+      },
+      "performance": {
+        "ok": 3,
+        "warning": 0,
+        "error": 0,
+        "critical": 0
+      },
+      "network": {
+        "ok": 3,
+        "warning": 0,
+        "error": 0,
+        "critical": 0
+      },
+      "security": {
+        "ok": 2,
+        "warning": 0,
+        "error": 0,
+        "critical": 0
+      }
+    },
+    "top_issues": [
+      {
+        "check_id": "api_endpoints",
+        "category": "api",
+        "name": "API Endpoints Check",
+        "status": "warning",
+        "message": "3 endpoints have warnings",
+        "details": {
+          "warnings": [
+            "TDS Stats (/api/tds/stats): not found",
+            "Ad Campaigns (/api/ads/campaigns): not found",
+            "Tracker Stats (/api/tracker/stats): not found"
+          ],
+          "checked": 13
+        },
+        "fix_available": false,
+        "fix_applied": false,
+        "severity": "medium",
+        "recommendations": [],
+        "timestamp": "2026-01-27T04:17:54.728791",
+        "duration_ms": 15.722990036010742
+      },
+      {
+        "check_id": "ses_service",
+        "category": "email",
+        "name": "AWS SES Service Check",
+        "status": "warning",
+        "message": "No AWS SES keys configured",
+        "details": null,
+        "fix_available": false,
+        "fix_applied": false,
+        "severity": "high",
+        "recommendations": [
+          "Add AWS SES credentials in Email SES module"
+        ],
+        "timestamp": "2026-01-27T04:17:55.014834",
+        "duration_ms": 0.09846687316894531
+      },
+      {
+        "check_id": "environment_vars",
+        "category": "configuration",
+        "name": "Environment Variables Check",
+        "status": "warning",
+        "message": "All required vars set, 3 optional missing",
+        "details": {
+          "missing_optional": [
+            {
+              "var": "AWS_ACCESS_KEY_ID",
+              "description": "For AWS SES"
+            },
+            {
+              "var": "AWS_SECRET_ACCESS_KEY",
+              "description": "For AWS SES"
+            },
+            {
+              "var": "TELEGRAM_BOT_TOKEN",
+              "description": "For Telegram notifications"
+            }
+          ]
+        },
+        "fix_available": false,
+        "fix_applied": false,
+        "severity": "medium",
+        "recommendations": [],
+        "timestamp": "2026-01-27T04:17:55.191139",
+        "duration_ms": 0.052928924560546875
+      }
+    ],
+    "recommendations": [
+      "Add AWS SES credentials in Email SES module"
+    ],
+    "timestamp": "2026-01-27T04:17:57.546152"
   }
 ]

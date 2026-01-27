@@ -649,3 +649,22 @@ async def check_and_update_agents() -> Dict:
 async def ensure_agents() -> Dict:
     """Обеспечение наличия агентов"""
     return await agent_populator.ensure_minimum_agents()
+
+
+# Метод get_stats для совместимости с диагностикой
+def get_stats(self=None) -> Dict:
+    """Получение статистики системы обучения"""
+    if self is None:
+        self = agent_learning
+    
+    return {
+        "learning_enabled": self.learning_enabled,
+        "auto_update_enabled": self.auto_update_enabled,
+        "total_records": len(self.learning_records),
+        "agent_evolutions": len(self.agent_evolutions),
+        "success_rate": sum(1 for r in self.learning_records if r.success) / max(len(self.learning_records), 1),
+        "last_update": getattr(self, 'last_update', None)
+    }
+
+# Добавляем метод к классу
+AgentSelfLearning.get_stats = get_stats

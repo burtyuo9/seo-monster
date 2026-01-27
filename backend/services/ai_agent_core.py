@@ -831,3 +831,7 @@ def get_ai_agent() -> AutonomousAIAgent:
     if _agent_instance is None:
         _agent_instance = AutonomousAIAgent()
     return _agent_instance
+
+
+# Алиас для совместимости с диагностикой
+AIAgentCore = AutonomousAIAgent

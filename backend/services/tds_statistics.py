@@ -492,3 +492,14 @@ class TrafficStatistics:
 
 # Глобальный экземпляр
 traffic_statistics = TrafficStatistics()
+
+
+# Алиас для совместимости с диагностикой
+TDSStatistics = TrafficStatistics
+
+# Добавляем метод get_stats
+def _get_stats(self) -> Dict:
+    """Получение статистики"""
+    return self.get_overview()
+
+TrafficStatistics.get_stats = _get_stats

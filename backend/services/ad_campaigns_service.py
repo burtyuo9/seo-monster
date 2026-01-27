@@ -717,3 +717,7 @@ class AdCampaignsService:
 
 # Глобальный экземпляр сервиса
 ad_campaigns_service = AdCampaignsService()
+
+
+# Алиас для совместимости с диагностикой
+AdCampaignsManager = AdCampaignsService

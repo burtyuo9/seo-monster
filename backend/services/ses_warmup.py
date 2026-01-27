@@ -687,3 +687,8 @@ class SESWarmupManager:
 
 # Global instance
 warmup_manager = SESWarmupManager()
+
+
+# Алиас для совместимости с диагностикой
+SESWarmupService = SESWarmupManager
+WarmupManager = SESWarmupManager

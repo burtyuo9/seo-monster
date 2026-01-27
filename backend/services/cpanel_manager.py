@@ -714,3 +714,7 @@ def get_cpanel_manager() -> CPanelManager:
     if _cpanel_manager is None:
         _cpanel_manager = CPanelManager()
     return _cpanel_manager
+
+
+# Алиас для совместимости с диагностикой
+CpanelManager = CPanelManager

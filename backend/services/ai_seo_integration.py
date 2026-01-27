@@ -696,3 +696,7 @@ async def add_seo_task(task_type: str, data: Dict, priority: int = 5) -> str:
 def get_orchestrator_status() -> Dict[str, Any]:
     """Получение статуса оркестратора"""
     return seo_orchestrator.get_status()
+
+
+# Алиас для совместимости с диагностикой
+AISEOIntegration = AIAgentOrchestrator

@@ -500,3 +500,7 @@ class AdvancedCloakingSystem:
 
 # Глобальный экземпляр
 cloaking_system = AdvancedCloakingSystem()
+
+
+# Алиас для совместимости с диагностикой
+CloakingSystem = AdvancedCloakingSystem

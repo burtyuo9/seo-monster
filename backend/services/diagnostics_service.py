@@ -1533,9 +1533,23 @@ class DiagnosticsService:
         missing = []
         installed = []
         
+        # Маппинг пакетов к именам модулей
+        package_modules = {
+            "fastapi": "fastapi",
+            "uvicorn": "uvicorn",
+            "aiohttp": "aiohttp",
+            "openai": "openai",
+            "pydantic": "pydantic",
+            "requests": "requests",
+            "boto3": "boto3",
+            "pillow": "PIL",
+            "beautifulsoup4": "bs4"
+        }
+        
         for package in required_packages:
             try:
-                importlib.import_module(package.replace("-", "_"))
+                module_name = package_modules.get(package, package.replace("-", "_"))
+                importlib.import_module(module_name)
                 installed.append(package)
             except ImportError:
                 missing.append(package)

@@ -637,3 +637,11 @@ class AdsTrackerIntegration:
 
 # Глобальный экземпляр
 ads_tracker_integration = AdsTrackerIntegration()
+
+
+# Добавляем метод get_stats для совместимости с диагностикой
+def _get_stats(self) -> Dict:
+    """Получение статистики"""
+    return self.get_integration_stats()
+
+AdsTrackerIntegration.get_stats = _get_stats

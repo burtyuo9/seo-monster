@@ -47,6 +47,7 @@ from app.api.smart_image_routes import router as smart_image_router
 from app.api.diagnostics_routes import router as diagnostics_router
 from app.api.ad_campaigns_routes import router as ad_campaigns_router
 from app.api.ads_tracker_routes import router as ads_tracker_router
+from app.api.ses_routes import router as ses_router
 
 
 @asynccontextmanager
@@ -121,6 +122,7 @@ app.include_router(smart_image_router)
 app.include_router(diagnostics_router)
 app.include_router(ad_campaigns_router)
 app.include_router(ads_tracker_router)
+app.include_router(ses_router)
 
 
 # Корневой эндпоинт

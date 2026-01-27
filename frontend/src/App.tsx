@@ -4,6 +4,7 @@ import DiagnosticsPanel from './components/DiagnosticsPanel'
 import AdCampaignsManager from './components/AdCampaignsManager'
 import TrackerManager from './components/TrackerManager'
 import AdsTrackerIntegration from './components/AdsTrackerIntegration'
+import SESManager from './components/SESManager'
 import ThemeToggle, { useTheme } from './components/ThemeToggle'
 import './theme.css'
 
@@ -38,6 +39,7 @@ function App() {
     { name: 'Ad Campaigns', id: 'adcampaigns', icon: '📢' },
     { name: 'Tracker', id: 'tracker', icon: '🎯' },
     { name: 'Ads Integration', id: 'adsintegration', icon: '🔗' },
+    { name: 'Email SES', id: 'ses', icon: '📧' },
     { name: 'Diagnostics', id: 'diagnostics', icon: '🔧' },
     { name: 'Settings', id: 'settings', icon: '⚙️' },
   ]
@@ -160,6 +162,10 @@ function App() {
 
         {currentPage === 'adsintegration' && (
           <AdsTrackerIntegration />
+        )}
+
+        {currentPage === 'ses' && (
+          <SESManager />
         )}
 
         {currentPage === 'diagnostics' && (

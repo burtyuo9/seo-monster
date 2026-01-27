@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import EmailABTesting from './EmailABTesting';
 
 const API_URL = 'http://localhost:8000';
 
@@ -145,7 +146,8 @@ Task({ task: '', format_type: 'html', language: 'ru', tone: 'professional' });
     { id: 'keys', label: 'AWS Keys', icon: '🔑' },
     { id: 'content', label: 'Content', icon: '✉️' },
     { id: 'lists', label: 'Recipients', icon: '👥' },
-    { id: 'campaigns', label: 'Campaigns', icon: '🚀' }
+    { id: 'campaigns', label: 'Campaigns', icon: '🚀' },
+    { id: 'abtesting', label: 'A/B Testing', icon: '🧪' }
   ];
 
   return (
@@ -395,6 +397,11 @@ Task({ task: '', format_type: 'html', language: 'ru', tone: 'professional' });
         </div>
       )}
 
+      {/* A/B Testing Tab */}
+      {activeTab === 'abtesting' && (
+        <EmailABTesting />
+      )}
+
       {/* Add Key Modal */}
       {showAddKey && (
         <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.8)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000 }}>
@@ -528,5 +535,8 @@ Task({ task: '', format_type: 'html', language: 'ru', tone: 'professional' });
     </div>
   );
 };
+
+// A/B Testing Tab is handled by EmailABTesting component
+// Added to tabs array above
 
 export default SESManager;

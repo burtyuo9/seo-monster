@@ -577,3 +577,204 @@ async def get_dashboard_stats():
         "offers": landings.get_offers_stats(),
         "antifraud": antifraud.get_fraud_stats(hours=24)
     }
+
+
+# ═══════════════════════════════════════════════════════════════
+# РАСШИРЕННАЯ ДЕТЕКЦИЯ БОТОВ (Keitaro-style)
+# ═══════════════════════════════════════════════════════════════
+
+from services.tds_bot_detector import bot_detector, VisitorProfile
+from services.tds_traffic_filter import traffic_filter
+from services.tds_routing import traffic_router
+from services.tds_statistics import traffic_statistics
+
+
+class AdvancedVisitorCheck(BaseModel):
+    ip: str
+    user_agent: str = ""
+    accept_language: str = ""
+    referrer: str = ""
+    screen_width: int = 0
+    screen_height: int = 0
+    has_webgl: bool = True
+    has_canvas: bool = True
+    time_on_page: float = 0.0
+    mouse_movements: int = 0
+    fingerprint: str = ""
+
+
+@router.post("/bot-check")
+async def advanced_bot_check(request: AdvancedVisitorCheck):
+    """Расширенная проверка на бота"""
+    visitor = VisitorProfile(
+        ip=request.ip,
+        user_agent=request.user_agent,
+        accept_language=request.accept_language,
+        referrer=request.referrer,
+        screen_width=request.screen_width,
+        screen_height=request.screen_height,
+        has_webgl=request.has_webgl,
+        has_canvas=request.has_canvas,
+        time_on_page=request.time_on_page,
+        mouse_movements=request.mouse_movements,
+        fingerprint=request.fingerprint
+    )
+    
+    result = bot_detector.analyze_visitor(visitor)
+    
+    return {
+        "is_bot": result.is_bot,
+        "score": result.total_score,
+        "confidence": result.confidence,
+        "category": result.category,
+        "recommendation": result.recommendation,
+        "reasons": result.reasons,
+        "checks_passed": result.checks_passed,
+        "checks_failed": result.checks_failed
+    }
+
+
+@router.get("/bot-detection/stats")
+async def get_bot_detection_stats():
+    """Статистика детекции ботов"""
+    return bot_detector.get_stats()
+
+
+@router.post("/bot-detection/mark-bot")
+async def mark_visitor_as_bot(fingerprint: str, ip: str = ""):
+    """Пометить посетителя как бота"""
+    bot_detector.mark_as_bot(fingerprint, ip)
+    return {"success": True}
+
+
+@router.post("/bot-detection/mark-human")
+async def mark_visitor_as_human(fingerprint: str):
+    """Пометить посетителя как человека"""
+    bot_detector.mark_as_human(fingerprint)
+    return {"success": True}
+
+
+@router.get("/bot-detection/js-challenge")
+async def get_js_challenge_script():
+    """Получить JS скрипт для проверки посетителя"""
+    return {"script": bot_detector.generate_js_challenge()}
+
+
+# ═══════════════════════════════════════════════════════════════
+# РАСШИРЕННАЯ СТАТИСТИКА (Keitaro-style)
+# ═══════════════════════════════════════════════════════════════
+
+@router.get("/stats/overview")
+async def get_stats_overview():
+    """Общий обзор статистики"""
+    return traffic_statistics.get_overview()
+
+
+@router.get("/stats/realtime")
+async def get_realtime_stats(minutes: int = 60):
+    """Статистика в реальном времени"""
+    return traffic_statistics.get_realtime_stats(minutes)
+
+
+@router.get("/stats/period")
+async def get_stats_by_period(start_date: str, end_date: str):
+    """Статистика за период"""
+    return traffic_statistics.get_stats_by_period(start_date, end_date)
+
+
+@router.get("/stats/countries")
+async def get_stats_by_country(start_date: str = "", end_date: str = ""):
+    """Статистика по странам"""
+    return {"countries": traffic_statistics.get_stats_by_country(start_date, end_date)}
+
+
+@router.get("/stats/browsers")
+async def get_stats_by_browser(start_date: str = "", end_date: str = ""):
+    """Статистика по браузерам"""
+    return {"browsers": traffic_statistics.get_stats_by_browser(start_date, end_date)}
+
+
+@router.get("/stats/os")
+async def get_stats_by_os(start_date: str = "", end_date: str = ""):
+    """Статистика по ОС"""
+    return {"os": traffic_statistics.get_stats_by_os(start_date, end_date)}
+
+
+@router.get("/stats/devices")
+async def get_stats_by_device(start_date: str = "", end_date: str = ""):
+    """Статистика по устройствам"""
+    return {"devices": traffic_statistics.get_stats_by_device(start_date, end_date)}
+
+
+@router.get("/stats/referrers")
+async def get_stats_by_referrer(start_date: str = "", end_date: str = ""):
+    """Статистика по рефереррам"""
+    return {"referrers": traffic_statistics.get_stats_by_referrer(start_date, end_date)}
+
+
+@router.get("/stats/hourly")
+async def get_hourly_stats(date: str = ""):
+    """Почасовая статистика"""
+    return {"hourly": traffic_statistics.get_hourly_stats(date)}
+
+
+# ═══════════════════════════════════════════════════════════════
+# РАСШИРЕННАЯ МАРШРУТИЗАЦИЯ
+# ═══════════════════════════════════════════════════════════════
+
+@router.get("/routing/landings")
+async def get_routing_landings():
+    """Получение лендингов маршрутизации"""
+    return {"landings": traffic_router.get_landings()}
+
+
+@router.get("/routing/offers")
+async def get_routing_offers():
+    """Получение офферов маршрутизации"""
+    return {"offers": traffic_router.get_offers()}
+
+
+@router.get("/routing/rules")
+async def get_routing_rules():
+    """Получение правил маршрутизации"""
+    return {"rules": traffic_router.get_rules()}
+
+
+@router.get("/routing/stats")
+async def get_routing_stats():
+    """Статистика маршрутизации"""
+    return traffic_router.get_stats()
+
+
+@router.post("/routing/route")
+async def route_visitor(visitor_data: Dict):
+    """Маршрутизация посетителя"""
+    return traffic_router.route_visitor(visitor_data)
+
+
+# ═══════════════════════════════════════════════════════════════
+# РАСШИРЕННЫЕ ФИЛЬТРЫ
+# ═══════════════════════════════════════════════════════════════
+
+@router.get("/traffic-filters")
+async def get_traffic_filters():
+    """Получение фильтров трафика"""
+    return {"filters": traffic_filter.get_filters()}
+
+
+@router.get("/traffic-flows")
+async def get_traffic_flows():
+    """Получение потоков трафика"""
+    return {"flows": traffic_filter.get_flows()}
+
+
+@router.get("/traffic-campaigns")
+async def get_traffic_campaigns():
+    """Получение кампаний трафика"""
+    return {"campaigns": traffic_filter.get_campaigns()}
+
+
+@router.get("/traffic-filter/stats")
+async def get_traffic_filter_stats():
+    """Статистика фильтрации трафика"""
+    return traffic_filter.get_stats()

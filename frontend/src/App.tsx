@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import DiagnosticsPanel from './components/DiagnosticsPanel'
 import AdCampaignsManager from './components/AdCampaignsManager'
+import TrackerManager from './components/TrackerManager'
 import ThemeToggle, { useTheme } from './components/ThemeToggle'
 import './theme.css'
 
@@ -34,6 +35,7 @@ function App() {
     { name: 'Platforms', id: 'platforms', icon: '📱' },
     { name: 'Content', id: 'content', icon: '📝' },
     { name: 'Ad Campaigns', id: 'adcampaigns', icon: '📢' },
+    { name: 'Tracker', id: 'tracker', icon: '🎯' },
     { name: 'Diagnostics', id: 'diagnostics', icon: '🔧' },
     { name: 'Settings', id: 'settings', icon: '⚙️' },
   ]
@@ -148,6 +150,10 @@ function App() {
 
         {currentPage === 'adcampaigns' && (
           <AdCampaignsManager />
+        )}
+
+        {currentPage === 'tracker' && (
+          <TrackerManager />
         )}
 
         {currentPage === 'diagnostics' && (

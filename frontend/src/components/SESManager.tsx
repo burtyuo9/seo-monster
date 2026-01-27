@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import EmailABTesting from './EmailABTesting';
+import SESWarmup from './SESWarmup';
 
 const API_URL = 'http://localhost:8000';
 
@@ -101,8 +102,7 @@ const SESManager: React.FC = () => {
       });
       if (res.ok) {
         setShowGenerateContent(false);
-        setContent
-Task({ task: '', format_type: 'html', language: 'ru', tone: 'professional' });
+        setContentTask({ task: '', format_type: 'html', language: 'ru', tone: 'professional' });
         fetchData();
       }
     } catch (e) {
@@ -147,7 +147,8 @@ Task({ task: '', format_type: 'html', language: 'ru', tone: 'professional' });
     { id: 'content', label: 'Content', icon: '✉️' },
     { id: 'lists', label: 'Recipients', icon: '👥' },
     { id: 'campaigns', label: 'Campaigns', icon: '🚀' },
-    { id: 'abtesting', label: 'A/B Testing', icon: '🧪' }
+    { id: 'abtesting', label: 'A/B Testing', icon: '🧪' },
+    { id: 'warmup', label: 'Warm-up', icon: '🔥' }
   ];
 
   return (
@@ -400,6 +401,11 @@ Task({ task: '', format_type: 'html', language: 'ru', tone: 'professional' });
       {/* A/B Testing Tab */}
       {activeTab === 'abtesting' && (
         <EmailABTesting />
+      )}
+
+      {/* Warm-up Tab */}
+      {activeTab === 'warmup' && (
+        <SESWarmup />
       )}
 
       {/* Add Key Modal */}

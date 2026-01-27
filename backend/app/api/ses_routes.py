@@ -361,3 +361,249 @@ async def generate_tracking_codes(test_id: str, variant_id: str, recipient_email
         "pixel_url": f"/api/ses/track/open/{pixel_id}",
         "click_tracking": {url: f"/api/ses/track/click/{cid}" for url, cid in click_ids.items()}
     }
+
+
+# === Warm-up Plans ===
+
+from services.ses_warmup import warmup_manager, WarmupStatus
+
+class CreateWarmupRequest(BaseModel):
+    key_id: str
+    name: str
+    strategy: str = "moderate"
+    target_volume: int = 10000
+    auto_mode: bool = True
+    send_hour: int = 10
+    send_minute: int = 0
+    recipient_list_id: str = ""
+    content_id: str = ""
+    from_email: str = ""
+    from_name: str = ""
+
+class UpdateWarmupRequest(BaseModel):
+    auto_mode: Optional[bool] = None
+    send_hour: Optional[int] = None
+    send_minute: Optional[int] = None
+    recipient_list_id: Optional[str] = None
+    content_id: Optional[str] = None
+    from_email: Optional[str] = None
+    from_name: Optional[str] = None
+    max_bounce_rate: Optional[float] = None
+    max_complaint_rate: Optional[float] = None
+    auto_pause_on_issues: Optional[bool] = None
+    name: Optional[str] = None
+
+class RecordDayStatsRequest(BaseModel):
+    day: int
+    sent: int
+    delivered: int
+    bounced: int
+    complaints: int
+    opens: int = 0
+    clicks: int = 0
+
+@router.get("/warmup/stats")
+async def get_warmup_stats():
+    return warmup_manager.get_stats()
+
+@router.get("/warmup/plans")
+async def get_all_warmup_plans():
+    plans = warmup_manager.get_all_plans()
+    return {"plans": [p.to_dict() for p in plans]}
+
+@router.get("/warmup/plans/{plan_id}")
+async def get_warmup_plan(plan_id: str):
+    plan = warmup_manager.get_plan(plan_id)
+    if not plan:
+        raise HTTPException(status_code=404, detail="Plan not found")
+    return plan.to_dict()
+
+@router.get("/warmup/plans/key/{key_id}")
+async def get_warmup_plans_by_key(key_id: str):
+    plans = warmup_manager.get_plans_by_key(key_id)
+    return {"plans": [p.to_dict() for p in plans]}
+
+@router.post("/warmup/plans")
+async def create_warmup_plan(request: CreateWarmupRequest):
+    plan = warmup_manager.create_plan(
+        key_id=request.key_id,
+        name=request.name,
+        strategy=request.strategy,
+        target_volume=request.target_volume,
+        auto_mode=request.auto_mode,
+        send_hour=request.send_hour,
+        send_minute=request.send_minute,
+        recipient_list_id=request.recipient_list_id,
+        content_id=request.content_id,
+        from_email=request.from_email,
+        from_name=request.from_name
+    )
+    return {"success": True, "plan": plan.to_dict()}
+
+@router.put("/warmup/plans/{plan_id}")
+async def update_warmup_plan(plan_id: str, request: UpdateWarmupRequest):
+    update_data = {k: v for k, v in request.dict().items() if v is not None}
+    plan = warmup_manager.update_plan_settings(plan_id, **update_data)
+    if not plan:
+        raise HTTPException(status_code=404, detail="Plan not found")
+    return {"success": True, "plan": plan.to_dict()}
+
+@router.post("/warmup/plans/{plan_id}/start")
+async def start_warmup_plan(plan_id: str):
+    plan = warmup_manager.start_plan(plan_id)
+    if not plan:
+        raise HTTPException(status_code=404, detail="Plan not found")
+    return {"success": True, "plan": plan.to_dict()}
+
+class PauseWarmupRequest(BaseModel):
+    reason: str = ""
+
+@router.post("/warmup/plans/{plan_id}/pause")
+async def pause_warmup_plan(plan_id: str, request: PauseWarmupRequest = None):
+    reason = request.reason if request else ""
+    plan = warmup_manager.pause_plan(plan_id, reason)
+    if not plan:
+        raise HTTPException(status_code=404, detail="Plan not found")
+    return {"success": True, "plan": plan.to_dict()}
+
+@router.post("/warmup/plans/{plan_id}/resume")
+async def resume_warmup_plan(plan_id: str):
+    plan = warmup_manager.resume_plan(plan_id)
+    if not plan:
+        raise HTTPException(status_code=404, detail="Plan not found")
+    return {"success": True, "plan": plan.to_dict()}
+
+@router.post("/warmup/plans/{plan_id}/record")
+async def record_warmup_day_stats(plan_id: str, request: RecordDayStatsRequest):
+    plan = warmup_manager.record_day_stats(
+        plan_id=plan_id,
+        day=request.day,
+        sent=request.sent,
+        delivered=request.delivered,
+        bounced=request.bounced,
+        complaints=request.complaints,
+        opens=request.opens,
+        clicks=request.clicks
+    )
+    if not plan:
+        raise HTTPException(status_code=404, detail="Plan not found")
+    return {"success": True, "plan": plan.to_dict()}
+
+@router.get("/warmup/plans/{plan_id}/today-volume")
+async def get_today_warmup_volume(plan_id: str):
+    volume = warmup_manager.get_today_volume(plan_id)
+    return {"volume": volume}
+
+@router.get("/warmup/plans/{plan_id}/recommendations")
+async def get_warmup_recommendations(plan_id: str):
+    recommendations = warmup_manager.get_recommendations(plan_id)
+    return {"recommendations": recommendations}
+
+@router.delete("/warmup/plans/{plan_id}")
+async def delete_warmup_plan(plan_id: str):
+    success = warmup_manager.delete_plan(plan_id)
+    if not success:
+        raise HTTPException(status_code=404, detail="Plan not found")
+    return {"success": True}
+
+@router.get("/warmup/plans/{plan_id}/timeline")
+async def get_warmup_timeline(plan_id: str):
+    """Get timeline data for visualization"""
+    timeline = warmup_manager.get_plan_timeline(plan_id)
+    if not timeline:
+        raise HTTPException(status_code=404, detail="Plan not found")
+    return {"timeline": timeline}
+
+@router.post("/warmup/plans/{plan_id}/execute")
+async def execute_warmup_send(plan_id: str):
+    """Manually trigger warmup email sending"""
+    result = await warmup_manager.execute_warmup_send(plan_id)
+    if not result.get("success"):
+        raise HTTPException(status_code=400, detail=result.get("error"))
+    return result
+
+@router.get("/warmup/active")
+async def get_active_warmup_plans():
+    """Get all active warmup plans"""
+    plans = warmup_manager.get_active_plans()
+    return {"plans": [p.to_dict() for p in plans]}
+
+@router.post("/warmup/scheduler/start")
+async def start_warmup_scheduler():
+    """Start the automatic warmup scheduler"""
+    warmup_manager.start_scheduler()
+    return {"success": True, "message": "Scheduler started"}
+
+@router.post("/warmup/scheduler/stop")
+async def stop_warmup_scheduler():
+    """Stop the automatic warmup scheduler"""
+    warmup_manager.stop_scheduler()
+    return {"success": True, "message": "Scheduler stopped"}
+
+# === Warmup Executor ===
+
+from services.warmup_executor import warmup_executor
+
+@router.post("/warmup/execute/{plan_id}")
+async def execute_warmup_now(plan_id: str):
+    """Manually execute warmup for a plan"""
+    result = await warmup_executor.execute_warmup_for_plan(plan_id)
+    return result
+
+@router.get("/warmup/executor/status")
+async def get_executor_status():
+    """Get warmup executor status"""
+    return warmup_executor.get_scheduler_status()
+
+@router.post("/warmup/executor/start")
+async def start_executor():
+    """Start the warmup executor scheduler"""
+    return warmup_executor.start_scheduler()
+
+@router.post("/warmup/executor/stop")
+async def stop_executor():
+    """Stop the warmup executor scheduler"""
+    return warmup_executor.stop_scheduler()
+
+@router.get("/warmup/executor/log")
+async def get_executor_log(plan_id: Optional[str] = None, limit: int = 100):
+    """Get execution log"""
+    return {"log": warmup_executor.get_execution_log(plan_id, limit)}
+
+@router.post("/warmup/simulate/{plan_id}")
+async def simulate_warmup_day(plan_id: str):
+    """Simulate a warmup day for testing"""
+    plan = warmup_manager.get_plan(plan_id)
+    if not plan:
+        raise HTTPException(status_code=404, detail="Plan not found")
+    
+    result = await warmup_executor._simulate_sending(plan, warmup_manager.get_today_volume(plan_id))
+    return result
+
+@router.get("/warmup/strategies")
+async def get_warmup_strategies():
+    return {
+        "strategies": [
+            {
+                "id": "conservative",
+                "name": "Conservative",
+                "description": "Slow and safe warmup over 21 days. Best for new domains.",
+                "days": 21,
+                "risk": "low"
+            },
+            {
+                "id": "moderate",
+                "name": "Moderate",
+                "description": "Balanced warmup over 14 days. Good for most cases.",
+                "days": 14,
+                "risk": "medium"
+            },
+            {
+                "id": "aggressive",
+                "name": "Aggressive",
+                "description": "Fast warmup over 7 days. Higher risk of deliverability issues.",
+                "days": 7,
+                "risk": "high"
+            }
+        ]
+    }

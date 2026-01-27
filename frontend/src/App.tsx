@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import DiagnosticsPanel from './components/DiagnosticsPanel'
+import DiagnosticsPanelEnhanced from './components/DiagnosticsPanelEnhanced'
 import AdCampaignsManager from './components/AdCampaignsManager'
 import TrackerManager from './components/TrackerManager'
 import AdsTrackerIntegration from './components/AdsTrackerIntegration'
-import SESManager from './components/SESManager'
+import SESManagerEnhanced from './components/SESManagerEnhanced'
 import ThemeToggle, { useTheme } from './components/ThemeToggle'
 import { LanguageProvider, useLanguage, LanguageSwitcher } from './contexts/LanguageContext'
+import { OptionalFeaturesCard, SetupProgressBar } from './components/OptionalFeatures'
 import './theme.css'
 
 const API_URL = 'http://localhost:8000/api'
@@ -130,6 +131,9 @@ function AppContent() {
                 <p className={`text-3xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>{stats?.active_tasks || 0}</p>
               </div>
             </div>
+
+            {/* Setup Progress Bar */}
+            <SetupProgressBar />
             
             {/* Quick Actions */}
             <div className={`p-6 rounded-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-white shadow'}`}>
@@ -167,6 +171,9 @@ function AppContent() {
                 </button>
               </div>
             </div>
+
+            {/* Optional Features Card */}
+            <OptionalFeaturesCard onNavigate={setCurrentPage} />
             
             {/* System Status */}
             <div className={`p-6 rounded-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-white shadow'}`}>
@@ -215,36 +222,31 @@ function AppContent() {
                     {t('autopilot.status')}
                   </h3>
                   <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
-                    {t('autopilot.stopped')}
+                    {t('autopilot.description')}
                   </p>
                 </div>
                 <button className="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors">
                   {t('autopilot.start')}
                 </button>
               </div>
-              
               <div className="grid grid-cols-3 gap-4">
                 <div className={`p-4 rounded-lg ${theme === 'dark' ? 'bg-gray-700' : 'bg-gray-50'}`}>
-                  <h4 className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
-                    {t('autopilot.mode')}
+                  <h4 className={`font-medium ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+                    {language === 'ru' ? 'Задач выполнено' : 'Tasks Completed'}
                   </h4>
-                  <select className={`mt-2 w-full p-2 rounded ${theme === 'dark' ? 'bg-gray-600 text-white' : 'bg-white border'}`}>
-                    <option value="conservative">{t('autopilot.conservative')}</option>
-                    <option value="moderate">{t('autopilot.moderate')}</option>
-                    <option value="aggressive">{t('autopilot.aggressive')}</option>
-                  </select>
+                  <p className="text-2xl font-bold text-green-500">0</p>
                 </div>
                 <div className={`p-4 rounded-lg ${theme === 'dark' ? 'bg-gray-700' : 'bg-gray-50'}`}>
-                  <h4 className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
-                    {t('autopilot.tasksCompleted')}
+                  <h4 className={`font-medium ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+                    {language === 'ru' ? 'В очереди' : 'In Queue'}
                   </h4>
-                  <p className={`text-2xl font-bold mt-2 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>0</p>
+                  <p className="text-2xl font-bold text-blue-500">0</p>
                 </div>
                 <div className={`p-4 rounded-lg ${theme === 'dark' ? 'bg-gray-700' : 'bg-gray-50'}`}>
-                  <h4 className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
-                    {t('autopilot.tasksInQueue')}
+                  <h4 className={`font-medium ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+                    {language === 'ru' ? 'Успешность' : 'Success Rate'}
                   </h4>
-                  <p className={`text-2xl font-bold mt-2 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>0</p>
+                  <p className="text-2xl font-bold text-purple-500">100%</p>
                 </div>
               </div>
             </div>
@@ -253,141 +255,98 @@ function AppContent() {
 
         {currentPage === 'sites' && (
           <div className={`p-6 rounded-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-white shadow'}`}>
-            <div className="flex items-center justify-between mb-6">
-              <p className={theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}>
-                {t('sites.noSites')}
-              </p>
+            <div className="flex justify-between items-center mb-6">
+              <h3 className={`text-xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+                {t('sites.title')}
+              </h3>
               <button className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
                 + {t('sites.addSite')}
               </button>
+            </div>
+            <div className={`text-center py-12 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
+              <span className="text-4xl">🌐</span>
+              <p className="mt-4">{language === 'ru' ? 'Нет добавленных сайтов' : 'No sites added yet'}</p>
             </div>
           </div>
         )}
 
         {currentPage === 'platforms' && (
           <div className={`p-6 rounded-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-white shadow'}`}>
-            <div className="flex items-center justify-between mb-6">
-              <p className={theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}>
-                {t('platforms.noPlatforms')}
-              </p>
+            <div className="flex justify-between items-center mb-6">
+              <h3 className={`text-xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+                {t('platforms.title')}
+              </h3>
               <button className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
                 + {t('platforms.addPlatform')}
               </button>
+            </div>
+            <div className={`text-center py-12 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
+              <span className="text-4xl">📱</span>
+              <p className="mt-4">{language === 'ru' ? 'Нет добавленных платформ' : 'No platforms added yet'}</p>
             </div>
           </div>
         )}
 
         {currentPage === 'content' && (
           <div className={`p-6 rounded-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-white shadow'}`}>
-            <div className="flex items-center justify-between mb-6">
-              <p className={theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}>
-                {t('content.noContent')}
-              </p>
-              <button className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-                + {t('content.generate')}
+            <div className="flex justify-between items-center mb-6">
+              <h3 className={`text-xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+                {t('content.title')}
+              </h3>
+              <button className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors">
+                ✨ {t('content.generate')}
               </button>
+            </div>
+            <div className={`text-center py-12 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
+              <span className="text-4xl">📝</span>
+              <p className="mt-4">{language === 'ru' ? 'Нет созданного контента' : 'No content created yet'}</p>
             </div>
           </div>
         )}
 
-        {currentPage === 'adcampaigns' && (
-          <AdCampaignsManager />
-        )}
-
-        {currentPage === 'tracker' && (
-          <TrackerManager />
-        )}
-
-        {currentPage === 'adsintegration' && (
-          <AdsTrackerIntegration />
-        )}
-
-        {currentPage === 'ses' && (
-          <SESManager />
-        )}
-
-        {currentPage === 'diagnostics' && (
-          <DiagnosticsPanel />
-        )}
+        {currentPage === 'adcampaigns' && <AdCampaignsManager />}
+        {currentPage === 'tracker' && <TrackerManager />}
+        {currentPage === 'adsintegration' && <AdsTrackerIntegration />}
+        {currentPage === 'ses' && <SESManagerEnhanced />}
+        {currentPage === 'diagnostics' && <DiagnosticsPanelEnhanced />}
 
         {currentPage === 'settings' && (
           <div className="space-y-6">
             <div className={`p-6 rounded-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-white shadow'}`}>
               <h3 className={`text-xl font-bold mb-4 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
-                {t('settings.general')}
+                {t('settings.title')}
               </h3>
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className={theme === 'dark' ? 'text-white' : 'text-gray-900'}>{t('settings.theme')}</p>
-                    <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
-                      {language === 'ru' ? 'Переключение между тёмной и светлой темой' : 'Switch between dark and light mode'}
-                    </p>
-                  </div>
-                  <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
-                </div>
-                
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className={theme === 'dark' ? 'text-white' : 'text-gray-900'}>{t('settings.language')}</p>
+                    <h4 className={`font-medium ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+                      {t('settings.language')}
+                    </h4>
                     <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
                       {language === 'ru' ? 'Выберите язык интерфейса' : 'Select interface language'}
                     </p>
                   </div>
                   <LanguageSwitcher />
                 </div>
-              </div>
-            </div>
-            
-            <div className={`p-6 rounded-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-white shadow'}`}>
-              <h3 className={`text-xl font-bold mb-4 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
-                {t('settings.api')}
-              </h3>
-              <div className="space-y-4">
-                <div>
-                  <label className={`block text-sm mb-2 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
-                    OpenAI API Key
-                  </label>
-                  <input 
-                    type="password" 
-                    placeholder="sk-..."
-                    className={`w-full p-3 rounded-lg ${theme === 'dark' ? 'bg-gray-700 text-white' : 'bg-gray-50 border'}`}
-                  />
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h4 className={`font-medium ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+                      {t('settings.theme')}
+                    </h4>
+                    <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
+                      {language === 'ru' ? 'Светлая или темная тема' : 'Light or dark theme'}
+                    </p>
+                  </div>
+                  <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
                 </div>
               </div>
             </div>
-            
-            <div className={`p-6 rounded-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-white shadow'}`}>
-              <h3 className={`text-xl font-bold mb-4 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
-                {t('settings.telegram')}
-              </h3>
-              <div className="space-y-4">
-                <div>
-                  <label className={`block text-sm mb-2 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
-                    {t('settings.telegramToken')}
-                  </label>
-                  <input 
-                    type="password" 
-                    placeholder="123456:ABC-DEF..."
-                    className={`w-full p-3 rounded-lg ${theme === 'dark' ? 'bg-gray-700 text-white' : 'bg-gray-50 border'}`}
-                  />
-                </div>
-                <div>
-                  <label className={`block text-sm mb-2 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
-                    {t('settings.telegramChatId')}
-                  </label>
-                  <input 
-                    type="text" 
-                    placeholder="-100123456789"
-                    className={`w-full p-3 rounded-lg ${theme === 'dark' ? 'bg-gray-700 text-white' : 'bg-gray-50 border'}`}
-                  />
-                </div>
-              </div>
-            </div>
-            
-            <button className="w-full py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-              {t('common.save')}
-            </button>
+
+            {/* Setup Progress in Settings */}
+            <SetupProgressBar />
+
+            {/* Optional Features in Settings */}
+            <OptionalFeaturesCard onNavigate={setCurrentPage} />
           </div>
         )}
       </div>

@@ -106,6 +106,7 @@ class SEOMonsterCore:
         config_file = f"{self.data_dir}/monster_config.json"
         
         default_config = {
+            "ai_agents_enabled": True,  # Master switch for AI Agents module
             "auto_learning": True,
             "auto_update_agents": True,
             "parallel_execution": True,
@@ -158,9 +159,13 @@ class SEOMonsterCore:
         self.state.words_written = 0
         self.state.errors = []
         
-        # Проверяем и обновляем агентов перед началом
-        if self.config.get("auto_update_agents"):
+        # Проверяем и обновляем агентов перед началом (только если AI Agents включены)
+        if self.config.get("ai_agents_enabled") and self.config.get("auto_update_agents"):
             await self._prepare_agents()
+        elif not self.config.get("ai_agents_enabled"):
+            logger.info("AI Agents module is DISABLED - running in basic mode")
+            self.state.agents_active = 0
+            self.state.providers_healthy = 0
         
         return {
             "status": "session_started",
@@ -280,62 +285,80 @@ class SEOMonsterCore:
             "tasks": []
         }
         
-        # Фаза 1: Анализ и сбор ключевых слов (параллельно)
+        # Проверяем, включены ли AI Agents
+        ai_agents_enabled = self.config.get("ai_agents_enabled", True)
+        
+        # Фаза 1: Анализ и сбор ключевых слов
         self.state.mode = MonsterMode.ANALYZING
         
-        analysis_tasks = [
-            {"type": "keyword_research", "data": {"domain": domain, "cycle": cycle_number}},
-            {"type": "competitor_analysis", "data": {"domain": domain}}
-        ]
-        
-        if self.config.get("parallel_execution"):
-            analysis_results = await run_parallel_seo(domain, analysis_tasks)
+        if ai_agents_enabled:
+            # Режим с AI Agents - параллельное выполнение
+            analysis_tasks = [
+                {"type": "keyword_research", "data": {"domain": domain, "cycle": cycle_number}},
+                {"type": "competitor_analysis", "data": {"domain": domain}}
+            ]
+            
+            if self.config.get("parallel_execution"):
+                analysis_results = await run_parallel_seo(domain, analysis_tasks)
+            else:
+                analysis_results = await self.seo_orchestrator.execute_seo_task(
+                    SEOTaskType.KEYWORD_RESEARCH, domain, {}
+                )
         else:
-            analysis_results = await self.seo_orchestrator.execute_seo_task(
-                SEOTaskType.KEYWORD_RESEARCH, domain, {}
-            )
+            # Базовый режим без AI Agents - используем встроенные методы
+            analysis_results = await self._basic_keyword_research(domain)
+            logger.info("Running in BASIC mode without AI Agents")
         
         cycle_result["tasks"].append({"phase": "analysis", "result": analysis_results})
         
-        # Фаза 2: Генерация контента (параллельно несколькими агентами)
+        # Фаза 2: Генерация контента
         self.state.mode = MonsterMode.GENERATING
         
         articles_count = config.get("articles_per_cycle", 5)
-        content_tasks = []
         
-        for i in range(articles_count):
-            content_tasks.append({
-                "type": "content_generation",
-                "data": {
-                    "topic": f"Article {cycle_number}_{i+1}",
-                    "domain": domain,
-                    "word_count": self.config["content_settings"]["min_words"]
-                }
-            })
-        
-        content_results = await run_parallel_seo(domain, content_tasks)
-        
-        # Подсчитываем результаты
-        for task_result in content_results.get("tasks", []):
-            if task_result.get("success"):
-                cycle_result["articles_generated"] += 1
-                # Примерный подсчёт слов
-                response = task_result.get("result", {}).get("responses", [""])[0]
-                if response:
-                    cycle_result["words_written"] += len(str(response).split())
+        if ai_agents_enabled:
+            # Режим с AI Agents - параллельная генерация
+            content_tasks = []
+            for i in range(articles_count):
+                content_tasks.append({
+                    "type": "content_generation",
+                    "data": {
+                        "topic": f"Article {cycle_number}_{i+1}",
+                        "domain": domain,
+                        "word_count": self.config["content_settings"]["min_words"]
+                    }
+                })
+            
+            content_results = await run_parallel_seo(domain, content_tasks)
+            
+            # Подсчитываем результаты
+            for task_result in content_results.get("tasks", []):
+                if task_result.get("success"):
+                    cycle_result["articles_generated"] += 1
+                    response = task_result.get("result", {}).get("responses", [""])[0]
+                    if response:
+                        cycle_result["words_written"] += len(str(response).split())
+        else:
+            # Базовый режим - последовательная генерация через базовый провайдер
+            content_results = await self._basic_content_generation(domain, articles_count, cycle_number)
+            cycle_result["articles_generated"] = content_results.get("articles_generated", 0)
+            cycle_result["words_written"] = content_results.get("words_written", 0)
         
         cycle_result["tasks"].append({"phase": "content", "result": content_results})
         
         # Фаза 3: Оптимизация и индексация
         self.state.mode = MonsterMode.INDEXING
         
-        indexing_tasks = [
-            {"type": "meta_tags", "data": {"domain": domain}},
-            {"type": "sitemap_update", "data": {"domain": domain}}
-        ]
+        if ai_agents_enabled:
+            indexing_tasks = [
+                {"type": "meta_tags", "data": {"domain": domain}},
+                {"type": "sitemap_update", "data": {"domain": domain}}
+            ]
+            indexing_results = await run_parallel_seo(domain, indexing_tasks)
+        else:
+            indexing_results = await self._basic_indexing(domain)
         
-        indexing_results = await run_parallel_seo(domain, indexing_tasks)
-        cycle_result["urls_indexed"] = len(indexing_results.get("tasks", []))
+        cycle_result["urls_indexed"] = len(indexing_results.get("tasks", [])) if ai_agents_enabled else indexing_results.get("urls_indexed", 0)
         cycle_result["tasks"].append({"phase": "indexing", "result": indexing_results})
         
         # Обновляем состояние
@@ -493,6 +516,127 @@ class SEOMonsterCore:
             self.state.current_domain or "default",
             [task]
         )
+
+
+    # ==================== БАЗОВЫЕ МЕТОДЫ (без AI Agents) ====================
+    
+    async def _basic_keyword_research(self, domain: str) -> Dict[str, Any]:
+        """Базовый сбор ключевых слов без AI Agents"""
+        logger.info(f"Basic keyword research for {domain}")
+        
+        # Используем простой провайдер напрямую
+        try:
+            response = await self.ai_manager.generate(
+                prompt=f"Generate 10 SEO keywords for website about: {domain}. Return as JSON array of strings.",
+                max_tokens=500
+            )
+            return {
+                "success": True,
+                "keywords": response.get("content", []),
+                "mode": "basic"
+            }
+        except Exception as e:
+            logger.error(f"Basic keyword research error: {e}")
+            return {"success": False, "error": str(e), "mode": "basic"}
+    
+    async def _basic_content_generation(
+        self, 
+        domain: str, 
+        count: int, 
+        cycle: int
+    ) -> Dict[str, Any]:
+        """Базовая генерация контента без AI Agents (последовательно)"""
+        logger.info(f"Basic content generation: {count} articles for {domain}")
+        
+        articles_generated = 0
+        words_written = 0
+        articles = []
+        
+        for i in range(count):
+            try:
+                response = await self.ai_manager.generate(
+                    prompt=f"Write a 500-word SEO article about {domain}. Article #{cycle}_{i+1}.",
+                    max_tokens=1500
+                )
+                
+                content = response.get("content", "")
+                if content:
+                    articles_generated += 1
+                    words_written += len(content.split())
+                    articles.append({
+                        "id": f"article_{cycle}_{i+1}",
+                        "content": content,
+                        "words": len(content.split())
+                    })
+                    
+            except Exception as e:
+                logger.error(f"Basic content generation error: {e}")
+        
+        return {
+            "success": articles_generated > 0,
+            "articles_generated": articles_generated,
+            "words_written": words_written,
+            "articles": articles,
+            "mode": "basic"
+        }
+    
+    async def _basic_indexing(self, domain: str) -> Dict[str, Any]:
+        """Базовая индексация без AI Agents"""
+        logger.info(f"Basic indexing for {domain}")
+        
+        # Простой ping без агентов
+        import aiohttp
+        
+        urls_indexed = 0
+        try:
+            async with aiohttp.ClientSession() as session:
+                # Ping Google
+                ping_url = f"https://www.google.com/ping?sitemap=https://{domain}/sitemap.xml"
+                async with session.get(ping_url, timeout=10) as resp:
+                    if resp.status == 200:
+                        urls_indexed += 1
+        except:
+            pass
+        
+        return {
+            "success": True,
+            "urls_indexed": urls_indexed,
+            "mode": "basic"
+        }
+    
+    # ==================== УПРАВЛЕНИЕ AI AGENTS ====================
+    
+    def set_ai_agents_enabled(self, enabled: bool) -> Dict[str, Any]:
+        """Включение/выключение модуля AI Agents"""
+        self.config["ai_agents_enabled"] = enabled
+        self._save_config()
+        
+        status = "enabled" if enabled else "disabled"
+        logger.info(f"🤖 AI Agents module {status}")
+        
+        return {
+            "success": True,
+            "ai_agents_enabled": enabled,
+            "message": f"AI Agents module is now {status}"
+        }
+    
+    def is_ai_agents_enabled(self) -> bool:
+        """Проверка статуса модуля AI Agents"""
+        return self.config.get("ai_agents_enabled", True)
+    
+    def get_ai_agents_status(self) -> Dict[str, Any]:
+        """Получение полного статуса модуля AI Agents"""
+        enabled = self.is_ai_agents_enabled()
+        
+        return {
+            "enabled": enabled,
+            "agents_active": self.state.agents_active if enabled else 0,
+            "providers_healthy": self.state.providers_healthy if enabled else 0,
+            "auto_learning": self.config.get("auto_learning", False) if enabled else False,
+            "auto_update": self.config.get("auto_update_agents", False) if enabled else False,
+            "parallel_execution": self.config.get("parallel_execution", False) if enabled else False,
+            "mode": "advanced" if enabled else "basic"
+        }
 
 
 # Глобальный экземпляр Monster

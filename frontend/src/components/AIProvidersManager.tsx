@@ -44,6 +44,9 @@ const AIProvidersManager: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [apiKeyModal, setApiKeyModal] = useState<{open: boolean; provider: string}>({open: false, provider: ''});
   const [apiKeyInput, setApiKeyInput] = useState('');
+  
+  // Главный переключатель AI Agents
+  const [aiAgentsEnabled, setAiAgentsEnabled] = useState(true);
 
   // Демо данные для провайдеров
   const demoProviders: AIProvider[] = [
@@ -139,6 +142,23 @@ const AIProvidersManager: React.FC = () => {
     return icons[role] || '🤖';
   };
 
+  // Переключение модуля AI Agents
+  const toggleAiAgents = async () => {
+    const newState = !aiAgentsEnabled;
+    setAiAgentsEnabled(newState);
+    
+    // Отправка на сервер
+    try {
+      await fetch('/api/ai-agents/toggle', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ enabled: newState })
+      });
+    } catch (error) {
+      console.log('AI Agents toggle saved locally');
+    }
+  };
+
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
@@ -151,9 +171,68 @@ const AIProvidersManager: React.FC = () => {
     <div className="p-6 bg-gray-900 min-h-screen">
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-white mb-2">🤖 AI Providers & Agents</h1>
-        <p className="text-gray-400">Управление AI-провайдерами, агентами и внешними сервисами</p>
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-3xl font-bold text-white mb-2">🤖 AI Providers & Agents</h1>
+            <p className="text-gray-400">Управление AI-провайдерами, агентами и внешними сервисами</p>
+          </div>
+          
+          {/* ГЛАВНЫЙ ПЕРЕКЛЮЧАТЕЛЬ AI AGENTS */}
+          <div className={`p-4 rounded-xl border-2 transition-all duration-300 ${
+            aiAgentsEnabled 
+              ? 'bg-gradient-to-r from-green-600/20 to-emerald-600/20 border-green-500' 
+              : 'bg-gradient-to-r from-red-600/20 to-orange-600/20 border-red-500'
+          }`}>
+            <div className="flex items-center gap-4">
+              <div className="text-center">
+                <div className="text-sm text-gray-400 mb-1">Модуль AI Agents</div>
+                <div className={`text-lg font-bold ${aiAgentsEnabled ? 'text-green-400' : 'text-red-400'}`}>
+                  {aiAgentsEnabled ? '✅ ВКЛЮЧЕН' : '❌ ВЫКЛЮЧЕН'}
+                </div>
+              </div>
+              
+              {/* Toggle Switch */}
+              <button
+                onClick={toggleAiAgents}
+                className={`relative w-16 h-8 rounded-full transition-all duration-300 ${
+                  aiAgentsEnabled ? 'bg-green-500' : 'bg-red-500'
+                }`}
+              >
+                <div className={`absolute top-1 w-6 h-6 bg-white rounded-full shadow-lg transition-all duration-300 ${
+                  aiAgentsEnabled ? 'left-9' : 'left-1'
+                }`}>
+                  <span className="flex items-center justify-center h-full text-sm">
+                    {aiAgentsEnabled ? '🤖' : '🚫'}
+                  </span>
+                </div>
+              </button>
+            </div>
+            
+            <div className="mt-2 text-xs text-gray-500">
+              {aiAgentsEnabled 
+                ? 'Агенты активно участвуют в SEO-задачах' 
+                : 'Monster работает в базовом режиме'
+              }
+            </div>
+          </div>
+        </div>
       </div>
+      
+      {/* Предупреждение при выключенном модуле */}
+      {!aiAgentsEnabled && (
+        <div className="mb-6 p-4 bg-yellow-900/30 border border-yellow-600 rounded-xl">
+          <div className="flex items-center gap-3">
+            <span className="text-2xl">⚠️</span>
+            <div>
+              <div className="text-yellow-400 font-semibold">Модуль AI Agents выключен</div>
+              <div className="text-yellow-200/70 text-sm">
+                SEO Monster работает в базовом режиме без параллельной обработки и самообучения.
+                Включите модуль для максимальной эффективности.
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">

@@ -196,6 +196,56 @@ SEO Monster автоматически:
 
 ---
 
+## 🧠 Система самообучения и автообновления
+
+### Автоматическое обучение агентов
+
+Monster автоматически учится на результатах своей работы:
+
+1. **Запись результатов** — каждая задача записывается с оценкой качества
+2. **Анализ паттернов** — система выявляет успешные и неуспешные паттерны
+3. **Эволюция агентов** — агенты автоматически улучшают свои промпты
+4. **Обновление провайдеров** — автоматическое переключение на здоровые провайдеры
+5. **Пополнение агентов** — автоматическое создание новых агентов для новых моделей
+
+### Параллельное выполнение
+
+Все SEO-задачи выполняются параллельно несколькими агентами:
+
+```python
+from backend.services.parallel_seo_executor import run_parallel_seo
+
+# Запуск параллельных задач
+tasks = [
+    {"type": "keyword_research", "data": {"topic": "crypto"}},
+    {"type": "content_generation", "data": {"topic": "bitcoin"}},
+    {"type": "competitor_analysis", "data": {"competitors": [...]}}
+]
+
+results = await run_parallel_seo("example.com", tasks)
+```
+
+### Monster Core API
+
+```python
+from backend.services.monster_core import monster
+
+# Запуск автопилота
+results = await monster.run_full_autopilot(
+    domain="example.com",
+    duration_minutes=30,
+    config={"articles_per_cycle": 5}
+)
+
+# Получение статуса
+status = monster.get_status()
+
+# Получение активных агентов
+agents = monster.get_active_agents()
+```
+
+---
+
 ## 📝 Примеры использования
 
 ### Python API

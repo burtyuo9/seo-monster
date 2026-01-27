@@ -43,6 +43,7 @@ from app.api.hosting_routes import router as hosting_router
 from app.api.tds_routes import router as tds_router
 from app.api.github_routes import router as github_router
 from app.api.image_routes import router as image_router, priority_router
+from app.api.smart_image_routes import router as smart_image_router
 
 
 @asynccontextmanager
@@ -113,6 +114,7 @@ app.include_router(tds_router)
 app.include_router(github_router)
 app.include_router(image_router)
 app.include_router(priority_router)
+app.include_router(smart_image_router)
 
 
 # Корневой эндпоинт

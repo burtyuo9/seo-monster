@@ -1,0 +1,27 @@
+[
+  {
+    "check_id": "data_directories",
+    "success": true,
+    "message": "Created 3 directories",
+    "before_status": "warning",
+    "after_status": "ok",
+    "actions_taken": [
+      "Created: /home/ubuntu/seo_monster/backend/data/ses",
+      "Created: /home/ubuntu/seo_monster/backend/data/ads",
+      "Created: /home/ubuntu/seo_monster/backend/data/tracker"
+    ],
+    "timestamp": "2026-01-27T03:53:59.610923"
+  },
+  {
+    "check_id": "config_files",
+    "success": true,
+    "message": "Created 2 config files",
+    "before_status": "warning",
+    "after_status": "ok",
+    "actions_taken": [
+      "Created: /home/ubuntu/seo_monster/backend/data/ses/keys.json",
+      "Created: /home/ubuntu/seo_monster/backend/data/tds/config.json"
+    ],
+    "timestamp": "2026-01-27T03:53:59.713277"
+  }
+]

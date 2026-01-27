@@ -970,5 +970,723 @@
     "fix_available": false,
     "fix_applied": false,
     "timestamp": "2026-01-27T02:09:15.792616"
+  },
+  {
+    "check_id": "api_health",
+    "category": "api",
+    "name": "API Health Check",
+    "status": "ok",
+    "message": "API is healthy and responding",
+    "details": {
+      "response": {
+        "status": "healthy",
+        "ai_configured": true
+      },
+      "response_time_ms": 6.512165069580078
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "critical",
+    "recommendations": [],
+    "timestamp": "2026-01-27T03:53:59.568015",
+    "duration_ms": 7.243156433105469
+  },
+  {
+    "check_id": "api_endpoints",
+    "category": "api",
+    "name": "API Endpoints Check",
+    "status": "warning",
+    "message": "3 endpoints have warnings",
+    "details": {
+      "warnings": [
+        "TDS Stats (/api/tds/stats): not found",
+        "Ad Campaigns (/api/ads/campaigns): not found",
+        "Tracker Stats (/api/tracker/stats): not found"
+      ],
+      "checked": 13
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "medium",
+    "recommendations": [],
+    "timestamp": "2026-01-27T03:53:59.597391",
+    "duration_ms": 27.377605438232422
+  },
+  {
+    "check_id": "api_response_time",
+    "category": "api",
+    "name": "API Response Time",
+    "status": "ok",
+    "message": "API response time is good: 2ms avg",
+    "details": {
+      "avg_ms": 1.897430419921875,
+      "max_ms": 2.511262893676758,
+      "samples": 5
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "medium",
+    "recommendations": [],
+    "timestamp": "2026-01-27T03:53:59.608452",
+    "duration_ms": 10.02955436706543
+  },
+  {
+    "check_id": "data_directories",
+    "category": "file_system",
+    "name": "Data Directories Check",
+    "status": "warning",
+    "message": "3 directories are missing",
+    "details": {
+      "missing": [
+        "/home/ubuntu/seo_monster/backend/data/ses",
+        "/home/ubuntu/seo_monster/backend/data/ads",
+        "/home/ubuntu/seo_monster/backend/data/tracker"
+      ]
+    },
+    "fix_available": true,
+    "fix_applied": false,
+    "severity": "high",
+    "recommendations": [
+      "Run auto-fix to create missing directories"
+    ],
+    "timestamp": "2026-01-27T03:53:59.609543",
+    "duration_ms": 0.141143798828125
+  },
+  {
+    "check_id": "json_files_integrity",
+    "category": "file_system",
+    "name": "JSON Files Integrity",
+    "status": "ok",
+    "message": "All 37 JSON files are valid",
+    "details": {
+      "checked_files": 37
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "high",
+    "recommendations": [],
+    "timestamp": "2026-01-27T03:53:59.613897",
+    "duration_ms": 2.8536319732666016
+  },
+  {
+    "check_id": "disk_space",
+    "category": "file_system",
+    "name": "Disk Space Check",
+    "status": "ok",
+    "message": "Disk space OK: 31.13 GB free (75.2%)",
+    "details": {
+      "total_gb": 41.42,
+      "used_gb": 10.27,
+      "free_gb": 31.13,
+      "used_percent": 24.8
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "critical",
+    "recommendations": [],
+    "timestamp": "2026-01-27T03:53:59.614885",
+    "duration_ms": 0.06794929504394531
+  },
+  {
+    "check_id": "log_files",
+    "category": "file_system",
+    "name": "Log Files Check",
+    "status": "ok",
+    "message": "Log files OK (0.1 MB total)",
+    "details": {
+      "total_mb": 0.06104564666748047
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "low",
+    "recommendations": [],
+    "timestamp": "2026-01-27T03:53:59.616501",
+    "duration_ms": 0.6101131439208984
+  },
+  {
+    "check_id": "temp_files",
+    "category": "file_system",
+    "name": "Temp Files Check",
+    "status": "ok",
+    "message": "Temp files OK (0.1 MB)",
+    "details": null,
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "low",
+    "recommendations": [],
+    "timestamp": "2026-01-27T03:53:59.618258",
+    "duration_ms": 0.6909370422363281
+  },
+  {
+    "check_id": "indexing_service",
+    "category": "services",
+    "name": "Indexing Service Check",
+    "status": "ok",
+    "message": "Indexing service is working",
+    "details": {
+      "total_requests": 10,
+      "submitted": 0,
+      "indexed": 0,
+      "not_indexed": 0,
+      "errors": 0,
+      "queue_pending": 3,
+      "queue_total": 3,
+      "unique_domains": 3
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "high",
+    "recommendations": [],
+    "timestamp": "2026-01-27T03:53:59.619367",
+    "duration_ms": 0.2913475036621094
+  },
+  {
+    "check_id": "sessions_service",
+    "category": "services",
+    "name": "Sessions Service Check",
+    "status": "ok",
+    "message": "Sessions service is working",
+    "details": {
+      "total_accounts": 0,
+      "active_sessions": 0,
+      "successful_logins": 0,
+      "failed_logins": 0,
+      "last_activity": null
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "high",
+    "recommendations": [],
+    "timestamp": "2026-01-27T03:53:59.620478",
+    "duration_ms": 0.2968311309814453
+  },
+  {
+    "check_id": "autopilot_service",
+    "category": "services",
+    "name": "Autopilot Service Check",
+    "status": "ok",
+    "message": "Autopilot service is working",
+    "details": {
+      "total_campaigns": 1,
+      "running_campaigns": 1,
+      "total_content_generated": 0,
+      "total_urls_indexed": 0,
+      "learning_strategies": 0
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "high",
+    "recommendations": [],
+    "timestamp": "2026-01-27T03:53:59.670058",
+    "duration_ms": 49.41368103027344
+  },
+  {
+    "check_id": "position_tracker",
+    "category": "services",
+    "name": "Position Tracker Check",
+    "status": "ok",
+    "message": "Position tracker is working",
+    "details": null,
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "medium",
+    "recommendations": [],
+    "timestamp": "2026-01-27T03:53:59.672420",
+    "duration_ms": 0.37026405334472656
+  },
+  {
+    "check_id": "ai_providers",
+    "category": "ai",
+    "name": "AI Providers Check",
+    "status": "ok",
+    "message": "7 AI providers available",
+    "details": {
+      "providers": [
+        "groq",
+        "together",
+        "huggingface",
+        "ollama",
+        "cohere",
+        "deepseek",
+        "openrouter"
+      ]
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "high",
+    "recommendations": [],
+    "timestamp": "2026-01-27T03:53:59.679601",
+    "duration_ms": 6.049394607543945
+  },
+  {
+    "check_id": "ai_agent_core",
+    "category": "ai",
+    "name": "AI Agent Core Check",
+    "status": "error",
+    "message": "AI Agent Core error: cannot import name 'AIAgentCore' from 'services.ai_agent_core' (/home/ubuntu/seo_monster/backend/services/ai_agent_core.py)",
+    "details": null,
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "high",
+    "recommendations": [],
+    "timestamp": "2026-01-27T03:53:59.680768",
+    "duration_ms": 0.03314018249511719
+  },
+  {
+    "check_id": "ai_learning",
+    "category": "ai",
+    "name": "AI Learning System Check",
+    "status": "error",
+    "message": "AI Learning error: 'AgentSelfLearning' object has no attribute 'get_stats'",
+    "details": null,
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "medium",
+    "recommendations": [],
+    "timestamp": "2026-01-27T03:53:59.689528",
+    "duration_ms": 7.647275924682617
+  },
+  {
+    "check_id": "ai_seo_integration",
+    "category": "ai",
+    "name": "AI SEO Integration Check",
+    "status": "error",
+    "message": "AI SEO Integration error: cannot import name 'AISEOIntegration' from 'services.ai_seo_integration' (/home/ubuntu/seo_monster/backend/services/ai_seo_integration.py)",
+    "details": null,
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "medium",
+    "recommendations": [],
+    "timestamp": "2026-01-27T03:53:59.695123",
+    "duration_ms": 4.581212997436523
+  },
+  {
+    "check_id": "ses_service",
+    "category": "email",
+    "name": "AWS SES Service Check",
+    "status": "warning",
+    "message": "No AWS SES keys configured",
+    "details": null,
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "high",
+    "recommendations": [
+      "Add AWS SES credentials in Email SES module"
+    ],
+    "timestamp": "2026-01-27T03:53:59.696374",
+    "duration_ms": 0.10085105895996094
+  },
+  {
+    "check_id": "ses_warmup",
+    "category": "email",
+    "name": "SES Warmup Check",
+    "status": "error",
+    "message": "SES Warmup error: cannot import name 'SESWarmupService' from 'services.ses_warmup' (/home/ubuntu/seo_monster/backend/services/ses_warmup.py)",
+    "details": null,
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "medium",
+    "recommendations": [],
+    "timestamp": "2026-01-27T03:53:59.697630",
+    "duration_ms": 0.0362396240234375
+  },
+  {
+    "check_id": "recipient_manager",
+    "category": "email",
+    "name": "Recipient Manager Check",
+    "status": "ok",
+    "message": "0 lists with 0 recipients",
+    "details": {
+      "lists_count": 0,
+      "total_recipients": 0
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "medium",
+    "recommendations": [],
+    "timestamp": "2026-01-27T03:53:59.698921",
+    "duration_ms": 0.05412101745605469
+  },
+  {
+    "check_id": "tds_core",
+    "category": "tds",
+    "name": "TDS Core Check",
+    "status": "error",
+    "message": "TDS Core error: 'TDSCore' object has no attribute 'get_stats'",
+    "details": null,
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "high",
+    "recommendations": [],
+    "timestamp": "2026-01-27T03:53:59.700342",
+    "duration_ms": 0.5116462707519531
+  },
+  {
+    "check_id": "tds_routing",
+    "category": "tds",
+    "name": "TDS Routing Check",
+    "status": "error",
+    "message": "TDS Routing error: cannot import name 'TDSRouting' from 'services.tds_routing' (/home/ubuntu/seo_monster/backend/services/tds_routing.py)",
+    "details": null,
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "high",
+    "recommendations": [],
+    "timestamp": "2026-01-27T03:53:59.701403",
+    "duration_ms": 0.032901763916015625
+  },
+  {
+    "check_id": "tds_antifraud",
+    "category": "tds",
+    "name": "TDS Antifraud Check",
+    "status": "ok",
+    "message": "TDS Antifraud is working",
+    "details": null,
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "medium",
+    "recommendations": [],
+    "timestamp": "2026-01-27T03:53:59.702782",
+    "duration_ms": 0.08606910705566406
+  },
+  {
+    "check_id": "tds_statistics",
+    "category": "tds",
+    "name": "TDS Statistics Check",
+    "status": "error",
+    "message": "TDS Statistics error: cannot import name 'TDSStatistics' from 'services.tds_statistics' (/home/ubuntu/seo_monster/backend/services/tds_statistics.py)",
+    "details": null,
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "low",
+    "recommendations": [],
+    "timestamp": "2026-01-27T03:53:59.703968",
+    "duration_ms": 0.03552436828613281
+  },
+  {
+    "check_id": "cloaking_system",
+    "category": "tds",
+    "name": "Cloaking System Check",
+    "status": "error",
+    "message": "Cloaking system error: cannot import name 'CloakingSystem' from 'services.cloaking_system' (/home/ubuntu/seo_monster/backend/services/cloaking_system.py)",
+    "details": null,
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "medium",
+    "recommendations": [],
+    "timestamp": "2026-01-27T03:53:59.705282",
+    "duration_ms": 0.0324249267578125
+  },
+  {
+    "check_id": "ads_integration",
+    "category": "integrations",
+    "name": "Ads Integration Check",
+    "status": "error",
+    "message": "Ads integration error: 'AdsTrackerIntegration' object has no attribute 'get_stats'",
+    "details": null,
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "medium",
+    "recommendations": [],
+    "timestamp": "2026-01-27T03:53:59.706611",
+    "duration_ms": 0.072479248046875
+  },
+  {
+    "check_id": "image_providers",
+    "category": "integrations",
+    "name": "Image Providers Check",
+    "status": "warning",
+    "message": "Image providers error: 'ImageProviderManager' object has no attribute 'get_available_providers'",
+    "details": null,
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "low",
+    "recommendations": [],
+    "timestamp": "2026-01-27T03:53:59.708008",
+    "duration_ms": 0.0782012939453125
+  },
+  {
+    "check_id": "wordpress_manager",
+    "category": "integrations",
+    "name": "WordPress Manager Check",
+    "status": "ok",
+    "message": "WordPress manager is working",
+    "details": null,
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "medium",
+    "recommendations": [],
+    "timestamp": "2026-01-27T03:53:59.709128",
+    "duration_ms": 0.06747245788574219
+  },
+  {
+    "check_id": "cpanel_manager",
+    "category": "integrations",
+    "name": "cPanel Manager Check",
+    "status": "error",
+    "message": "cPanel manager error: cannot import name 'CpanelManager' from 'services.cpanel_manager' (/home/ubuntu/seo_monster/backend/services/cpanel_manager.py)",
+    "details": null,
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "medium",
+    "recommendations": [],
+    "timestamp": "2026-01-27T03:53:59.710550",
+    "duration_ms": 0.031948089599609375
+  },
+  {
+    "check_id": "config_files",
+    "category": "configuration",
+    "name": "Config Files Check",
+    "status": "warning",
+    "message": "2 config files missing",
+    "details": {
+      "missing": [
+        "/home/ubuntu/seo_monster/backend/data/ses/keys.json",
+        "/home/ubuntu/seo_monster/backend/data/tds/config.json"
+      ]
+    },
+    "fix_available": true,
+    "fix_applied": false,
+    "severity": "high",
+    "recommendations": [],
+    "timestamp": "2026-01-27T03:53:59.711945",
+    "duration_ms": 0.1049041748046875
+  },
+  {
+    "check_id": "environment_vars",
+    "category": "configuration",
+    "name": "Environment Variables Check",
+    "status": "warning",
+    "message": "All required vars set, 3 optional missing",
+    "details": {
+      "missing_optional": [
+        {
+          "var": "AWS_ACCESS_KEY_ID",
+          "description": "For AWS SES"
+        },
+        {
+          "var": "AWS_SECRET_ACCESS_KEY",
+          "description": "For AWS SES"
+        },
+        {
+          "var": "TELEGRAM_BOT_TOKEN",
+          "description": "For Telegram notifications"
+        }
+      ]
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "medium",
+    "recommendations": [],
+    "timestamp": "2026-01-27T03:53:59.713456",
+    "duration_ms": 0.025033950805664062
+  },
+  {
+    "check_id": "api_keys",
+    "category": "configuration",
+    "name": "API Keys Check",
+    "status": "ok",
+    "message": "API keys are configured",
+    "details": null,
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "critical",
+    "recommendations": [],
+    "timestamp": "2026-01-27T03:53:59.714481",
+    "duration_ms": 0.016450881958007812
+  },
+  {
+    "check_id": "python_packages",
+    "category": "dependencies",
+    "name": "Python Packages Check",
+    "status": "error",
+    "message": "2 packages are missing",
+    "details": {
+      "missing": [
+        "pillow",
+        "beautifulsoup4"
+      ],
+      "installed": [
+        "fastapi",
+        "uvicorn",
+        "aiohttp",
+        "openai",
+        "pydantic",
+        "requests",
+        "boto3"
+      ]
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "high",
+    "recommendations": [
+      "Install missing packages: pip install pillow beautifulsoup4"
+    ],
+    "timestamp": "2026-01-27T03:53:59.754074",
+    "duration_ms": 38.429975509643555
+  },
+  {
+    "check_id": "frontend_build",
+    "category": "dependencies",
+    "name": "Frontend Build Check",
+    "status": "ok",
+    "message": "Frontend build is valid",
+    "details": null,
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "medium",
+    "recommendations": [],
+    "timestamp": "2026-01-27T03:53:59.756153",
+    "duration_ms": 0.2872943878173828
+  },
+  {
+    "check_id": "memory_usage",
+    "category": "performance",
+    "name": "Memory Usage Check",
+    "status": "ok",
+    "message": "Memory usage OK: 50.6%",
+    "details": {
+      "total_gb": 3.85,
+      "available_gb": 1.9,
+      "percent_used": 50.6
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "high",
+    "recommendations": [],
+    "timestamp": "2026-01-27T03:53:59.789108",
+    "duration_ms": 31.47125244140625
+  },
+  {
+    "check_id": "cpu_usage",
+    "category": "performance",
+    "name": "CPU Usage Check",
+    "status": "ok",
+    "message": "CPU usage OK: 1.7%",
+    "details": {
+      "cpu_percent": 1.7,
+      "cpu_count": 6
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "medium",
+    "recommendations": [],
+    "timestamp": "2026-01-27T03:54:00.790931",
+    "duration_ms": 1000.5137920379639
+  },
+  {
+    "check_id": "process_count",
+    "category": "performance",
+    "name": "Process Count Check",
+    "status": "ok",
+    "message": "258 total processes, 4 Python",
+    "details": {
+      "total": 258,
+      "python": 4
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "low",
+    "recommendations": [],
+    "timestamp": "2026-01-27T03:54:00.804328",
+    "duration_ms": 11.51275634765625
+  },
+  {
+    "check_id": "network_connectivity",
+    "category": "network",
+    "name": "Network Connectivity Check",
+    "status": "ok",
+    "message": "Internet connection is working",
+    "details": {
+      "connected_to": [
+        "Google DNS",
+        "Cloudflare DNS"
+      ]
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "critical",
+    "recommendations": [],
+    "timestamp": "2026-01-27T03:54:00.806916",
+    "duration_ms": 1.1639595031738281
+  },
+  {
+    "check_id": "port_availability",
+    "category": "network",
+    "name": "Port Availability Check",
+    "status": "ok",
+    "message": "Backend running, 2 services active",
+    "details": {
+      "in_use": [
+        {
+          "port": 8000,
+          "name": "Backend API"
+        },
+        {
+          "port": 5200,
+          "name": "Frontend Alt"
+        }
+      ],
+      "available": [
+        {
+          "port": 5173,
+          "name": "Frontend Dev"
+        }
+      ]
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "high",
+    "recommendations": [],
+    "timestamp": "2026-01-27T03:54:00.809051",
+    "duration_ms": 0.8981227874755859
+  },
+  {
+    "check_id": "external_apis",
+    "category": "network",
+    "name": "External APIs Check",
+    "status": "ok",
+    "message": "All 3 external APIs reachable",
+    "details": {
+      "reachable": [
+        "OpenAI API",
+        "Google",
+        "GitHub API"
+      ]
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "medium",
+    "recommendations": [],
+    "timestamp": "2026-01-27T03:54:02.699630",
+    "duration_ms": 1889.0154361724854
+  },
+  {
+    "check_id": "file_permissions",
+    "category": "security",
+    "name": "File Permissions Check",
+    "status": "ok",
+    "message": "File permissions are secure",
+    "details": null,
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "medium",
+    "recommendations": [],
+    "timestamp": "2026-01-27T03:54:02.702123",
+    "duration_ms": 0.12230873107910156
+  },
+  {
+    "check_id": "sensitive_data",
+    "category": "security",
+    "name": "Sensitive Data Check",
+    "status": "ok",
+    "message": "No sensitive data patterns found in data files",
+    "details": null,
+    "fix_available": false,
+    "fix_applied": false,
+    "severity": "high",
+    "recommendations": [],
+    "timestamp": "2026-01-27T03:54:02.706337",
+    "duration_ms": 2.1996498107910156
   }
 ]

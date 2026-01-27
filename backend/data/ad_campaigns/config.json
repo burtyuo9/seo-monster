@@ -1,0 +1,42 @@
+{
+  "enabled": true,
+  "auto_mode": true,
+  "check_interval": 300,
+  "auto_budget_management": true,
+  "auto_keyword_research": true,
+  "cloaking_default": true,
+  "min_budget_threshold": 10.0,
+  "max_daily_spend_percent": 20,
+  "fraud_protection": true,
+  "bot_filtering": true,
+  "platforms_config": {
+    "google_ads": {
+      "enabled": true,
+      "api_version": "v14"
+    },
+    "bing_ads": {
+      "enabled": true,
+      "api_version": "v13"
+    },
+    "linkedin_ads": {
+      "enabled": true
+    },
+    "facebook_ads": {
+      "enabled": true,
+      "api_version": "v18.0"
+    },
+    "tiktok_ads": {
+      "enabled": true
+    },
+    "yandex_direct": {
+      "enabled": true,
+      "api_version": "v5"
+    },
+    "twitter_ads": {
+      "enabled": false
+    },
+    "pinterest_ads": {
+      "enabled": false
+    }
+  }
+}

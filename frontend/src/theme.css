@@ -1,0 +1,144 @@
+/* SEO Monster Theme Styles */
+
+/* Dark Theme (Default) */
+:root,
+.dark {
+  --bg-primary: #111827;
+  --bg-secondary: #1f2937;
+  --bg-tertiary: #374151;
+  --bg-hover: #4b5563;
+  
+  --text-primary: #ffffff;
+  --text-secondary: #9ca3af;
+  --text-muted: #6b7280;
+  
+  --border-color: #374151;
+  --border-hover: #4b5563;
+  
+  --accent-primary: #3b82f6;
+  --accent-secondary: #10b981;
+  --accent-danger: #ef4444;
+  --accent-warning: #f59e0b;
+  
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+}
+
+/* Light Theme */
+.light {
+  --bg-primary: #f3f4f6;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #e5e7eb;
+  --bg-hover: #d1d5db;
+  
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --text-muted: #9ca3af;
+  
+  --border-color: #d1d5db;
+  --border-hover: #9ca3af;
+  
+  --accent-primary: #2563eb;
+  --accent-secondary: #059669;
+  --accent-danger: #dc2626;
+  --accent-warning: #d97706;
+  
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Apply theme variables */
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Override Tailwind classes for theme support */
+.light .bg-gray-900 { background-color: var(--bg-primary) !important; }
+.light .bg-gray-800 { background-color: var(--bg-secondary) !important; }
+.light .bg-gray-700 { background-color: var(--bg-tertiary) !important; }
+.light .bg-gray-600 { background-color: var(--bg-hover) !important; }
+
+.light .text-white { color: var(--text-primary) !important; }
+.light .text-gray-400 { color: var(--text-secondary) !important; }
+.light .text-gray-300 { color: var(--text-secondary) !important; }
+.light .text-gray-500 { color: var(--text-muted) !important; }
+
+.light .border-gray-700 { border-color: var(--border-color) !important; }
+.light .border-gray-600 { border-color: var(--border-color) !important; }
+
+.light .hover\:bg-gray-700:hover { background-color: var(--bg-hover) !important; }
+.light .hover\:bg-gray-600:hover { background-color: var(--bg-hover) !important; }
+
+/* Sidebar in light mode */
+.light .sidebar {
+  background-color: var(--bg-secondary);
+  border-right: 1px solid var(--border-color);
+}
+
+/* Cards in light mode */
+.light .card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow);
+}
+
+/* Input fields in light mode */
+.light input,
+.light select,
+.light textarea {
+  background-color: var(--bg-secondary) !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-primary) !important;
+}
+
+.light input:focus,
+.light select:focus,
+.light textarea:focus {
+  border-color: var(--accent-primary) !important;
+  outline: none;
+}
+
+/* Buttons maintain their colors */
+.light .bg-blue-600 { background-color: var(--accent-primary) !important; }
+.light .bg-green-600 { background-color: var(--accent-secondary) !important; }
+.light .bg-red-600 { background-color: var(--accent-danger) !important; }
+.light .bg-yellow-600 { background-color: var(--accent-warning) !important; }
+
+/* Scrollbar styling */
+.dark ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #1f2937;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #4b5563;
+  border-radius: 4px;
+}
+
+.light ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.light ::-webkit-scrollbar-track {
+  background: #f3f4f6;
+}
+
+.light ::-webkit-scrollbar-thumb {
+  background: #9ca3af;
+  border-radius: 4px;
+}
+
+/* Smooth transitions */
+* {
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+/* Keep animations smooth */
+button, a {
+  transition: background-color 0.15s ease, transform 0.1s ease;
+}

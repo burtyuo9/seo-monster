@@ -1,0 +1,11 @@
+{
+  "total_accounts": 0,
+  "total_campaigns": 0,
+  "total_spent": 0.0,
+  "total_clicks": 0,
+  "total_impressions": 0,
+  "total_conversions": 0,
+  "blocked_bots": 0,
+  "fraud_prevented": 0.0,
+  "by_platform": {}
+}

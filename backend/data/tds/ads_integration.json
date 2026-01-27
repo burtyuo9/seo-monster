@@ -1,0 +1,14 @@
+{
+  "ad_campaigns_mapping": {},
+  "click_attribution": {},
+  "conversion_postbacks": [],
+  "stats_sync": {
+    "last_sync": null,
+    "sync_interval": 300
+  },
+  "fraud_stats": {
+    "total_blocked": 0,
+    "blocked_by_source": {},
+    "money_saved": 0.0
+  }
+}

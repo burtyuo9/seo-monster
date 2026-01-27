@@ -42,6 +42,7 @@ from app.api.ai_routes import router as ai_router
 from app.api.hosting_routes import router as hosting_router
 from app.api.tds_routes import router as tds_router
 from app.api.github_routes import router as github_router
+from app.api.image_routes import router as image_router, priority_router
 
 
 @asynccontextmanager
@@ -110,6 +111,8 @@ app.include_router(ai_router)
 app.include_router(hosting_router)
 app.include_router(tds_router)
 app.include_router(github_router)
+app.include_router(image_router)
+app.include_router(priority_router)
 
 
 # Корневой эндпоинт

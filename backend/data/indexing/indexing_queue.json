@@ -1,0 +1,17 @@
+[
+  {
+    "url": "https://example.com/new-page1",
+    "search_engines": ["google", "bing"],
+    "added_at": "2026-01-26T20:00:00"
+  },
+  {
+    "url": "https://mysite.ru/pending-article",
+    "search_engines": ["google", "yandex"],
+    "added_at": "2026-01-26T20:30:00"
+  },
+  {
+    "url": "https://blog.test.com/upcoming-post",
+    "search_engines": ["google"],
+    "added_at": "2026-01-26T21:00:00"
+  }
+]

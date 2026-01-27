@@ -1,0 +1,52 @@
+[
+  {
+    "keyword_id": 1,
+    "domain": "example.com",
+    "keyword": "купить ноутбук",
+    "google_position": 5,
+    "google_change": 2,
+    "bing_position": 3,
+    "bing_change": 1,
+    "timestamp": "2026-01-26T09:00:00"
+  },
+  {
+    "keyword_id": 2,
+    "domain": "example.com",
+    "keyword": "ноутбук цена",
+    "google_position": 12,
+    "google_change": -3,
+    "bing_position": 8,
+    "bing_change": 0,
+    "timestamp": "2026-01-26T09:00:00"
+  },
+  {
+    "keyword_id": 3,
+    "domain": "example.com",
+    "keyword": "лучший ноутбук 2026",
+    "google_position": 2,
+    "google_change": 5,
+    "bing_position": 1,
+    "bing_change": 2,
+    "timestamp": "2026-01-26T09:00:00"
+  },
+  {
+    "keyword_id": 4,
+    "domain": "mysite.ru",
+    "keyword": "SEO продвижение",
+    "google_position": 8,
+    "google_change": 0,
+    "bing_position": 15,
+    "bing_change": -2,
+    "timestamp": "2026-01-26T09:00:00"
+  },
+  {
+    "keyword_id": 5,
+    "domain": "mysite.ru",
+    "keyword": "раскрутка сайта",
+    "google_position": 25,
+    "google_change": 3,
+    "bing_position": 32,
+    "bing_change": 1,
+    "timestamp": "2026-01-26T09:00:00"
+  }
+]

@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "domain": "example.com",
+    "keyword": "купить ноутбук",
+    "target_url": null,
+    "added_at": "2026-01-20T10:00:00",
+    "last_check": "2026-01-26T09:00:00",
+    "google_position": 5,
+    "bing_position": 3
+  },
+  {
+    "id": 2,
+    "domain": "example.com",
+    "keyword": "ноутбук цена",
+    "target_url": null,
+    "added_at": "2026-01-20T10:00:00",
+    "last_check": "2026-01-26T09:00:00",
+    "google_position": 12,
+    "bing_position": 8
+  },
+  {
+    "id": 3,
+    "domain": "example.com",
+    "keyword": "лучший ноутбук 2026",
+    "target_url": null,
+    "added_at": "2026-01-20T10:00:00",
+    "last_check": "2026-01-26T09:00:00",
+    "google_position": 2,
+    "bing_position": 1
+  },
+  {
+    "id": 4,
+    "domain": "mysite.ru",
+    "keyword": "SEO продвижение",
+    "target_url": null,
+    "added_at": "2026-01-21T10:00:00",
+    "last_check": "2026-01-26T09:00:00",
+    "google_position": 8,
+    "bing_position": 15
+  },
+  {
+    "id": 5,
+    "domain": "mysite.ru",
+    "keyword": "раскрутка сайта",
+    "target_url": null,
+    "added_at": "2026-01-21T10:00:00",
+    "last_check": "2026-01-26T09:00:00",
+    "google_position": 25,
+    "bing_position": 32
+  },
+  {
+    "id": 6,
+    "domain": "mysite.ru",
+    "keyword": "оптимизация сайта",
+    "target_url": null,
+    "added_at": "2026-01-21T10:00:00",
+    "last_check": "2026-01-26T09:00:00",
+    "google_position": null,
+    "bing_position": 45
+  },
+  {
+    "id": 7,
+    "domain": "blog.test.com",
+    "keyword": "как создать блог",
+    "target_url": null,
+    "added_at": "2026-01-22T10:00:00",
+    "last_check": "2026-01-26T09:00:00",
+    "google_position": 18,
+    "bing_position": 22
+  },
+  {
+    "id": 8,
+    "domain": "blog.test.com",
+    "keyword": "блог для бизнеса",
+    "target_url": null,
+    "added_at": "2026-01-22T10:00:00",
+    "last_check": "2026-01-26T09:00:00",
+    "google_position": 7,
+    "bing_position": 5
+  }
+]

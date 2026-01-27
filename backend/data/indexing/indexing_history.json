@@ -1,0 +1,62 @@
+[
+  {
+    "url": "https://example.com/page1",
+    "search_engines": ["google", "bing"],
+    "status": "success",
+    "timestamp": "2026-01-26T10:30:00"
+  },
+  {
+    "url": "https://example.com/page2",
+    "search_engines": ["google", "bing", "yandex"],
+    "status": "success",
+    "timestamp": "2026-01-26T11:45:00"
+  },
+  {
+    "url": "https://mysite.ru/article1",
+    "search_engines": ["google", "yandex"],
+    "status": "success",
+    "timestamp": "2026-01-26T14:20:00"
+  },
+  {
+    "url": "https://mysite.ru/article2",
+    "search_engines": ["google"],
+    "status": "failed",
+    "timestamp": "2026-01-26T15:00:00"
+  },
+  {
+    "url": "https://blog.test.com/post1",
+    "search_engines": ["google", "bing"],
+    "status": "success",
+    "timestamp": "2026-01-26T16:30:00"
+  },
+  {
+    "url": "https://example.com/page3",
+    "search_engines": ["google", "bing", "yandex"],
+    "status": "success",
+    "timestamp": "2026-01-25T09:00:00"
+  },
+  {
+    "url": "https://example.com/page4",
+    "search_engines": ["google"],
+    "status": "success",
+    "timestamp": "2026-01-24T12:00:00"
+  },
+  {
+    "url": "https://mysite.ru/article3",
+    "search_engines": ["google", "yandex"],
+    "status": "success",
+    "timestamp": "2026-01-23T14:00:00"
+  },
+  {
+    "url": "https://blog.test.com/post2",
+    "search_engines": ["bing"],
+    "status": "success",
+    "timestamp": "2026-01-22T10:00:00"
+  },
+  {
+    "url": "https://example.com/page5",
+    "search_engines": ["google", "bing"],
+    "status": "success",
+    "timestamp": "2026-01-21T11:00:00"
+  }
+]

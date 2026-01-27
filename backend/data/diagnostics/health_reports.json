@@ -1,0 +1,233 @@
+[
+  {
+    "overall_status": "error",
+    "health_score": 74,
+    "total_checks": 43,
+    "passed_checks": 28,
+    "warning_checks": 4,
+    "error_checks": 11,
+    "critical_checks": 0,
+    "fixed_checks": 0,
+    "categories_summary": {
+      "api": {
+        "ok": 2,
+        "warning": 1,
+        "error": 0,
+        "critical": 0
+      },
+      "file_system": {
+        "ok": 5,
+        "warning": 0,
+        "error": 0,
+        "critical": 0
+      },
+      "services": {
+        "ok": 4,
+        "warning": 0,
+        "error": 0,
+        "critical": 0
+      },
+      "ai": {
+        "ok": 1,
+        "warning": 0,
+        "error": 3,
+        "critical": 0
+      },
+      "email": {
+        "ok": 2,
+        "warning": 1,
+        "error": 1,
+        "critical": 0
+      },
+      "tds": {
+        "ok": 1,
+        "warning": 0,
+        "error": 4,
+        "critical": 0
+      },
+      "integrations": {
+        "ok": 2,
+        "warning": 1,
+        "error": 2,
+        "critical": 0
+      },
+      "configuration": {
+        "ok": 2,
+        "warning": 1,
+        "error": 0,
+        "critical": 0
+      },
+      "dependencies": {
+        "ok": 1,
+        "warning": 0,
+        "error": 1,
+        "critical": 0
+      },
+      "performance": {
+        "ok": 3,
+        "warning": 0,
+        "error": 0,
+        "critical": 0
+      },
+      "network": {
+        "ok": 3,
+        "warning": 0,
+        "error": 0,
+        "critical": 0
+      },
+      "security": {
+        "ok": 2,
+        "warning": 0,
+        "error": 0,
+        "critical": 0
+      }
+    },
+    "top_issues": [
+      {
+        "check_id": "ai_agent_core",
+        "category": "ai",
+        "name": "AI Agent Core Check",
+        "status": "error",
+        "message": "AI Agent Core error: cannot import name 'AIAgentCore' from 'services.ai_agent_core' (/home/ubuntu/seo_monster/backend/services/ai_agent_core.py)",
+        "details": null,
+        "fix_available": false,
+        "fix_applied": false,
+        "severity": "high",
+        "recommendations": [],
+        "timestamp": "2026-01-27T03:57:32.600576",
+        "duration_ms": 0.04482269287109375
+      },
+      {
+        "check_id": "ai_learning",
+        "category": "ai",
+        "name": "AI Learning System Check",
+        "status": "error",
+        "message": "AI Learning error: 'AgentSelfLearning' object has no attribute 'get_stats'",
+        "details": null,
+        "fix_available": false,
+        "fix_applied": false,
+        "severity": "medium",
+        "recommendations": [],
+        "timestamp": "2026-01-27T03:57:32.605092",
+        "duration_ms": 0.0762939453125
+      },
+      {
+        "check_id": "ai_seo_integration",
+        "category": "ai",
+        "name": "AI SEO Integration Check",
+        "status": "error",
+        "message": "AI SEO Integration error: cannot import name 'AISEOIntegration' from 'services.ai_seo_integration' (/home/ubuntu/seo_monster/backend/services/ai_seo_integration.py)",
+        "details": null,
+        "fix_available": false,
+        "fix_applied": false,
+        "severity": "medium",
+        "recommendations": [],
+        "timestamp": "2026-01-27T03:57:32.609675",
+        "duration_ms": 0.03647804260253906
+      },
+      {
+        "check_id": "ses_warmup",
+        "category": "email",
+        "name": "SES Warmup Check",
+        "status": "error",
+        "message": "SES Warmup error: cannot import name 'SESWarmupService' from 'services.ses_warmup' (/home/ubuntu/seo_monster/backend/services/ses_warmup.py)",
+        "details": null,
+        "fix_available": false,
+        "fix_applied": false,
+        "severity": "medium",
+        "recommendations": [],
+        "timestamp": "2026-01-27T03:57:32.618750",
+        "duration_ms": 0.037670135498046875
+      },
+      {
+        "check_id": "tds_core",
+        "category": "tds",
+        "name": "TDS Core Check",
+        "status": "error",
+        "message": "TDS Core error: 'TDSCore' object has no attribute 'get_stats'",
+        "details": null,
+        "fix_available": false,
+        "fix_applied": false,
+        "severity": "high",
+        "recommendations": [],
+        "timestamp": "2026-01-27T03:57:32.632497",
+        "duration_ms": 0.5135536193847656
+      },
+      {
+        "check_id": "tds_routing",
+        "category": "tds",
+        "name": "TDS Routing Check",
+        "status": "error",
+        "message": "TDS Routing error: cannot import name 'TDSRouting' from 'services.tds_routing' (/home/ubuntu/seo_monster/backend/services/tds_routing.py)",
+        "details": null,
+        "fix_available": false,
+        "fix_applied": false,
+        "severity": "high",
+        "recommendations": [],
+        "timestamp": "2026-01-27T03:57:32.636729",
+        "duration_ms": 0.034332275390625
+      },
+      {
+        "check_id": "tds_statistics",
+        "category": "tds",
+        "name": "TDS Statistics Check",
+        "status": "error",
+        "message": "TDS Statistics error: cannot import name 'TDSStatistics' from 'services.tds_statistics' (/home/ubuntu/seo_monster/backend/services/tds_statistics.py)",
+        "details": null,
+        "fix_available": false,
+        "fix_applied": false,
+        "severity": "low",
+        "recommendations": [],
+        "timestamp": "2026-01-27T03:57:32.645796",
+        "duration_ms": 0.03361701965332031
+      },
+      {
+        "check_id": "cloaking_system",
+        "category": "tds",
+        "name": "Cloaking System Check",
+        "status": "error",
+        "message": "Cloaking system error: cannot import name 'CloakingSystem' from 'services.cloaking_system' (/home/ubuntu/seo_monster/backend/services/cloaking_system.py)",
+        "details": null,
+        "fix_available": false,
+        "fix_applied": false,
+        "severity": "medium",
+        "recommendations": [],
+        "timestamp": "2026-01-27T03:57:32.650380",
+        "duration_ms": 0.035762786865234375
+      },
+      {
+        "check_id": "ads_integration",
+        "category": "integrations",
+        "name": "Ads Integration Check",
+        "status": "error",
+        "message": "Ads integration error: 'AdsTrackerIntegration' object has no attribute 'get_stats'",
+        "details": null,
+        "fix_available": false,
+        "fix_applied": false,
+        "severity": "medium",
+        "recommendations": [],
+        "timestamp": "2026-01-27T03:57:32.655505",
+        "duration_ms": 0.08511543273925781
+      },
+      {
+        "check_id": "cpanel_manager",
+        "category": "integrations",
+        "name": "cPanel Manager Check",
+        "status": "error",
+        "message": "cPanel manager error: cannot import name 'CpanelManager' from 'services.cpanel_manager' (/home/ubuntu/seo_monster/backend/services/cpanel_manager.py)",
+        "details": null,
+        "fix_available": false,
+        "fix_applied": false,
+        "severity": "medium",
+        "recommendations": [],
+        "timestamp": "2026-01-27T03:57:32.676348",
+        "duration_ms": 0.06628036499023438
+      }
+    ],
+    "recommendations": [
+      "Install missing packages: pip install pillow beautifulsoup4",
+      "Add AWS SES credentials in Email SES module"
+    ],
+    "timestamp": "2026-01-27T03:57:34.987014"
+  }
+]

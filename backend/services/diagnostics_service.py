@@ -1085,7 +1085,12 @@ class DiagnosticsService:
         try:
             from services.email_ab_testing import EmailABTestingService
             service = EmailABTestingService()
-            stats = service.get_stats()
+            # Проверяем, является ли метод async
+            import inspect
+            if inspect.iscoroutinefunction(service.get_stats):
+                stats = await service.get_stats()
+            else:
+                stats = service.get_stats()
             
             return DiagnosticResult(
                 check_id="email_ab_testing",
@@ -1291,7 +1296,12 @@ class DiagnosticsService:
         try:
             from services.ad_campaigns_service import AdCampaignsService
             service = AdCampaignsService()
-            stats = service.get_stats()
+            # Проверяем, является ли метод async
+            import inspect
+            if inspect.iscoroutinefunction(service.get_stats):
+                stats = await service.get_stats()
+            else:
+                stats = service.get_stats()
             
             return DiagnosticResult(
                 check_id="ad_campaigns",

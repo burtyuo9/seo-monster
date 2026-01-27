@@ -1,0 +1,60 @@
+{
+  "title": "Content Generator",
+  "subtitle": "AI-powered SEO content creation",
+  "editor": {
+    "title": "Article Editor",
+    "placeholder": "Start writing or generate content...",
+    "wordCount": "Word Count",
+    "characterCount": "Character Count",
+    "readingTime": "Reading Time"
+  },
+  "generation": {
+    "title": "Generate Content",
+    "keyword": "Target Keyword",
+    "articleType": "Article Type",
+    "tone": "Writing Tone",
+    "length": "Article Length",
+    "generateBtn": "Generate Article",
+    "regenerateBtn": "Regenerate"
+  },
+  "articleTypes": {
+    "blogPost": "Blog Post",
+    "guide": "How-to Guide",
+    "comparison": "Comparison Article",
+    "listicle": "Listicle",
+    "review": "Review",
+    "faq": "FAQ Article"
+  },
+  "tones": {
+    "professional": "Professional",
+    "casual": "Casual",
+    "technical": "Technical",
+    "friendly": "Friendly",
+    "persuasive": "Persuasive"
+  },
+  "lengths": {
+    "short": "Short (500-800 words)",
+    "medium": "Medium (800-1200 words)",
+    "long": "Long (1200-2000 words)",
+    "comprehensive": "Comprehensive (2000+ words)"
+  },
+  "seoScore": {
+    "title": "SEO Score",
+    "excellent": "Excellent",
+    "good": "Good",
+    "needsWork": "Needs Work",
+    "poor": "Poor"
+  },
+  "suggestions": {
+    "title": "SEO Suggestions",
+    "addKeyword": "Add target keyword to title",
+    "addHeadings": "Add more H2/H3 headings",
+    "addLinks": "Add internal/external links",
+    "addImages": "Add images with alt text",
+    "improveReadability": "Improve readability"
+  },
+  "history": {
+    "title": "Generation History",
+    "noHistory": "No generation history"
+  }
+}

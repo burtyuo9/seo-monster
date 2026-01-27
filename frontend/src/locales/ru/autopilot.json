@@ -1,0 +1,49 @@
+{
+  "title": "Режим Автопилота",
+  "subtitle": "Полностью автоматизированный SEO-процесс",
+  "status": {
+    "idle": "Ожидание",
+    "running": "Выполняется",
+    "paused": "Приостановлен",
+    "completed": "Завершён"
+  },
+  "controls": {
+    "startCycle": "Запустить полный цикл",
+    "stopCycle": "Остановить цикл",
+    "pauseCycle": "Приостановить цикл",
+    "resumeCycle": "Возобновить цикл"
+  },
+  "modules": {
+    "title": "Активные модули",
+    "siteAnalysis": "Анализ сайта",
+    "keywordResearch": "Исследование ключевых слов",
+    "competitorAnalysis": "Анализ конкурентов",
+    "contentGeneration": "Генерация контента",
+    "indexing": "Индексация",
+    "rankTracking": "Отслеживание позиций",
+    "aiLearning": "AI-обучение"
+  },
+  "settings": {
+    "title": "Настройки автопилота",
+    "targetDomain": "Целевой домен",
+    "articlesPerCycle": "Статей за цикл",
+    "wordsPerArticle": "Слов в статье",
+    "autoIndexing": "Авто-индексация",
+    "geoTargeting": "Гео-таргетинг",
+    "excludedCountries": "Исключённые страны"
+  },
+  "log": {
+    "title": "Журнал активности",
+    "clearLog": "Очистить журнал",
+    "exportLog": "Экспортировать журнал"
+  },
+  "progress": {
+    "title": "Текущий прогресс",
+    "phase": "Фаза",
+    "step": "Шаг",
+    "eta": "Расчётное время",
+    "articlesGenerated": "Статей сгенерировано",
+    "keywordsFound": "Ключевых слов найдено",
+    "urlsIndexed": "URL проиндексировано"
+  }
+}

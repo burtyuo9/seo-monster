@@ -1,0 +1,66 @@
+{
+  "timestamp": "2026-01-26T23:08:12.220878",
+  "domain": "popolnyator-znlbk4ua.manus.space",
+  "indexing_requests": [
+    {
+      "engine": "Bing",
+      "protocol": "IndexNow",
+      "urls_count": 4,
+      "status": "sent",
+      "timestamp": "2026-01-26T23:08:12.221060"
+    },
+    {
+      "engine": "Yandex",
+      "protocol": "IndexNow",
+      "urls_count": 4,
+      "status": "sent",
+      "timestamp": "2026-01-26T23:08:12.221104"
+    },
+    {
+      "engine": "Google",
+      "protocol": "Ping",
+      "url": "https://popolnyator-znlbk4ua.manus.space/",
+      "status": "sent",
+      "timestamp": "2026-01-26T23:08:12.221121"
+    },
+    {
+      "engine": "Google",
+      "protocol": "Ping",
+      "url": "https://popolnyator-znlbk4ua.manus.space/services",
+      "status": "sent",
+      "timestamp": "2026-01-26T23:08:12.221126"
+    },
+    {
+      "engine": "Google",
+      "protocol": "Ping",
+      "url": "https://popolnyator-znlbk4ua.manus.space/payments",
+      "status": "sent",
+      "timestamp": "2026-01-26T23:08:12.221130"
+    },
+    {
+      "engine": "Google",
+      "protocol": "Ping",
+      "url": "https://popolnyator-znlbk4ua.manus.space/compliance",
+      "status": "sent",
+      "timestamp": "2026-01-26T23:08:12.221133"
+    },
+    {
+      "service": "http://blogsearch.google.com/ping/RPC2",
+      "protocol": "XML-RPC",
+      "status": "sent",
+      "timestamp": "2026-01-26T23:08:12.221147"
+    },
+    {
+      "service": "http://rpc.pingomatic.com/",
+      "protocol": "XML-RPC",
+      "status": "sent",
+      "timestamp": "2026-01-26T23:08:12.221155"
+    },
+    {
+      "service": "http://ping.blogs.yandex.ru/RPC2",
+      "protocol": "XML-RPC",
+      "status": "sent",
+      "timestamp": "2026-01-26T23:08:12.221159"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "title": "Autopilot Mode",
+  "subtitle": "Fully automated SEO workflow",
+  "status": {
+    "idle": "Idle",
+    "running": "Running",
+    "paused": "Paused",
+    "completed": "Completed"
+  },
+  "controls": {
+    "startCycle": "Start Full Cycle",
+    "stopCycle": "Stop Cycle",
+    "pauseCycle": "Pause Cycle",
+    "resumeCycle": "Resume Cycle"
+  },
+  "modules": {
+    "title": "Active Modules",
+    "siteAnalysis": "Site Analysis",
+    "keywordResearch": "Keyword Research",
+    "competitorAnalysis": "Competitor Analysis",
+    "contentGeneration": "Content Generation",
+    "indexing": "Indexing",
+    "rankTracking": "Rank Tracking",
+    "aiLearning": "AI Learning"
+  },
+  "settings": {
+    "title": "Autopilot Settings",
+    "targetDomain": "Target Domain",
+    "articlesPerCycle": "Articles per Cycle",
+    "wordsPerArticle": "Words per Article",
+    "autoIndexing": "Auto Indexing",
+    "geoTargeting": "Geo Targeting",
+    "excludedCountries": "Excluded Countries"
+  },
+  "log": {
+    "title": "Activity Log",
+    "clearLog": "Clear Log",
+    "exportLog": "Export Log"
+  },
+  "progress": {
+    "title": "Current Progress",
+    "phase": "Phase",
+    "step": "Step",
+    "eta": "Estimated Time",
+    "articlesGenerated": "Articles Generated",
+    "keywordsFound": "Keywords Found",
+    "urlsIndexed": "URLs Indexed"
+  }
+}

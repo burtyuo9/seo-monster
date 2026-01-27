@@ -1,0 +1,46 @@
+{
+  "title": "Менеджер индексации",
+  "subtitle": "Отправка и отслеживание статуса индексации URL",
+  "methods": {
+    "title": "Методы индексации",
+    "indexNow": "IndexNow API",
+    "googlePing": "Google Ping",
+    "bingWebmaster": "Bing Webmaster",
+    "sitemapSubmit": "Отправка Sitemap"
+  },
+  "status": {
+    "title": "Статус индексации",
+    "indexed": "Проиндексировано",
+    "pending": "Ожидание",
+    "notIndexed": "Не проиндексировано",
+    "error": "Ошибка"
+  },
+  "submit": {
+    "title": "Отправить URL",
+    "placeholder": "Введите URL (по одному в строке)...",
+    "submitBtn": "Отправить на индексацию",
+    "submitAll": "Отправить все страницы"
+  },
+  "sitemap": {
+    "title": "Менеджер Sitemap",
+    "generate": "Сгенерировать Sitemap",
+    "validate": "Проверить Sitemap",
+    "download": "Скачать XML",
+    "lastGenerated": "Последняя генерация",
+    "totalUrls": "Всего URL"
+  },
+  "log": {
+    "title": "Журнал отправок",
+    "url": "URL",
+    "method": "Метод",
+    "status": "Статус",
+    "submittedAt": "Отправлено",
+    "response": "Ответ"
+  },
+  "stats": {
+    "totalSubmitted": "Всего отправлено",
+    "successRate": "Успешность",
+    "pendingCount": "Ожидают",
+    "failedCount": "Ошибки"
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "title": "Competitor Analysis",
+  "subtitle": "Analyze and outrank your competition",
+  "addCompetitor": {
+    "title": "Add Competitor",
+    "placeholder": "Enter competitor domain...",
+    "addBtn": "Add"
+  },
+  "overview": {
+    "title": "Competitors Overview",
+    "totalCompetitors": "Total Competitors",
+    "avgDomainAuthority": "Avg. Domain Authority",
+    "avgBacklinks": "Avg. Backlinks",
+    "avgKeywords": "Avg. Keywords"
+  },
+  "table": {
+    "domain": "Domain",
+    "da": "DA",
+    "backlinks": "Backlinks",
+    "keywords": "Keywords",
+    "traffic": "Traffic",
+    "lastUpdated": "Last Updated",
+    "actions": "Actions"
+  },
+  "details": {
+    "title": "Competitor Details",
+    "domainAuthority": "Domain Authority",
+    "pageAuthority": "Page Authority",
+    "totalBacklinks": "Total Backlinks",
+    "referringDomains": "Referring Domains",
+    "organicKeywords": "Organic Keywords",
+    "organicTraffic": "Organic Traffic",
+    "topKeywords": "Top Keywords",
+    "topPages": "Top Pages",
+    "backlinksProfile": "Backlinks Profile"
+  },
+  "comparison": {
+    "title": "Comparison",
+    "yourSite": "Your Site",
+    "vsCompetitor": "vs Competitor",
+    "metrics": "Metrics Comparison"
+  },
+  "strategies": {
+    "title": "AI Strategies",
+    "contentGaps": "Content Gaps",
+    "keywordOpportunities": "Keyword Opportunities",
+    "backlinkOpportunities": "Backlink Opportunities"
+  }
+}

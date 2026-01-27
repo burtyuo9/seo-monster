@@ -1,0 +1,46 @@
+{
+  "title": "Indexing Manager",
+  "subtitle": "Submit and track URL indexing status",
+  "methods": {
+    "title": "Indexing Methods",
+    "indexNow": "IndexNow API",
+    "googlePing": "Google Ping",
+    "bingWebmaster": "Bing Webmaster",
+    "sitemapSubmit": "Sitemap Submit"
+  },
+  "status": {
+    "title": "Indexing Status",
+    "indexed": "Indexed",
+    "pending": "Pending",
+    "notIndexed": "Not Indexed",
+    "error": "Error"
+  },
+  "submit": {
+    "title": "Submit URLs",
+    "placeholder": "Enter URLs (one per line)...",
+    "submitBtn": "Submit for Indexing",
+    "submitAll": "Submit All Pages"
+  },
+  "sitemap": {
+    "title": "Sitemap Manager",
+    "generate": "Generate Sitemap",
+    "validate": "Validate Sitemap",
+    "download": "Download XML",
+    "lastGenerated": "Last Generated",
+    "totalUrls": "Total URLs"
+  },
+  "log": {
+    "title": "Submission Log",
+    "url": "URL",
+    "method": "Method",
+    "status": "Status",
+    "submittedAt": "Submitted At",
+    "response": "Response"
+  },
+  "stats": {
+    "totalSubmitted": "Total Submitted",
+    "successRate": "Success Rate",
+    "pendingCount": "Pending",
+    "failedCount": "Failed"
+  }
+}

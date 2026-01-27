@@ -1,0 +1,52 @@
+{
+  "title": "Settings",
+  "subtitle": "Configure your SEO Monster",
+  "sections": {
+    "general": "General",
+    "api": "API Keys",
+    "geo": "Geo Targeting",
+    "notifications": "Notifications",
+    "advanced": "Advanced"
+  },
+  "general": {
+    "title": "General Settings",
+    "language": "Interface Language",
+    "theme": "Theme",
+    "timezone": "Timezone",
+    "dateFormat": "Date Format"
+  },
+  "api": {
+    "title": "API Configuration",
+    "openaiKey": "OpenAI API Key",
+    "googleKey": "Google API Key",
+    "indexNowKey": "IndexNow API Key",
+    "testConnection": "Test Connection",
+    "connectionSuccess": "Connection successful",
+    "connectionFailed": "Connection failed"
+  },
+  "geo": {
+    "title": "Geographic Targeting",
+    "targetRegions": "Target Regions",
+    "excludedCountries": "Excluded Countries",
+    "languageTargeting": "Language Targeting",
+    "ipFiltering": "IP-based Filtering"
+  },
+  "notifications": {
+    "title": "Notification Settings",
+    "emailNotifications": "Email Notifications",
+    "browserNotifications": "Browser Notifications",
+    "cycleComplete": "Notify on cycle complete",
+    "errors": "Notify on errors",
+    "dailyReport": "Daily report"
+  },
+  "advanced": {
+    "title": "Advanced Settings",
+    "debugMode": "Debug Mode",
+    "logLevel": "Log Level",
+    "cacheSettings": "Cache Settings",
+    "clearCache": "Clear Cache",
+    "exportData": "Export All Data",
+    "importData": "Import Data",
+    "resetSettings": "Reset to Defaults"
+  }
+}

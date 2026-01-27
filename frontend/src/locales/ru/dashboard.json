@@ -1,0 +1,35 @@
+{
+  "title": "Панель управления",
+  "subtitle": "Обзор SEO-показателей в реальном времени",
+  "metrics": {
+    "totalArticles": "Всего статей",
+    "totalWords": "Всего слов",
+    "keywordsTracked": "Отслеживаемых ключей",
+    "indexedPages": "Проиндексировано страниц",
+    "seoScore": "SEO-рейтинг",
+    "trafficGrowth": "Рост трафика"
+  },
+  "charts": {
+    "trafficOverview": "Обзор трафика",
+    "keywordRankings": "Позиции ключевых слов",
+    "contentPerformance": "Эффективность контента",
+    "indexingStatus": "Статус индексации"
+  },
+  "quickActions": {
+    "title": "Быстрые действия",
+    "startAutopilot": "Запустить автопилот",
+    "generateContent": "Сгенерировать контент",
+    "checkRankings": "Проверить позиции",
+    "submitToIndex": "Отправить на индексацию"
+  },
+  "recentActivity": {
+    "title": "Последняя активность",
+    "noActivity": "Нет недавней активности"
+  },
+  "systemStatus": {
+    "title": "Статус системы",
+    "allSystemsOperational": "Все системы работают",
+    "apiStatus": "Статус API",
+    "lastSync": "Последняя синхронизация"
+  }
+}

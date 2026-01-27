@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
+import LanguageSwitcher from './components/LanguageSwitcher'
 import { 
   Globe, 
   FileText, 
@@ -32,6 +34,7 @@ import TDSManager from './components/TDSManager'
 import GitHubManager from './components/GitHubManager'
 import axios from 'axios'
 import './index.css'
+import './i18n'
 
 // API base URL
 const API_URL = 'http://localhost:8000/api'
@@ -92,22 +95,22 @@ interface DashboardStats {
   success_rate: number
 }
 
-// Sidebar Navigation
-const navigation = [
-  { name: 'Дашборд', icon: BarChart3, id: 'dashboard' },
-  { name: 'AI Чат', icon: Bot, id: 'chat' },
-  { name: 'Автопилот', icon: Zap, id: 'autopilot' },
-  { name: 'Сайты', icon: Globe, id: 'sites' },
-  { name: 'Площадки', icon: Target, id: 'platforms' },
-  { name: 'Контент', icon: FileText, id: 'content' },
-  { name: 'Аккаунты', icon: Users, id: 'sessions' },
-  { name: 'Индексация', icon: Search, id: 'indexing' },
-  { name: 'Задачи', icon: Activity, id: 'tasks' },
+// Sidebar Navigation - using translation keys
+const getNavigation = (t: any) => [
+  { name: t('common:navigation.dashboard'), icon: BarChart3, id: 'dashboard' },
+  { name: 'AI Chat', icon: Bot, id: 'chat' },
+  { name: t('common:navigation.autopilot'), icon: Zap, id: 'autopilot' },
+  { name: 'Sites', icon: Globe, id: 'sites' },
+  { name: 'Platforms', icon: Target, id: 'platforms' },
+  { name: t('common:navigation.content'), icon: FileText, id: 'content' },
+  { name: 'Accounts', icon: Users, id: 'sessions' },
+  { name: t('common:navigation.indexing'), icon: Search, id: 'indexing' },
+  { name: 'Tasks', icon: Activity, id: 'tasks' },
   { name: 'Telegram', icon: Send, id: 'telegram' },
-  { name: 'Хостинг', icon: Database, id: 'hosting' },
+  { name: 'Hosting', icon: Database, id: 'hosting' },
   { name: 'TDS', icon: Target, id: 'tds' },
   { name: 'GitHub', icon: Database, id: 'github' },
-  { name: 'Настройки', icon: Settings, id: 'settings' },
+  { name: t('common:navigation.settings'), icon: Settings, id: 'settings' },
 ]
 
 // Language options
@@ -127,6 +130,7 @@ const languages = [
 ]
 
 function App() {
+  const { t, i18n } = useTranslation(['common', 'dashboard', 'autopilot'])
   const [currentPage, setCurrentPage] = useState('dashboard')
   const [stats, setStats] = useState<DashboardStats | null>(null)
   const [sites, setSites] = useState<TargetSite[]>([])
@@ -781,7 +785,7 @@ function App() {
         </div>
         
         <nav className="flex-1 px-4">
-          {navigation.map(item => (
+          {getNavigation(t).map(item => (
             <button
               key={item.id}
               onClick={() => setCurrentPage(item.id)}
@@ -798,6 +802,7 @@ function App() {
         </nav>
 
         <div className="p-4 border-t border-gray-800">
+          <LanguageSwitcher variant="toggle" className="mb-4" />
           <div className="flex items-center gap-2 text-sm text-gray-400">
             <Database className="w-4 h-4" />
             <span>SQLite</span>

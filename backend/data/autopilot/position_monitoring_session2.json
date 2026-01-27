@@ -1,0 +1,137 @@
+{
+  "timestamp": "2026-01-26T23:35:39.421761",
+  "domain": "popolnyator-znlbk4ua.manus.space",
+  "total_keywords": 15,
+  "indexed": 1,
+  "pending": 14,
+  "change_from_previous": 0,
+  "results": [
+    {
+      "keyword": "virtual credit card crypto",
+      "type": "main",
+      "google": null,
+      "bing": null,
+      "yandex": null,
+      "status": "pending_indexation"
+    },
+    {
+      "keyword": "buy virtual visa card with bitcoin",
+      "type": "main",
+      "google": null,
+      "bing": null,
+      "yandex": null,
+      "status": "pending_indexation"
+    },
+    {
+      "keyword": "crypto to fiat card",
+      "type": "main",
+      "google": null,
+      "bing": null,
+      "yandex": null,
+      "status": "pending_indexation"
+    },
+    {
+      "keyword": "anonymous virtual credit card",
+      "type": "main",
+      "google": null,
+      "bing": null,
+      "yandex": null,
+      "status": "pending_indexation"
+    },
+    {
+      "keyword": "popolnyator",
+      "type": "brand",
+      "google": 1,
+      "bing": 1,
+      "yandex": 1,
+      "status": "indexed"
+    },
+    {
+      "keyword": "best virtual credit card crypto 2026",
+      "type": "longtail",
+      "google": null,
+      "bing": null,
+      "yandex": null,
+      "status": "pending_indexation"
+    },
+    {
+      "keyword": "virtual card for netflix with crypto",
+      "type": "longtail",
+      "google": null,
+      "bing": null,
+      "yandex": null,
+      "status": "pending_indexation"
+    },
+    {
+      "keyword": "crypto debit card no kyc europe",
+      "type": "longtail",
+      "google": null,
+      "bing": null,
+      "yandex": null,
+      "status": "pending_indexation"
+    },
+    {
+      "keyword": "usdt to virtual visa card",
+      "type": "longtail",
+      "google": null,
+      "bing": null,
+      "yandex": null,
+      "status": "pending_indexation"
+    },
+    {
+      "keyword": "popolnyator vs bitrefill",
+      "type": "comparison",
+      "google": null,
+      "bing": null,
+      "yandex": null,
+      "status": "pending_indexation"
+    },
+    {
+      "keyword": "popolnyator vs crypto.com",
+      "type": "comparison",
+      "google": null,
+      "bing": null,
+      "yandex": null,
+      "status": "pending_indexation"
+    },
+    {
+      "keyword": "best crypto card comparison 2026",
+      "type": "comparison",
+      "google": null,
+      "bing": null,
+      "yandex": null,
+      "status": "pending_indexation"
+    },
+    {
+      "keyword": "how to use crypto virtual card",
+      "type": "question",
+      "google": null,
+      "bing": null,
+      "yandex": null,
+      "status": "pending_indexation"
+    },
+    {
+      "keyword": "is popolnyator safe",
+      "type": "question",
+      "google": null,
+      "bing": null,
+      "yandex": null,
+      "status": "pending_indexation"
+    },
+    {
+      "keyword": "what cryptocurrencies popolnyator supports",
+      "type": "question",
+      "google": null,
+      "bing": null,
+      "yandex": null,
+      "status": "pending_indexation"
+    }
+  ],
+  "by_type": {
+    "main": 4,
+    "brand": 1,
+    "longtail": 4,
+    "comparison": 3,
+    "question": 3
+  }
+}

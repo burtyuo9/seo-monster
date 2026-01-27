@@ -1,0 +1,86 @@
+{
+  "timestamp": "2026-01-26T23:08:45.998138",
+  "domain": "popolnyator-znlbk4ua.manus.space",
+  "positions": [
+    {
+      "keyword": "virtual credit card crypto",
+      "google": {
+        "position": null,
+        "status": "not_indexed"
+      },
+      "bing": {
+        "position": null,
+        "status": "not_indexed"
+      },
+      "yandex": {
+        "position": null,
+        "status": "not_indexed"
+      },
+      "checked_at": "2026-01-26T23:08:45.998248"
+    },
+    {
+      "keyword": "buy virtual visa card with bitcoin",
+      "google": {
+        "position": null,
+        "status": "not_indexed"
+      },
+      "bing": {
+        "position": null,
+        "status": "not_indexed"
+      },
+      "yandex": {
+        "position": null,
+        "status": "not_indexed"
+      },
+      "checked_at": "2026-01-26T23:08:45.998257"
+    },
+    {
+      "keyword": "crypto to fiat card",
+      "google": {
+        "position": null,
+        "status": "not_indexed"
+      },
+      "bing": {
+        "position": null,
+        "status": "not_indexed"
+      },
+      "yandex": {
+        "position": null,
+        "status": "not_indexed"
+      },
+      "checked_at": "2026-01-26T23:08:45.998262"
+    },
+    {
+      "keyword": "anonymous virtual credit card",
+      "google": {
+        "position": null,
+        "status": "not_indexed"
+      },
+      "bing": {
+        "position": null,
+        "status": "not_indexed"
+      },
+      "yandex": {
+        "position": null,
+        "status": "not_indexed"
+      },
+      "checked_at": "2026-01-26T23:08:45.998266"
+    },
+    {
+      "keyword": "popolnyator",
+      "google": {
+        "position": 1,
+        "status": "indexed"
+      },
+      "bing": {
+        "position": 1,
+        "status": "indexed"
+      },
+      "yandex": {
+        "position": null,
+        "status": "not_indexed"
+      },
+      "checked_at": "2026-01-26T23:08:45.998271"
+    }
+  ]
+}

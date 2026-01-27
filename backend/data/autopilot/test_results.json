@@ -1,0 +1,251 @@
+{
+  "start_time": "2026-01-26T22:59:55.136071",
+  "domain": "popolnyator-znlbk4ua.manus.space",
+  "campaign_id": "camp_20260126225847_3480",
+  "actions": [
+    {
+      "timestamp": "2026-01-26T22:59:55.136466",
+      "action": "Начало анализа сайта",
+      "details": {
+        "domain": "popolnyator-znlbk4ua.manus.space"
+      }
+    },
+    {
+      "timestamp": "2026-01-26T22:59:57.138782",
+      "action": "Анализ сайта завершён",
+      "details": {
+        "title": "Popolnyator - Тестовый сайт",
+        "meta_description": "Тестовый сайт для проверки SEO Monster",
+        "pages_found": 5,
+        "technologies": [
+          "HTML",
+          "CSS",
+          "JavaScript"
+        ],
+        "mobile_friendly": true,
+        "ssl": true,
+        "load_time": "1.2s"
+      }
+    },
+    {
+      "timestamp": "2026-01-26T22:59:57.138953",
+      "action": "Поиск ключевых слов",
+      "details": {}
+    },
+    {
+      "timestamp": "2026-01-26T22:59:59.141199",
+      "action": "Ключевые слова найдены",
+      "details": {
+        "count": 8,
+        "keywords": [
+          "popolnyator",
+          "тестовый сайт",
+          "manus space",
+          "автоматизация SEO",
+          "SEO продвижение",
+          "продвижение сайтов",
+          "SEO оптимизация",
+          "раскрутка сайта"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-01-26T22:59:59.141619",
+      "action": "Начало генерации контента",
+      "details": {}
+    },
+    {
+      "timestamp": "2026-01-26T23:00:02.144900",
+      "action": "Контент #1 сгенерирован",
+      "details": {
+        "title": "Полное руководство: Popolnyator в 2026 году",
+        "words": 1500
+      }
+    },
+    {
+      "timestamp": "2026-01-26T23:00:05.148358",
+      "action": "Контент #2 сгенерирован",
+      "details": {
+        "title": "Полное руководство: Тестовый Сайт в 2026 году",
+        "words": 1700
+      }
+    },
+    {
+      "timestamp": "2026-01-26T23:00:08.151788",
+      "action": "Контент #3 сгенерирован",
+      "details": {
+        "title": "Полное руководство: Manus Space в 2026 году",
+        "words": 1900
+      }
+    },
+    {
+      "timestamp": "2026-01-26T23:00:11.155142",
+      "action": "Контент #4 сгенерирован",
+      "details": {
+        "title": "Полное руководство: Автоматизация Seo в 2026 году",
+        "words": 2100
+      }
+    },
+    {
+      "timestamp": "2026-01-26T23:00:14.158551",
+      "action": "Контент #5 сгенерирован",
+      "details": {
+        "title": "Полное руководство: Seo Продвижение в 2026 году",
+        "words": 2300
+      }
+    },
+    {
+      "timestamp": "2026-01-26T23:00:14.158708",
+      "action": "Начало индексации URL",
+      "details": {}
+    },
+    {
+      "timestamp": "2026-01-26T23:00:15.160006",
+      "action": "URL отправлен на индексацию",
+      "details": {
+        "url": "https://popolnyator-znlbk4ua.manus.space/"
+      }
+    },
+    {
+      "timestamp": "2026-01-26T23:00:16.161503",
+      "action": "URL отправлен на индексацию",
+      "details": {
+        "url": "https://popolnyator-znlbk4ua.manus.space/about"
+      }
+    },
+    {
+      "timestamp": "2026-01-26T23:00:17.162946",
+      "action": "URL отправлен на индексацию",
+      "details": {
+        "url": "https://popolnyator-znlbk4ua.manus.space/services"
+      }
+    },
+    {
+      "timestamp": "2026-01-26T23:00:18.164352",
+      "action": "URL отправлен на индексацию",
+      "details": {
+        "url": "https://popolnyator-znlbk4ua.manus.space/contact"
+      }
+    },
+    {
+      "timestamp": "2026-01-26T23:00:19.165815",
+      "action": "URL отправлен на индексацию",
+      "details": {
+        "url": "https://popolnyator-znlbk4ua.manus.space/blog"
+      }
+    },
+    {
+      "timestamp": "2026-01-26T23:00:19.166005",
+      "action": "Настройка TDS (Traffic Distribution System)",
+      "details": {}
+    },
+    {
+      "timestamp": "2026-01-26T23:00:21.168366",
+      "action": "TDS настроен",
+      "details": {
+        "campaign_name": "Popolnyator Traffic",
+        "flows": [
+          {
+            "name": "Main Flow",
+            "type": "direct",
+            "weight": 70
+          },
+          {
+            "name": "Landing Flow",
+            "type": "landing_offer",
+            "weight": 30
+          }
+        ],
+        "filters": [
+          {
+            "type": "geo",
+            "countries": [
+              "RU",
+              "UA",
+              "BY",
+              "KZ"
+            ]
+          },
+          {
+            "type": "device",
+            "devices": [
+              "desktop",
+              "mobile"
+            ]
+          },
+          {
+            "type": "os",
+            "systems": [
+              "Windows",
+              "macOS",
+              "Android",
+              "iOS"
+            ]
+          }
+        ],
+        "antifraud": {
+          "block_bots": true,
+          "block_vpn": true,
+          "ip_limit": 10
+        }
+      }
+    },
+    {
+      "timestamp": "2026-01-26T23:00:21.168595",
+      "action": "Проверка позиций в поисковиках",
+      "details": {}
+    },
+    {
+      "timestamp": "2026-01-26T23:00:23.170854",
+      "action": "Позиции проверены",
+      "details": {
+        "keywords_checked": 3
+      }
+    },
+    {
+      "timestamp": "2026-01-26T23:00:23.170999",
+      "action": "Запуск цикла самообучения",
+      "details": {}
+    },
+    {
+      "timestamp": "2026-01-26T23:00:25.173280",
+      "action": "Итерация обучения #1",
+      "details": {
+        "iteration": 1,
+        "patterns_analyzed": 10,
+        "strategies_improved": "content_quality",
+        "confidence_score": 0.7
+      }
+    },
+    {
+      "timestamp": "2026-01-26T23:00:27.175814",
+      "action": "Итерация обучения #2",
+      "details": {
+        "iteration": 2,
+        "patterns_analyzed": 15,
+        "strategies_improved": "keyword_targeting",
+        "confidence_score": 0.7999999999999999
+      }
+    },
+    {
+      "timestamp": "2026-01-26T23:00:29.178187",
+      "action": "Итерация обучения #3",
+      "details": {
+        "iteration": 3,
+        "patterns_analyzed": 20,
+        "strategies_improved": "posting_schedule",
+        "confidence_score": 0.8999999999999999
+      }
+    }
+  ],
+  "stats": {
+    "site_analyzed": true,
+    "keywords_found": 8,
+    "content_generated": 5,
+    "urls_indexed": 5,
+    "tds_configured": true,
+    "learning_iterations": 3
+  },
+  "end_time": "2026-01-26T23:00:29.178418",
+  "duration_seconds": 34.042347
+}

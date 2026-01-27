@@ -1,0 +1,34 @@
+{
+  "timestamp": "2026-01-26T23:18:10.706076",
+  "domain": "popolnyator-znlbk4ua.manus.space",
+  "sitemap_urls": 18,
+  "indexing_results": [
+    {
+      "engine": "Google",
+      "method": "Ping",
+      "status": "⚠️ Код 404"
+    },
+    {
+      "engine": "Bing",
+      "method": "Ping",
+      "status": "⚠️ Код 410"
+    },
+    {
+      "engine": "IndexNow (Bing)",
+      "method": "API",
+      "urls": 18,
+      "status": "✅ Успешно"
+    },
+    {
+      "engine": "IndexNow (Yandex)",
+      "method": "API",
+      "urls": 18,
+      "status": "✅ Успешно"
+    },
+    {
+      "engine": "Pingomatic",
+      "method": "XML-RPC",
+      "status": "✅ Успешно"
+    }
+  ]
+}

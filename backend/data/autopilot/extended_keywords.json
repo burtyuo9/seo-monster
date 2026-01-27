@@ -1,0 +1,307 @@
+{
+  "question_keywords": [
+    {
+      "keyword": "how to use Popolnyator virtual credit card",
+      "search_intent": "informational",
+      "priority": "high"
+    },
+    {
+      "keyword": "what is a virtual credit card funded by cryptocurrency",
+      "search_intent": "informational",
+      "priority": "high"
+    },
+    {
+      "keyword": "can I fund Popolnyator card with Bitcoin",
+      "search_intent": "informational",
+      "priority": "high"
+    },
+    {
+      "keyword": "is it safe to use Popolnyator with crypto funds",
+      "search_intent": "informational",
+      "priority": "high"
+    },
+    {
+      "keyword": "why should I use a crypto virtual credit card",
+      "search_intent": "informational",
+      "priority": "high"
+    },
+    {
+      "keyword": "how to buy online with Popolnyator crypto card",
+      "search_intent": "informational",
+      "priority": "medium"
+    },
+    {
+      "keyword": "what cryptocurrencies can I use to fund Popolnyator",
+      "search_intent": "informational",
+      "priority": "medium"
+    },
+    {
+      "keyword": "can I use Popolnyator virtual card internationally",
+      "search_intent": "informational",
+      "priority": "medium"
+    },
+    {
+      "keyword": "is Popolnyator virtual card better than traditional credit cards",
+      "search_intent": "informational",
+      "priority": "medium"
+    },
+    {
+      "keyword": "how to activate Popolnyator virtual credit card",
+      "search_intent": "informational",
+      "priority": "medium"
+    },
+    {
+      "keyword": "what fees does Popolnyator charge for crypto funding",
+      "search_intent": "informational",
+      "priority": "medium"
+    },
+    {
+      "keyword": "can I withdraw cash with Popolnyator virtual credit card",
+      "search_intent": "informational",
+      "priority": "low"
+    },
+    {
+      "keyword": "is Popolnyator virtual card accepted on all merchants",
+      "search_intent": "informational",
+      "priority": "medium"
+    },
+    {
+      "keyword": "why should I choose Popolnyator over other crypto cards",
+      "search_intent": "informational",
+      "priority": "high"
+    },
+    {
+      "keyword": "how to top up Popolnyator virtual credit card with cryptocurrency",
+      "search_intent": "informational",
+      "priority": "high"
+    }
+  ],
+  "comparison_keywords": [
+    {
+      "keyword": "Popolnyator vs Bitrefill virtual credit card",
+      "competitors": [
+        "Bitrefill"
+      ],
+      "priority": "high"
+    },
+    {
+      "keyword": "Popolnyator vs Crypto.com crypto card",
+      "competitors": [
+        "Crypto.com"
+      ],
+      "priority": "high"
+    },
+    {
+      "keyword": "Popolnyator vs Privacy.com virtual card",
+      "competitors": [
+        "Privacy.com"
+      ],
+      "priority": "medium"
+    },
+    {
+      "keyword": "Popolnyator vs Revolut crypto card",
+      "competitors": [
+        "Revolut"
+      ],
+      "priority": "medium"
+    },
+    {
+      "keyword": "Popolnyator vs Wise virtual credit card",
+      "competitors": [
+        "Wise"
+      ],
+      "priority": "medium"
+    },
+    {
+      "keyword": "best virtual credit card for cryptocurrency users",
+      "competitors": [
+        "Bitrefill",
+        "Crypto.com",
+        "Privacy.com",
+        "Revolut",
+        "Wise"
+      ],
+      "priority": "high"
+    },
+    {
+      "keyword": "best crypto funded virtual credit card 2024",
+      "competitors": [
+        "Bitrefill",
+        "Crypto.com",
+        "Privacy.com"
+      ],
+      "priority": "high"
+    },
+    {
+      "keyword": "Popolnyator alternative for crypto virtual cards",
+      "competitors": [
+        "Bitrefill",
+        "Crypto.com",
+        "Privacy.com"
+      ],
+      "priority": "high"
+    },
+    {
+      "keyword": "best anonymous virtual credit card funded by cryptocurrency",
+      "competitors": [
+        "Privacy.com",
+        "Bitrefill"
+      ],
+      "priority": "medium"
+    },
+    {
+      "keyword": "virtual credit card with lowest fees crypto funding",
+      "competitors": [
+        "Crypto.com",
+        "Wise"
+      ],
+      "priority": "medium"
+    },
+    {
+      "keyword": "Popolnyator vs other crypto virtual cards security",
+      "competitors": [
+        "Bitrefill",
+        "Crypto.com",
+        "Privacy.com"
+      ],
+      "priority": "high"
+    },
+    {
+      "keyword": "best crypto card for international payments",
+      "competitors": [
+        "Revolut",
+        "Crypto.com",
+        "Wise"
+      ],
+      "priority": "high"
+    },
+    {
+      "keyword": "Popolnyator vs Revolut vs Crypto.com comparison",
+      "competitors": [
+        "Revolut",
+        "Crypto.com"
+      ],
+      "priority": "high"
+    },
+    {
+      "keyword": "Popolnyator crypto card vs traditional credit card",
+      "competitors": [
+        "Visa",
+        "Mastercard"
+      ],
+      "priority": "medium"
+    },
+    {
+      "keyword": "best prepaid virtual credit card funded by cryptocurrency",
+      "competitors": [
+        "Bitrefill",
+        "Crypto.com"
+      ],
+      "priority": "medium"
+    }
+  ],
+  "intent_keywords": [
+    {
+      "keyword": "buy Popolnyator virtual credit card",
+      "intent_type": "transactional",
+      "priority": "high"
+    },
+    {
+      "keyword": "get a virtual credit card funded by cryptocurrency",
+      "intent_type": "transactional",
+      "priority": "high"
+    },
+    {
+      "keyword": "purchase Popolnyator crypto virtual card",
+      "intent_type": "transactional",
+      "priority": "high"
+    },
+    {
+      "keyword": "Popolnyator virtual card review",
+      "intent_type": "commercial",
+      "priority": "high"
+    },
+    {
+      "keyword": "best virtual credit card for crypto payments",
+      "intent_type": "commercial",
+      "priority": "high"
+    },
+    {
+      "keyword": "Popolnyator vs Crypto.com virtual card review",
+      "intent_type": "commercial",
+      "priority": "medium"
+    },
+    {
+      "keyword": "Popolnyator virtual card tutorial",
+      "intent_type": "informational",
+      "priority": "medium"
+    },
+    {
+      "keyword": "how to fund Popolnyator card with Bitcoin",
+      "intent_type": "informational",
+      "priority": "high"
+    },
+    {
+      "keyword": "Popolnyator user guide",
+      "intent_type": "informational",
+      "priority": "medium"
+    },
+    {
+      "keyword": "top virtual crypto credit cards 2024",
+      "intent_type": "commercial",
+      "priority": "high"
+    },
+    {
+      "keyword": "Popolnyator crypto card fee comparison",
+      "intent_type": "commercial",
+      "priority": "medium"
+    },
+    {
+      "keyword": "how to use Popolnyator for online shopping",
+      "intent_type": "informational",
+      "priority": "medium"
+    },
+    {
+      "keyword": "best crypto virtual card for international use",
+      "intent_type": "commercial",
+      "priority": "high"
+    },
+    {
+      "keyword": "virtual credit card with crypto funding tutorial",
+      "intent_type": "informational",
+      "priority": "medium"
+    },
+    {
+      "keyword": "Popolnyator crypto card offers",
+      "intent_type": "transactional",
+      "priority": "medium"
+    },
+    {
+      "keyword": "how to set up Popolnyator virtual credit card",
+      "intent_type": "informational",
+      "priority": "high"
+    },
+    {
+      "keyword": "buy virtual credit card with Bitcoin",
+      "intent_type": "transactional",
+      "priority": "high"
+    },
+    {
+      "keyword": "Popolnyator cryptocurrency payment card review",
+      "intent_type": "commercial",
+      "priority": "medium"
+    },
+    {
+      "keyword": "compare Popolnyator and Privacy.com virtual cards",
+      "intent_type": "commercial",
+      "priority": "medium"
+    },
+    {
+      "keyword": "how to link crypto wallet to Popolnyator card",
+      "intent_type": "informational",
+      "priority": "high"
+    }
+  ],
+  "timestamp": "2026-01-26T23:26:06.448434",
+  "domain": "popolnyator-znlbk4ua.manus.space"
+}

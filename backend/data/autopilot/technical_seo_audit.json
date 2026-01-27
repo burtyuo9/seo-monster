@@ -1,0 +1,63 @@
+{
+  "timestamp": "2026-01-26T23:29:27.191687",
+  "domain": "popolnyator-znlbk4ua.manus.space",
+  "checks": [
+    {
+      "check": "Homepage Response",
+      "status": "✅ OK",
+      "details": "Status: 200, Time: 2.34s"
+    },
+    {
+      "check": "Title Tag",
+      "status": "✅ OK",
+      "details": "Popolnyator"
+    },
+    {
+      "check": "Meta Description",
+      "status": "✅ OK",
+      "details": "Issue virtual Visa and Mastercard instantly. Fund with 13+ cryptocurrencies including BTC, ETH, USDT"
+    },
+    {
+      "check": "H1 Tag",
+      "status": "❌ Missing",
+      "details": "Not found"
+    },
+    {
+      "check": "Canonical URL",
+      "status": "✅ OK",
+      "details": "https://popolnyator.com/"
+    },
+    {
+      "check": "Mobile Viewport",
+      "status": "✅ OK",
+      "details": "Responsive"
+    },
+    {
+      "check": "HTTPS",
+      "status": "✅ OK",
+      "details": "Site uses HTTPS"
+    },
+    {
+      "check": "robots.txt",
+      "status": "✅ OK",
+      "details": "Status: 200"
+    },
+    {
+      "check": "sitemap.xml",
+      "status": "✅ OK",
+      "details": "Status: 200"
+    },
+    {
+      "check": "Page Load Speed",
+      "status": "⚠️ Medium",
+      "details": "3.46 seconds"
+    }
+  ],
+  "score": 80,
+  "summary": {
+    "total_checks": 10,
+    "passed": 8,
+    "warnings": 1,
+    "errors": 1
+  }
+}

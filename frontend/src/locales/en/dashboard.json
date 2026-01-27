@@ -1,0 +1,35 @@
+{
+  "title": "Dashboard",
+  "subtitle": "Real-time SEO performance overview",
+  "metrics": {
+    "totalArticles": "Total Articles",
+    "totalWords": "Total Words",
+    "keywordsTracked": "Keywords Tracked",
+    "indexedPages": "Indexed Pages",
+    "seoScore": "SEO Score",
+    "trafficGrowth": "Traffic Growth"
+  },
+  "charts": {
+    "trafficOverview": "Traffic Overview",
+    "keywordRankings": "Keyword Rankings",
+    "contentPerformance": "Content Performance",
+    "indexingStatus": "Indexing Status"
+  },
+  "quickActions": {
+    "title": "Quick Actions",
+    "startAutopilot": "Start Autopilot",
+    "generateContent": "Generate Content",
+    "checkRankings": "Check Rankings",
+    "submitToIndex": "Submit to Index"
+  },
+  "recentActivity": {
+    "title": "Recent Activity",
+    "noActivity": "No recent activity"
+  },
+  "systemStatus": {
+    "title": "System Status",
+    "allSystemsOperational": "All systems operational",
+    "apiStatus": "API Status",
+    "lastSync": "Last Sync"
+  }
+}

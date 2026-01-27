@@ -1,0 +1,53 @@
+{
+  "title": "Keyword Analyzer",
+  "subtitle": "Discover profitable keyword opportunities",
+  "search": {
+    "placeholder": "Enter seed keyword...",
+    "searchBtn": "Search Keywords",
+    "filters": "Filters"
+  },
+  "filters": {
+    "volume": "Search Volume",
+    "difficulty": "Keyword Difficulty",
+    "cpc": "CPC",
+    "intent": "Search Intent",
+    "minVolume": "Min Volume",
+    "maxVolume": "Max Volume",
+    "minDifficulty": "Min Difficulty",
+    "maxDifficulty": "Max Difficulty"
+  },
+  "intents": {
+    "informational": "Informational",
+    "navigational": "Navigational",
+    "commercial": "Commercial",
+    "transactional": "Transactional"
+  },
+  "table": {
+    "keyword": "Keyword",
+    "volume": "Volume",
+    "difficulty": "KD",
+    "cpc": "CPC",
+    "intent": "Intent",
+    "trend": "Trend",
+    "actions": "Actions"
+  },
+  "actions": {
+    "addToList": "Add to List",
+    "generateContent": "Generate Content",
+    "trackRanking": "Track Ranking",
+    "viewSerp": "View SERP"
+  },
+  "lists": {
+    "title": "Keyword Lists",
+    "createList": "Create New List",
+    "myKeywords": "My Keywords",
+    "competitors": "Competitor Keywords",
+    "opportunities": "Opportunities"
+  },
+  "stats": {
+    "totalKeywords": "Total Keywords",
+    "avgVolume": "Avg. Volume",
+    "avgDifficulty": "Avg. Difficulty",
+    "opportunities": "Opportunities"
+  }
+}

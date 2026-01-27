@@ -1,0 +1,385 @@
+{
+  "week_1": {
+    "blog_posts": [
+      {
+        "day": 1,
+        "title": "What Are Crypto Virtual Cards and How Do They Work?",
+        "keyword": "crypto virtual cards",
+        "type": "how-to"
+      },
+      {
+        "day": 3,
+        "title": "Top 5 Benefits of Using Crypto-Funded Virtual Credit Cards",
+        "keyword": "benefits of crypto virtual cards",
+        "type": "listicle"
+      },
+      {
+        "day": 5,
+        "title": "How Popolnyator Enables Seamless Crypto-to-Fiat Payments",
+        "keyword": "crypto to fiat payments",
+        "type": "explainer"
+      }
+    ],
+    "social_posts": [
+      {
+        "day": 1,
+        "platform": "Twitter, LinkedIn",
+        "theme": "Introduction",
+        "content_idea": "Introduce Popolnyator and explain what crypto virtual cards are."
+      },
+      {
+        "day": 2,
+        "platform": "Instagram, Facebook",
+        "theme": "Security Spotlight",
+        "content_idea": "Highlight how Popolnyator protects user privacy and data."
+      },
+      {
+        "day": 3,
+        "platform": "Twitter",
+        "theme": "User Tip",
+        "content_idea": "Share a quick tip on funding virtual cards with crypto."
+      },
+      {
+        "day": 4,
+        "platform": "LinkedIn",
+        "theme": "Industry News",
+        "content_idea": "Post about recent trends in crypto-to-fiat payment solutions."
+      },
+      {
+        "day": 5,
+        "platform": "Instagram Stories",
+        "theme": "Feature Focus",
+        "content_idea": "Showcase a Popolnyator feature like instant card issuance."
+      },
+      {
+        "day": 6,
+        "platform": "Facebook",
+        "theme": "FAQ",
+        "content_idea": "Answer common questions about virtual crypto cards."
+      },
+      {
+        "day": 7,
+        "platform": "Twitter",
+        "theme": "Community Highlight",
+        "content_idea": "Share a user testimonial or review."
+      }
+    ],
+    "video_content": [
+      {
+        "day": 3,
+        "title": "How to Create and Fund Your Popolnyator Virtual Card in 5 Minutes",
+        "platform": "YouTube",
+        "duration": "6 minutes"
+      },
+      {
+        "day": 6,
+        "title": "Crypto-to-Fiat Payments Explained: Using Popolnyator Virtual Cards",
+        "platform": "YouTube",
+        "duration": "8 minutes"
+      }
+    ],
+    "community": [
+      {
+        "day": 2,
+        "activity": "Host a Twitter Spaces AMA on Crypto Virtual Cards",
+        "platform": "Twitter"
+      },
+      {
+        "day": 5,
+        "activity": "Launch a Reddit thread for user questions and feedback",
+        "platform": "Reddit"
+      }
+    ]
+  },
+  "week_2": {
+    "blog_posts": [
+      {
+        "day": 8,
+        "title": "Popolnyator vs Competitors: Which Crypto Virtual Card Service is Best?",
+        "keyword": "crypto virtual card comparison",
+        "type": "comparison"
+      },
+      {
+        "day": 10,
+        "title": "How Secure Are Crypto Virtual Cards? A Deep Dive into Popolnyator’s Security",
+        "keyword": "crypto virtual card security",
+        "type": "security analysis"
+      },
+      {
+        "day": 12,
+        "title": "Step-by-Step Guide: Using Your Popolnyator Card for Online and Offline Payments",
+        "keyword": "using crypto virtual cards",
+        "type": "user guide"
+      }
+    ],
+    "social_posts": [
+      {
+        "day": 8,
+        "platform": "LinkedIn",
+        "theme": "Comparison",
+        "content_idea": "Share key differentiators of Popolnyator vs competitors."
+      },
+      {
+        "day": 9,
+        "platform": "Twitter",
+        "theme": "Security Tip",
+        "content_idea": "Tips to keep your crypto virtual card safe."
+      },
+      {
+        "day": 10,
+        "platform": "Instagram",
+        "theme": "How-To",
+        "content_idea": "Visual step-by-step on activating your Popolnyator card."
+      },
+      {
+        "day": 11,
+        "platform": "Facebook",
+        "theme": "User Story",
+        "content_idea": "Share a customer success story using Popolnyator."
+      },
+      {
+        "day": 12,
+        "platform": "Twitter",
+        "theme": "Feature Highlight",
+        "content_idea": "Explain how instant crypto-to-fiat conversion works."
+      },
+      {
+        "day": 13,
+        "platform": "LinkedIn",
+        "theme": "Industry Insight",
+        "content_idea": "Discuss future trends in crypto payment cards."
+      },
+      {
+        "day": 14,
+        "platform": "Instagram Stories",
+        "theme": "Poll",
+        "content_idea": "Poll: Which feature do you value most in a virtual card?"
+      }
+    ],
+    "video_content": [
+      {
+        "day": 9,
+        "title": "Popolnyator vs Other Crypto Virtual Cards: Feature Comparison",
+        "platform": "YouTube",
+        "duration": "7 minutes"
+      },
+      {
+        "day": 12,
+        "title": "Security Features of Popolnyator: Protecting Your Crypto Payments",
+        "platform": "YouTube",
+        "duration": "6 minutes"
+      }
+    ],
+    "community": [
+      {
+        "day": 9,
+        "activity": "Run a community poll on Twitter about desired new features",
+        "platform": "Twitter"
+      },
+      {
+        "day": 13,
+        "activity": "Host a live Q&A session on Discord about security and privacy",
+        "platform": "Discord"
+      }
+    ]
+  },
+  "week_3": {
+    "blog_posts": [
+      {
+        "day": 15,
+        "title": "Troubleshooting Common Issues with Crypto Virtual Cards",
+        "keyword": "crypto virtual card troubleshooting",
+        "type": "how-to"
+      },
+      {
+        "day": 17,
+        "title": "How to Maximize Privacy When Using Popolnyator Virtual Cards",
+        "keyword": "crypto card privacy",
+        "type": "security tips"
+      },
+      {
+        "day": 19,
+        "title": "Understanding Fees and Limits on Crypto Virtual Cards",
+        "keyword": "crypto virtual card fees",
+        "type": "informational"
+      }
+    ],
+    "social_posts": [
+      {
+        "day": 15,
+        "platform": "Facebook",
+        "theme": "Help & Support",
+        "content_idea": "Post tips for resolving common Popolnyator card issues."
+      },
+      {
+        "day": 16,
+        "platform": "Twitter",
+        "theme": "Security Tip",
+        "content_idea": "How to keep your transactions private using Popolnyator."
+      },
+      {
+        "day": 17,
+        "platform": "Instagram",
+        "theme": "Infographic",
+        "content_idea": "Visual breakdown of fees and transaction limits."
+      },
+      {
+        "day": 18,
+        "platform": "LinkedIn",
+        "theme": "Case Study",
+        "content_idea": "Showcase a business using Popolnyator for crypto-to-fiat payments."
+      },
+      {
+        "day": 19,
+        "platform": "Twitter",
+        "theme": "User Guide",
+        "content_idea": "Step-by-step usage tips for new users."
+      },
+      {
+        "day": 20,
+        "platform": "Facebook",
+        "theme": "Security FAQ",
+        "content_idea": "Answer top security questions from users."
+      },
+      {
+        "day": 21,
+        "platform": "Instagram Stories",
+        "theme": "Quiz",
+        "content_idea": "Quiz on crypto virtual card features and security."
+      }
+    ],
+    "video_content": [
+      {
+        "day": 16,
+        "title": "How to Troubleshoot Your Popolnyator Virtual Card",
+        "platform": "YouTube",
+        "duration": "5 minutes"
+      },
+      {
+        "day": 19,
+        "title": "Understanding Fees & Limits on Your Crypto Virtual Card",
+        "platform": "YouTube",
+        "duration": "6 minutes"
+      }
+    ],
+    "community": [
+      {
+        "day": 17,
+        "activity": "Host a troubleshooting help session on Telegram",
+        "platform": "Telegram"
+      },
+      {
+        "day": 20,
+        "activity": "Launch a feedback survey on privacy features",
+        "platform": "Reddit"
+      }
+    ]
+  },
+  "week_4": {
+    "blog_posts": [
+      {
+        "day": 22,
+        "title": "Future of Payments: How Crypto Virtual Cards Will Change Spending",
+        "keyword": "future of crypto payments",
+        "type": "news/trends"
+      },
+      {
+        "day": 24,
+        "title": "User Guide: Setting Up Recurring Payments with Popolnyator",
+        "keyword": "crypto virtual card recurring payments",
+        "type": "tutorial"
+      },
+      {
+        "day": 26,
+        "title": "How Popolnyator Supports Global Crypto-to-Fiat Transactions",
+        "keyword": "global crypto payments",
+        "type": "informational"
+      }
+    ],
+    "social_posts": [
+      {
+        "day": 22,
+        "platform": "LinkedIn",
+        "theme": "Industry Trends",
+        "content_idea": "Discuss how virtual crypto cards are shaping the future of finance."
+      },
+      {
+        "day": 23,
+        "platform": "Twitter",
+        "theme": "How-To",
+        "content_idea": "Tips on setting up recurring payments with Popolnyator."
+      },
+      {
+        "day": 24,
+        "platform": "Instagram",
+        "theme": "Feature Highlight",
+        "content_idea": "Showcase global payment support with real-world examples."
+      },
+      {
+        "day": 25,
+        "platform": "Facebook",
+        "theme": "User Testimonial",
+        "content_idea": "Share stories of users making international purchases."
+      },
+      {
+        "day": 26,
+        "platform": "Twitter",
+        "theme": "FAQ",
+        "content_idea": "Answer questions about global crypto-to-fiat transactions."
+      },
+      {
+        "day": 27,
+        "platform": "Instagram Stories",
+        "theme": "Poll",
+        "content_idea": "Poll: Which country should Popolnyator expand to next?"
+      },
+      {
+        "day": 28,
+        "platform": "LinkedIn",
+        "theme": "Community Spotlight",
+        "content_idea": "Highlight power users and their favorite features."
+      },
+      {
+        "day": 29,
+        "platform": "Twitter",
+        "theme": "Recap",
+        "content_idea": "Recap of best Popolnyator features discussed this month."
+      },
+      {
+        "day": 30,
+        "platform": "Facebook",
+        "theme": "Thank You",
+        "content_idea": "Thank users for their engagement and feedback."
+      }
+    ],
+    "video_content": [
+      {
+        "day": 23,
+        "title": "How to Set Up Recurring Payments with Popolnyator",
+        "platform": "YouTube",
+        "duration": "6 minutes"
+      },
+      {
+        "day": 26,
+        "title": "Enabling Seamless Global Crypto-to-Fiat Transactions",
+        "platform": "YouTube",
+        "duration": "7 minutes"
+      }
+    ],
+    "community": [
+      {
+        "day": 24,
+        "activity": "Host a webinar on upcoming features and roadmap",
+        "platform": "Zoom"
+      },
+      {
+        "day": 28,
+        "activity": "Create a challenge rewarding users for sharing their Popolnyator stories",
+        "platform": "Telegram"
+      }
+    ]
+  },
+  "timestamp": "2026-01-26T23:32:57.432072",
+  "domain": "popolnyator-znlbk4ua.manus.space",
+  "start_date": "2026-01-27"
+}

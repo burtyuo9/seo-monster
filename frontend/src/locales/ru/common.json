@@ -1,0 +1,67 @@
+{
+  "appName": "SEO Monster",
+  "navigation": {
+    "dashboard": "Панель управления",
+    "autopilot": "Автопилот",
+    "content": "Генератор контента",
+    "keywords": "Ключевые слова",
+    "competitors": "Конкуренты",
+    "indexing": "Индексация",
+    "analytics": "Аналитика",
+    "settings": "Настройки"
+  },
+  "actions": {
+    "start": "Запустить",
+    "stop": "Остановить",
+    "pause": "Пауза",
+    "resume": "Продолжить",
+    "save": "Сохранить",
+    "cancel": "Отмена",
+    "delete": "Удалить",
+    "edit": "Редактировать",
+    "add": "Добавить",
+    "refresh": "Обновить",
+    "export": "Экспорт",
+    "import": "Импорт",
+    "generate": "Сгенерировать",
+    "analyze": "Анализировать",
+    "submit": "Отправить"
+  },
+  "status": {
+    "active": "Активен",
+    "inactive": "Неактивен",
+    "pending": "Ожидание",
+    "completed": "Завершено",
+    "failed": "Ошибка",
+    "running": "Выполняется",
+    "stopped": "Остановлен",
+    "success": "Успешно",
+    "error": "Ошибка",
+    "warning": "Предупреждение"
+  },
+  "time": {
+    "today": "Сегодня",
+    "yesterday": "Вчера",
+    "thisWeek": "На этой неделе",
+    "thisMonth": "В этом месяце",
+    "lastMonth": "В прошлом месяце",
+    "custom": "Произвольный период"
+  },
+  "language": {
+    "title": "Язык",
+    "en": "English",
+    "ru": "Русский"
+  },
+  "theme": {
+    "title": "Тема",
+    "dark": "Тёмная",
+    "light": "Светлая"
+  },
+  "messages": {
+    "loading": "Загрузка...",
+    "noData": "Нет данных",
+    "confirmDelete": "Вы уверены, что хотите удалить этот элемент?",
+    "savedSuccessfully": "Успешно сохранено",
+    "errorOccurred": "Произошла ошибка"
+  }
+}

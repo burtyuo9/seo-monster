@@ -1,0 +1,108 @@
+{
+  "common_sources": [
+    "Crypto news portals (e.g., CoinDesk, CoinTelegraph)",
+    "Fintech and blockchain blogs",
+    "Crypto price tracking and analytics sites",
+    "Financial comparison websites",
+    "Tech and startup news websites",
+    "Cryptocurrency forums and communities (e.g., Reddit, Bitcointalk)",
+    "Guest posts on fintech industry blogs",
+    "Partnership and affiliate websites",
+    "Educational platforms focused on blockchain/crypto",
+    "YouTube channels and podcasts focused on crypto fintech"
+  ],
+  "recommended_backlinks": [
+    {
+      "source": "coindesk.com",
+      "type": "Editorial/News article",
+      "difficulty": 9,
+      "priority": "high"
+    },
+    {
+      "source": "cointelegraph.com",
+      "type": "Editorial/News article",
+      "difficulty": 9,
+      "priority": "high"
+    },
+    {
+      "source": "finextra.com",
+      "type": "Guest post/Industry analysis",
+      "difficulty": 8,
+      "priority": "high"
+    },
+    {
+      "source": "theblockcrypto.com",
+      "type": "Research/Analysis report",
+      "difficulty": 8,
+      "priority": "high"
+    },
+    {
+      "source": "cryptobriefing.com",
+      "type": "Review/Comparison article",
+      "difficulty": 7,
+      "priority": "medium"
+    },
+    {
+      "source": "reddit.com/r/CryptoCurrency",
+      "type": "Community mention/AMA/Discussion",
+      "difficulty": 5,
+      "priority": "medium"
+    },
+    {
+      "source": "medium.com (crypto and fintech publications)",
+      "type": "Thought leadership/Guest post",
+      "difficulty": 6,
+      "priority": "medium"
+    },
+    {
+      "source": "trustpilot.com",
+      "type": "User reviews",
+      "difficulty": 4,
+      "priority": "low"
+    },
+    {
+      "source": "cryptocompare.com",
+      "type": "Listing/Comparison",
+      "difficulty": 6,
+      "priority": "medium"
+    },
+    {
+      "source": "youtube.com (popular crypto fintech channels)",
+      "type": "Sponsored reviews/Interviews",
+      "difficulty": 7,
+      "priority": "medium"
+    }
+  ],
+  "content_for_backlinks": [
+    "Comprehensive guides on using crypto payment cards",
+    "In-depth comparisons between crypto card providers",
+    "Industry reports on crypto adoption in payments",
+    "Case studies demonstrating real-world crypto card usage",
+    "Educational content explaining virtual and anonymous cards",
+    "How-to videos and tutorials for onboarding with crypto cards",
+    "Infographics showing crypto card benefits and trends",
+    "Thought leadership articles on fintech innovation",
+    "Security and privacy best practices for crypto payments",
+    "User stories and testimonials highlighting benefits"
+  ],
+  "anchor_text_variations": [
+    "crypto payment cards",
+    "virtual crypto cards",
+    "Bitcoin Visa card",
+    "anonymous virtual cards",
+    "crypto debit cards",
+    "best crypto card providers",
+    "use Bitcoin for payments",
+    "secure crypto spending",
+    "crypto card comparison",
+    "digital currency payment card"
+  ],
+  "timestamp": "2026-01-26T23:19:16.343499",
+  "analyzed_competitors": [
+    "bitrefill.com",
+    "crypto.com",
+    "privacy.com",
+    "paywithmoon.com",
+    "redotpay.com"
+  ]
+}

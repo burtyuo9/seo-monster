@@ -1,0 +1,53 @@
+{
+  "title": "Анализатор ключевых слов",
+  "subtitle": "Поиск прибыльных ключевых запросов",
+  "search": {
+    "placeholder": "Введите базовое ключевое слово...",
+    "searchBtn": "Найти ключевые слова",
+    "filters": "Фильтры"
+  },
+  "filters": {
+    "volume": "Объём поиска",
+    "difficulty": "Сложность ключа",
+    "cpc": "CPC",
+    "intent": "Поисковый интент",
+    "minVolume": "Мин. объём",
+    "maxVolume": "Макс. объём",
+    "minDifficulty": "Мин. сложность",
+    "maxDifficulty": "Макс. сложность"
+  },
+  "intents": {
+    "informational": "Информационный",
+    "navigational": "Навигационный",
+    "commercial": "Коммерческий",
+    "transactional": "Транзакционный"
+  },
+  "table": {
+    "keyword": "Ключевое слово",
+    "volume": "Объём",
+    "difficulty": "KD",
+    "cpc": "CPC",
+    "intent": "Интент",
+    "trend": "Тренд",
+    "actions": "Действия"
+  },
+  "actions": {
+    "addToList": "Добавить в список",
+    "generateContent": "Сгенерировать контент",
+    "trackRanking": "Отслеживать позицию",
+    "viewSerp": "Смотреть SERP"
+  },
+  "lists": {
+    "title": "Списки ключевых слов",
+    "createList": "Создать новый список",
+    "myKeywords": "Мои ключевые слова",
+    "competitors": "Ключи конкурентов",
+    "opportunities": "Возможности"
+  },
+  "stats": {
+    "totalKeywords": "Всего ключей",
+    "avgVolume": "Средний объём",
+    "avgDifficulty": "Средняя сложность",
+    "opportunities": "Возможности"
+  }
+}

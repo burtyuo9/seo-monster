@@ -1,0 +1,52 @@
+{
+  "title": "Настройки",
+  "subtitle": "Настройте ваш SEO Monster",
+  "sections": {
+    "general": "Основные",
+    "api": "API-ключи",
+    "geo": "Гео-таргетинг",
+    "notifications": "Уведомления",
+    "advanced": "Расширенные"
+  },
+  "general": {
+    "title": "Основные настройки",
+    "language": "Язык интерфейса",
+    "theme": "Тема оформления",
+    "timezone": "Часовой пояс",
+    "dateFormat": "Формат даты"
+  },
+  "api": {
+    "title": "Настройка API",
+    "openaiKey": "API-ключ OpenAI",
+    "googleKey": "API-ключ Google",
+    "indexNowKey": "API-ключ IndexNow",
+    "testConnection": "Проверить подключение",
+    "connectionSuccess": "Подключение успешно",
+    "connectionFailed": "Ошибка подключения"
+  },
+  "geo": {
+    "title": "Географический таргетинг",
+    "targetRegions": "Целевые регионы",
+    "excludedCountries": "Исключённые страны",
+    "languageTargeting": "Языковой таргетинг",
+    "ipFiltering": "Фильтрация по IP"
+  },
+  "notifications": {
+    "title": "Настройки уведомлений",
+    "emailNotifications": "Email-уведомления",
+    "browserNotifications": "Уведомления в браузере",
+    "cycleComplete": "Уведомлять о завершении цикла",
+    "errors": "Уведомлять об ошибках",
+    "dailyReport": "Ежедневный отчёт"
+  },
+  "advanced": {
+    "title": "Расширенные настройки",
+    "debugMode": "Режим отладки",
+    "logLevel": "Уровень логирования",
+    "cacheSettings": "Настройки кэша",
+    "clearCache": "Очистить кэш",
+    "exportData": "Экспортировать все данные",
+    "importData": "Импортировать данные",
+    "resetSettings": "Сбросить настройки"
+  }
+}

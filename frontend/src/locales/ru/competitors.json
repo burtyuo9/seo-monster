@@ -1,0 +1,49 @@
+{
+  "title": "Анализ конкурентов",
+  "subtitle": "Анализируйте и обгоняйте конкурентов",
+  "addCompetitor": {
+    "title": "Добавить конкурента",
+    "placeholder": "Введите домен конкурента...",
+    "addBtn": "Добавить"
+  },
+  "overview": {
+    "title": "Обзор конкурентов",
+    "totalCompetitors": "Всего конкурентов",
+    "avgDomainAuthority": "Средний DA",
+    "avgBacklinks": "Среднее кол-во ссылок",
+    "avgKeywords": "Среднее кол-во ключей"
+  },
+  "table": {
+    "domain": "Домен",
+    "da": "DA",
+    "backlinks": "Ссылки",
+    "keywords": "Ключи",
+    "traffic": "Трафик",
+    "lastUpdated": "Обновлено",
+    "actions": "Действия"
+  },
+  "details": {
+    "title": "Детали конкурента",
+    "domainAuthority": "Авторитет домена",
+    "pageAuthority": "Авторитет страницы",
+    "totalBacklinks": "Всего обратных ссылок",
+    "referringDomains": "Ссылающихся доменов",
+    "organicKeywords": "Органических ключей",
+    "organicTraffic": "Органический трафик",
+    "topKeywords": "Топ ключевые слова",
+    "topPages": "Топ страницы",
+    "backlinksProfile": "Профиль ссылок"
+  },
+  "comparison": {
+    "title": "Сравнение",
+    "yourSite": "Ваш сайт",
+    "vsCompetitor": "vs Конкурент",
+    "metrics": "Сравнение метрик"
+  },
+  "strategies": {
+    "title": "AI-стратегии",
+    "contentGaps": "Пробелы в контенте",
+    "keywordOpportunities": "Возможности по ключам",
+    "backlinkOpportunities": "Возможности по ссылкам"
+  }
+}

@@ -26,13 +26,13 @@
 *   **Frontend:** React, TypeScript, Vite, TailwindCSS, pnpm
 *   **AI:** Groq, Together AI, HuggingFace, Ollama, Cohere, Mistral, DeepSeek, OpenRouter, Google Gemini, Cloudflare (OpenAI опционально)
 *   **База данных:** SQLite
-*   **Развёртывание:** Bash-скрипт
+*   **Развёртывание:** Bash/CMD/PowerShell скрипты, GUI приложение
 
 ---
 
 ## ⚙️ Установка
 
-Для быстрой установки на Ubuntu 20.04+ используйте наш скрипт:
+### 🐧 Linux / Ubuntu
 
 ```bash
 wget https://raw.githubusercontent.com/burtyuo9/seo-monster/main/install.sh
@@ -40,28 +40,55 @@ chmod +x install.sh
 ./install.sh
 ```
 
-После установки укажите API ключи в файле `seo-monster-app/backend/.env`. Система работает **без OpenAI** с бесплатными провайдерами!
+### 🪟 Windows (PowerShell - Рекомендуется)
 
-Подробная инструкция доступна в файле [INSTALL.md](INSTALL.md).
+Откройте PowerShell **от имени администратора** и выполните:
+
+```powershell
+Set-ExecutionPolicy Bypass -Scope Process -Force
+irm https://raw.githubusercontent.com/burtyuo9/seo-monster/main/windows-installer/install.ps1 | iex
+```
+
+### 🪟 Windows (CMD)
+
+1. Скачайте [install.bat](windows-installer/install.bat)
+2. Запустите **от имени администратора**
+3. Следуйте инструкциям
+
+### 🖥️ Windows GUI
+
+1. Скачайте `SEO Monster.exe` из [Releases](https://github.com/burtyuo9/seo-monster/releases)
+2. Запустите приложение
+3. Нажмите "▶️ Запустить всё"
+
+📖 Подробная инструкция: [INSTALL_WINDOWS.md](INSTALL_WINDOWS.md)
 
 ---
 
 ## 🏁 Быстрый старт
 
-1.  **Запустите Backend:**
-    ```bash
-    cd seo-monster-app/backend
-    source venv/bin/activate
-    uvicorn main:app --host 0.0.0.0 --port 8000
-    ```
+### Linux / macOS
 
-2.  **Запустите Frontend (в новом терминале):**
-    ```bash
-    cd seo-monster-app/frontend
-    pnpm preview --host 0.0.0.0 --port 5200
-    ```
+```bash
+cd seo-monster-app
+./start.sh  # или вручную:
+# Terminal 1: cd backend && source venv/bin/activate && uvicorn main:app --host 0.0.0.0 --port 8000
+# Terminal 2: cd frontend && pnpm preview --host 0.0.0.0 --port 5200
+```
 
-3.  Откройте `http://localhost:5200` в вашем браузере.
+### Windows
+
+```cmd
+cd seo-monster-app
+start.bat
+```
+
+Или через PowerShell:
+```powershell
+.\Start-SEOMonster.ps1
+```
+
+Откройте `http://localhost:5200` в браузере.
 
 ---
 
@@ -86,6 +113,30 @@ SEO Monster работает **полностью автономно без Open
 
 ---
 
+## 📁 Структура проекта
+
+```
+seo-monster/
+├── backend/                 # Python FastAPI backend
+│   ├── app/                 # API endpoints
+│   ├── services/            # Бизнес-логика и AI сервисы
+│   ├── main.py              # Точка входа
+│   └── requirements.txt     # Python зависимости
+├── frontend/                # React TypeScript frontend
+│   ├── src/                 # Компоненты и логика
+│   └── package.json         # Node.js зависимости
+├── windows-installer/       # Windows установщик и GUI
+│   ├── install.bat          # CMD установщик
+│   ├── install.ps1          # PowerShell установщик
+│   └── seo_monster_gui.py   # GUI приложение
+├── start.bat                # Windows запуск
+├── stop.bat                 # Windows остановка
+├── Start-SEOMonster.ps1     # PowerShell запуск
+└── install.sh               # Linux установщик
+```
+
+---
+
 ## 🤝 Контрибьюторы
 
 *   **burtyuo9** - Lead Developer
@@ -97,9 +148,10 @@ SEO Monster работает **полностью автономно без Open
 
 | Документ | Описание |
 |----------|----------|
-| [Руководство по установке](docs/INSTALLATION.md) | Подробные инструкции для всех ОС |
-| [Руководство пользователя](docs/USER_GUIDE.md) | Полное описание всех 11 модулей |
-| [AI Провайдеры](docs/AI_PROVIDERS.md) | Настройка OpenAI, Anthropic, Google AI |
+| [Установка Linux](INSTALL.md) | Инструкция для Ubuntu/Debian |
+| [Установка Windows](INSTALL_WINDOWS.md) | Инструкция для Windows 10/11 |
+| [Руководство пользователя](docs/USER_GUIDE.md) | Полное описание всех модулей |
+| [AI Провайдеры](docs/AI_PROVIDERS.md) | Настройка AI провайдеров |
 
 ---
 

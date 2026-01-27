@@ -93,6 +93,27 @@ SEO Monster работает **полностью автономно без Open
 
 ---
 
+## 📚 Документация
+
+| Документ | Описание |
+|----------|----------|
+| [Руководство по установке](docs/INSTALLATION.md) | Подробные инструкции для всех ОС |
+| [Руководство пользователя](docs/USER_GUIDE.md) | Полное описание всех 11 модулей |
+| [AI Провайдеры](docs/AI_PROVIDERS.md) | Настройка OpenAI, Anthropic, Google AI |
+
+---
+
+## 🐳 Docker
+
+```bash
+git clone https://github.com/burtyuo9/seo-monster.git
+cd seo-monster
+cp .env.example .env
+docker compose up -d
+```
+
+---
+
 ## 📄 Лицензия
 
 Этот проект является приватным. Все права защищены.

@@ -29,6 +29,7 @@ import AIChat from './components/AIChat'
 import TelegramSettings from './components/TelegramSettings'
 import HostingManager from './components/HostingManager'
 import TDSManager from './components/TDSManager'
+import GitHubManager from './components/GitHubManager'
 import axios from 'axios'
 import './index.css'
 
@@ -105,6 +106,7 @@ const navigation = [
   { name: 'Telegram', icon: Send, id: 'telegram' },
   { name: 'Хостинг', icon: Database, id: 'hosting' },
   { name: 'TDS', icon: Target, id: 'tds' },
+  { name: 'GitHub', icon: Database, id: 'github' },
   { name: 'Настройки', icon: Settings, id: 'settings' },
 ]
 
@@ -756,6 +758,7 @@ function App() {
       case 'telegram': return <TelegramSettings />
       case 'hosting': return <HostingManager />
       case 'tds': return <TDSManager />
+      case 'github': return <GitHubManager />
       case 'settings': return renderSettings()
       default: return renderDashboard()
     }

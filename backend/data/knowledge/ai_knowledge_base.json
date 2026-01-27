@@ -1,5 +1,5 @@
 {
-  "version": "2026.01",
+  "version": "2026.01.27",
   "last_updated": "2026-01-27",
   "knowledge_areas": {
     "seo": {
@@ -112,6 +112,128 @@
         "Используй LSI ключевые слова",
         "FAQ секция улучшает ранжирование"
       ]
+    },
+    "programming": {
+      "file": "programming_languages_2026.md",
+      "topics": [
+        "Python 3.12+",
+        "JavaScript ES2024",
+        "TypeScript 5.x",
+        "Go 1.22+",
+        "Rust 2024",
+        "C++ 23",
+        "Java 21 LTS",
+        "C# 12",
+        "PHP 8.3",
+        "Ruby 3.3",
+        "Swift 5.10",
+        "Kotlin 2.0"
+      ],
+      "key_insights": [
+        "Python - лучший для AI/ML, автоматизации, веб-бэкенда",
+        "TypeScript - стандарт для современного JS",
+        "Go - высокая производительность, простота",
+        "Rust - безопасность памяти, системное программирование",
+        "Kotlin - современная замена Java для Android"
+      ]
+    },
+    "web_development": {
+      "file": "web_development_2026.md",
+      "topics": [
+        "HTML5 семантика",
+        "CSS3/4 и Tailwind",
+        "React 19",
+        "Vue 3.4",
+        "Next.js 15",
+        "Nuxt 4",
+        "Svelte 5",
+        "Node.js 22 LTS",
+        "Deno 2.0",
+        "Bun 1.x"
+      ],
+      "key_insights": [
+        "React Server Components - тренд 2026",
+        "Tailwind CSS - стандарт для стилизации",
+        "Edge Functions для быстрого рендеринга",
+        "TypeScript обязателен для крупных проектов",
+        "Bun быстрее Node.js для многих задач"
+      ]
+    },
+    "mobile_development": {
+      "file": "mobile_desktop_dev_2026.md",
+      "topics": [
+        "React Native 0.75+",
+        "Flutter 3.x",
+        "Swift/SwiftUI",
+        "Kotlin/Jetpack Compose",
+        "Expo SDK 52",
+        "Capacitor 6",
+        "Electron 30",
+        "Tauri 2.0"
+      ],
+      "key_insights": [
+        "React Native - кроссплатформенность с JS",
+        "Flutter - высокая производительность, Dart",
+        "SwiftUI - нативный iOS с декларативным UI",
+        "Tauri - легче Electron, использует Rust",
+        "Expo упрощает React Native разработку"
+      ]
+    },
+    "media_processing": {
+      "file": "media_processing_2026.md",
+      "topics": [
+        "FFmpeg 7.x",
+        "Pillow/PIL",
+        "OpenCV 4.9",
+        "ImageMagick 7",
+        "Librosa (аудио)",
+        "MoviePy",
+        "PyDub",
+        "AI генерация (Stable Diffusion, DALL-E 3)"
+      ],
+      "key_insights": [
+        "FFmpeg - универсальный инструмент для видео/аудио",
+        "Pillow - стандарт для изображений в Python",
+        "OpenCV - компьютерное зрение и обработка",
+        "WebP/AVIF - современные форматы изображений",
+        "AI генерация изображений через API"
+      ]
+    },
+    "link_building": {
+      "file": "link_building_2026.md",
+      "topics": [
+        "Guest posting",
+        "Outreach",
+        "HARO/Connectively",
+        "Broken link building",
+        "Skyscraper technique",
+        "Digital PR"
+      ],
+      "key_insights": [
+        "Качество ссылок важнее количества",
+        "Релевантность донора критична",
+        "Естественный анкор-лист",
+        "Избегай PBN и спамных ссылок",
+        "Digital PR даёт качественные ссылки"
+      ]
+    },
+    "antidetect_proxy": {
+      "file": "antidetect_proxy_2026.md",
+      "topics": [
+        "Multilogin",
+        "GoLogin",
+        "Dolphin Anty",
+        "Резидентные прокси",
+        "Мобильные прокси",
+        "Ротация IP"
+      ],
+      "key_insights": [
+        "Резидентные прокси для обхода блокировок",
+        "Мобильные прокси - чистые IP",
+        "Антидетект для мультиаккаунтинга",
+        "Canvas fingerprint - главный фактор детекта",
+        "Используй разные профили для разных задач"
+      ]
     }
   },
   "best_practices": {
@@ -140,6 +262,32 @@
       "3. Создание шаблонов контента",
       "4. Настройка массовой публикации",
       "5. Мониторинг ошибок"
+    ],
+    "web_project": [
+      "1. Выбор стека технологий",
+      "2. Настройка окружения и линтеров",
+      "3. Создание структуры проекта",
+      "4. Разработка компонентов",
+      "5. Тестирование",
+      "6. Оптимизация производительности",
+      "7. Деплой и мониторинг"
+    ],
+    "mobile_app": [
+      "1. Выбор фреймворка (React Native/Flutter)",
+      "2. Настройка Expo или нативного окружения",
+      "3. Дизайн UI/UX",
+      "4. Разработка экранов и навигации",
+      "5. Интеграция API",
+      "6. Тестирование на устройствах",
+      "7. Публикация в App Store/Google Play"
+    ],
+    "media_processing": [
+      "1. Анализ входных данных",
+      "2. Выбор формата и кодека",
+      "3. Настройка параметров качества",
+      "4. Обработка (resize, crop, convert)",
+      "5. Оптимизация размера файла",
+      "6. Сохранение в нужном формате"
     ]
   },
   "prompts": {
@@ -147,19 +295,55 @@
     "meta_description": "Создай meta description до 155 символов для страницы о '{topic}'. Включи ключевое слово '{keyword}' и призыв к действию.",
     "product_description": "Напиши продающее описание товара '{product}'. Включи УТП, 5 преимуществ, характеристики и CTA. Ключевые слова: {keywords}.",
     "rewrite": "Перепиши текст уникально, сохранив смысл и ключевые слова: {text}",
-    "competitor_analysis": "Проанализируй конкурента {url}. Определи: ключевые слова, структуру контента, источники ссылок, сильные и слабые стороны."
+    "competitor_analysis": "Проанализируй конкурента {url}. Определи: ключевые слова, структуру контента, источники ссылок, сильные и слабые стороны.",
+    "code_generation": "Напиши код на {language} для {task}. Требования: {requirements}. Используй лучшие практики и добавь комментарии.",
+    "code_review": "Проверь код на ошибки, уязвимости и соответствие лучшим практикам: {code}",
+    "code_refactor": "Отрефактори код для улучшения читаемости и производительности: {code}",
+    "api_integration": "Создай интеграцию с API {api_name}. Эндпоинт: {endpoint}. Метод: {method}. Параметры: {params}",
+    "react_component": "Создай React компонент {name} с TypeScript. Пропсы: {props}. Функциональность: {functionality}",
+    "database_schema": "Создай схему базы данных для {project}. Сущности: {entities}. Связи: {relations}"
+  },
+  "code_templates": {
+    "python_script": "#!/usr/bin/env python3\n\"\"\"Description\"\"\"\n\nimport sys\n\ndef main():\n    pass\n\nif __name__ == '__main__':\n    main()",
+    "fastapi_endpoint": "@router.get('/{path}')\nasync def endpoint_name(param: str):\n    return {'result': param}",
+    "react_component": "import React from 'react';\n\ninterface Props {\n  // props\n}\n\nconst Component: React.FC<Props> = (props) => {\n  return <div></div>;\n};\n\nexport default Component;",
+    "express_route": "router.get('/', async (req, res) => {\n  try {\n    res.json({ success: true });\n  } catch (error) {\n    res.status(500).json({ error: error.message });\n  }\n});",
+    "sql_table": "CREATE TABLE table_name (\n  id SERIAL PRIMARY KEY,\n  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP\n);"
   },
   "api_endpoints": {
     "google_indexing": "https://indexing.googleapis.com/v3/urlNotifications:publish",
     "indexnow_bing": "https://www.bing.com/indexnow",
     "indexnow_yandex": "https://yandex.com/indexnow",
     "wordpress_posts": "/wp-json/wp/v2/posts",
-    "cpanel_uapi": "/execute/{module}/{function}"
+    "cpanel_uapi": "/execute/{module}/{function}",
+    "openai_chat": "https://api.openai.com/v1/chat/completions",
+    "github_api": "https://api.github.com",
+    "stability_ai": "https://api.stability.ai/v1/generation"
   },
   "rate_limits": {
     "google_indexing_api": "200 запросов/день",
     "wordpress_api": "рекомендуется 1 запрос/секунду",
     "cpanel_api": "без официальных лимитов",
-    "indexnow": "10000 URL за запрос"
+    "indexnow": "10000 URL за запрос",
+    "openai_api": "зависит от тарифа",
+    "github_api": "5000 запросов/час с токеном"
+  },
+  "github_collaboration": {
+    "description": "Модуль для совместной работы AI-агентов через GitHub",
+    "features": [
+      "Создание и управление репозиториями",
+      "Синхронизация базы знаний",
+      "Совместные проекты с другими AI",
+      "Pull Requests для код-ревью",
+      "Ветвление для экспериментов"
+    ],
+    "workflow": [
+      "1. Создать репозиторий для проекта",
+      "2. Добавить AI-коллабораторов",
+      "3. Создать совместный проект",
+      "4. Распределить задачи",
+      "5. Синхронизировать знания",
+      "6. Мержить изменения"
+    ]
   }
 }

@@ -1,0 +1,11 @@
+{
+  "auto_mode_enabled": true,
+  "auto_fix_enabled": true,
+  "check_interval": 300,
+  "notify_on_error": true,
+  "max_history_size": 1000,
+  "enabled_checks": [
+    "all"
+  ],
+  "disabled_checks": []
+}

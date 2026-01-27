@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import DiagnosticsPanel from './components/DiagnosticsPanel'
 
 const API_URL = 'http://localhost:8000/api'
 
@@ -29,6 +30,7 @@ function App() {
     { name: 'Platforms', id: 'platforms' },
     { name: 'Content', id: 'content' },
     { name: 'Settings', id: 'settings' },
+    { name: 'Diagnostics', id: 'diagnostics' },
   ]
 
   return (
@@ -130,6 +132,12 @@ function App() {
           <div className="bg-gray-800 p-6 rounded-lg">
             <h3 className="text-xl font-bold text-white mb-4">Settings</h3>
             <p className="text-gray-400">Configure your SEO Monster settings here</p>
+          </div>
+        )}
+
+        {currentPage === 'diagnostics' && (
+          <div className="bg-gray-800 rounded-lg">
+            <DiagnosticsPanel />
           </div>
         )}
       </div>

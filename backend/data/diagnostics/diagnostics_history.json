@@ -1,0 +1,650 @@
+[
+  {
+    "check_id": "api_health",
+    "category": "api",
+    "name": "API Health Check",
+    "status": "ok",
+    "message": "API is healthy and responding",
+    "details": null,
+    "fix_available": false,
+    "fix_applied": false,
+    "timestamp": "2026-01-27T01:59:06.453647"
+  },
+  {
+    "check_id": "api_endpoints",
+    "category": "api",
+    "name": "API Endpoints Check",
+    "status": "ok",
+    "message": "All 8 endpoints are working",
+    "details": {
+      "checked_endpoints": 8
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "timestamp": "2026-01-27T01:59:06.462947"
+  },
+  {
+    "check_id": "data_directories",
+    "category": "file_system",
+    "name": "Data Directories Check",
+    "status": "ok",
+    "message": "All required directories exist",
+    "details": {
+      "checked_dirs": 7
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "timestamp": "2026-01-27T01:59:06.463272"
+  },
+  {
+    "check_id": "json_files_integrity",
+    "category": "file_system",
+    "name": "JSON Files Integrity",
+    "status": "ok",
+    "message": "All 30 JSON files are valid",
+    "details": {
+      "checked_files": 30
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "timestamp": "2026-01-27T01:59:06.466894"
+  },
+  {
+    "check_id": "disk_space",
+    "category": "file_system",
+    "name": "Disk Space Check",
+    "status": "ok",
+    "message": "Disk space OK: 31.15 GB free",
+    "details": {
+      "total_gb": 41.41561508178711,
+      "used_gb": 10.254432678222656,
+      "free_gb": 31.145557403564453,
+      "used_percent": 24.75982225055046
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "timestamp": "2026-01-27T01:59:06.467253"
+  },
+  {
+    "check_id": "indexing_service",
+    "category": "services",
+    "name": "Indexing Service Check",
+    "status": "ok",
+    "message": "Indexing service is working",
+    "details": {
+      "total_requests": 10,
+      "submitted": 0,
+      "indexed": 0,
+      "not_indexed": 0,
+      "errors": 0,
+      "queue_pending": 3,
+      "queue_total": 3,
+      "unique_domains": 3
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "timestamp": "2026-01-27T01:59:06.468041"
+  },
+  {
+    "check_id": "sessions_service",
+    "category": "services",
+    "name": "Sessions Service Check",
+    "status": "ok",
+    "message": "Sessions service is working",
+    "details": {
+      "total_accounts": 0,
+      "active_sessions": 0,
+      "successful_logins": 0,
+      "failed_logins": 0,
+      "last_activity": null
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "timestamp": "2026-01-27T01:59:06.468659"
+  },
+  {
+    "check_id": "learning_service",
+    "category": "services",
+    "name": "Learning Service Check",
+    "status": "error",
+    "message": "Learning service error: No module named 'services.learning_service'",
+    "details": null,
+    "fix_available": false,
+    "fix_applied": false,
+    "timestamp": "2026-01-27T01:59:06.469064"
+  },
+  {
+    "check_id": "config_files",
+    "category": "configuration",
+    "name": "Config Files Check",
+    "status": "ok",
+    "message": "All config files exist",
+    "details": null,
+    "fix_available": false,
+    "fix_applied": false,
+    "timestamp": "2026-01-27T01:59:06.469610"
+  },
+  {
+    "check_id": "environment_vars",
+    "category": "configuration",
+    "name": "Environment Variables Check",
+    "status": "ok",
+    "message": "All required environment variables are set",
+    "details": null,
+    "fix_available": false,
+    "fix_applied": false,
+    "timestamp": "2026-01-27T01:59:06.470068"
+  },
+  {
+    "check_id": "python_packages",
+    "category": "dependencies",
+    "name": "Python Packages Check",
+    "status": "ok",
+    "message": "All required packages are installed",
+    "details": null,
+    "fix_available": false,
+    "fix_applied": false,
+    "timestamp": "2026-01-27T01:59:06.470502"
+  },
+  {
+    "check_id": "memory_usage",
+    "category": "performance",
+    "name": "Memory Usage Check",
+    "status": "ok",
+    "message": "Memory usage OK: 43.1%",
+    "details": {
+      "total_gb": 3.849040985107422,
+      "available_gb": 2.1896095275878906,
+      "percent_used": 43.1
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "timestamp": "2026-01-27T01:59:06.501871"
+  },
+  {
+    "check_id": "api_health",
+    "category": "api",
+    "name": "API Health Check",
+    "status": "ok",
+    "message": "API is healthy and responding",
+    "details": null,
+    "fix_available": false,
+    "fix_applied": false,
+    "timestamp": "2026-01-27T01:59:15.475576"
+  },
+  {
+    "check_id": "api_endpoints",
+    "category": "api",
+    "name": "API Endpoints Check",
+    "status": "ok",
+    "message": "All 8 endpoints are working",
+    "details": {
+      "checked_endpoints": 8
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "timestamp": "2026-01-27T01:59:15.487446"
+  },
+  {
+    "check_id": "data_directories",
+    "category": "file_system",
+    "name": "Data Directories Check",
+    "status": "ok",
+    "message": "All required directories exist",
+    "details": {
+      "checked_dirs": 7
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "timestamp": "2026-01-27T01:59:15.488069"
+  },
+  {
+    "check_id": "json_files_integrity",
+    "category": "file_system",
+    "name": "JSON Files Integrity",
+    "status": "ok",
+    "message": "All 30 JSON files are valid",
+    "details": {
+      "checked_files": 30
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "timestamp": "2026-01-27T01:59:15.491272"
+  },
+  {
+    "check_id": "disk_space",
+    "category": "file_system",
+    "name": "Disk Space Check",
+    "status": "ok",
+    "message": "Disk space OK: 31.16 GB free",
+    "details": {
+      "total_gb": 41.41561508178711,
+      "used_gb": 10.241943359375,
+      "free_gb": 31.15804672241211,
+      "used_percent": 24.729666187860115
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "timestamp": "2026-01-27T01:59:15.491770"
+  },
+  {
+    "check_id": "indexing_service",
+    "category": "services",
+    "name": "Indexing Service Check",
+    "status": "ok",
+    "message": "Indexing service is working",
+    "details": {
+      "total_requests": 10,
+      "submitted": 0,
+      "indexed": 0,
+      "not_indexed": 0,
+      "errors": 0,
+      "queue_pending": 3,
+      "queue_total": 3,
+      "unique_domains": 3
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "timestamp": "2026-01-27T01:59:15.492578"
+  },
+  {
+    "check_id": "sessions_service",
+    "category": "services",
+    "name": "Sessions Service Check",
+    "status": "ok",
+    "message": "Sessions service is working",
+    "details": {
+      "total_accounts": 0,
+      "active_sessions": 0,
+      "successful_logins": 0,
+      "failed_logins": 0,
+      "last_activity": null
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "timestamp": "2026-01-27T01:59:15.493125"
+  },
+  {
+    "check_id": "learning_service",
+    "category": "services",
+    "name": "Learning Service Check",
+    "status": "error",
+    "message": "Learning service error: No module named 'services.learning_service'",
+    "details": null,
+    "fix_available": false,
+    "fix_applied": false,
+    "timestamp": "2026-01-27T01:59:15.493805"
+  },
+  {
+    "check_id": "config_files",
+    "category": "configuration",
+    "name": "Config Files Check",
+    "status": "ok",
+    "message": "All config files exist",
+    "details": null,
+    "fix_available": false,
+    "fix_applied": false,
+    "timestamp": "2026-01-27T01:59:15.494214"
+  },
+  {
+    "check_id": "environment_vars",
+    "category": "configuration",
+    "name": "Environment Variables Check",
+    "status": "ok",
+    "message": "All required environment variables are set",
+    "details": null,
+    "fix_available": false,
+    "fix_applied": false,
+    "timestamp": "2026-01-27T01:59:15.494815"
+  },
+  {
+    "check_id": "python_packages",
+    "category": "dependencies",
+    "name": "Python Packages Check",
+    "status": "ok",
+    "message": "All required packages are installed",
+    "details": null,
+    "fix_available": false,
+    "fix_applied": false,
+    "timestamp": "2026-01-27T01:59:15.495427"
+  },
+  {
+    "check_id": "memory_usage",
+    "category": "performance",
+    "name": "Memory Usage Check",
+    "status": "ok",
+    "message": "Memory usage OK: 43.3%",
+    "details": {
+      "total_gb": 3.849040985107422,
+      "available_gb": 2.1840782165527344,
+      "percent_used": 43.3
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "timestamp": "2026-01-27T01:59:15.496373"
+  },
+  {
+    "check_id": "api_health",
+    "category": "api",
+    "name": "API Health Check",
+    "status": "ok",
+    "message": "API is healthy and responding",
+    "details": null,
+    "fix_available": false,
+    "fix_applied": false,
+    "timestamp": "2026-01-27T01:59:15.699018"
+  },
+  {
+    "check_id": "api_endpoints",
+    "category": "api",
+    "name": "API Endpoints Check",
+    "status": "ok",
+    "message": "All 8 endpoints are working",
+    "details": {
+      "checked_endpoints": 8
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "timestamp": "2026-01-27T01:59:15.715815"
+  },
+  {
+    "check_id": "data_directories",
+    "category": "file_system",
+    "name": "Data Directories Check",
+    "status": "ok",
+    "message": "All required directories exist",
+    "details": {
+      "checked_dirs": 7
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "timestamp": "2026-01-27T01:59:15.716731"
+  },
+  {
+    "check_id": "json_files_integrity",
+    "category": "file_system",
+    "name": "JSON Files Integrity",
+    "status": "ok",
+    "message": "All 30 JSON files are valid",
+    "details": {
+      "checked_files": 30
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "timestamp": "2026-01-27T01:59:15.719530"
+  },
+  {
+    "check_id": "disk_space",
+    "category": "file_system",
+    "name": "Disk Space Check",
+    "status": "ok",
+    "message": "Disk space OK: 31.16 GB free",
+    "details": {
+      "total_gb": 41.41561508178711,
+      "used_gb": 10.241950988769531,
+      "free_gb": 31.158039093017578,
+      "used_percent": 24.729684609401158
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "timestamp": "2026-01-27T01:59:15.719966"
+  },
+  {
+    "check_id": "indexing_service",
+    "category": "services",
+    "name": "Indexing Service Check",
+    "status": "ok",
+    "message": "Indexing service is working",
+    "details": {
+      "total_requests": 10,
+      "submitted": 0,
+      "indexed": 0,
+      "not_indexed": 0,
+      "errors": 0,
+      "queue_pending": 3,
+      "queue_total": 3,
+      "unique_domains": 3
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "timestamp": "2026-01-27T01:59:15.720904"
+  },
+  {
+    "check_id": "sessions_service",
+    "category": "services",
+    "name": "Sessions Service Check",
+    "status": "ok",
+    "message": "Sessions service is working",
+    "details": {
+      "total_accounts": 0,
+      "active_sessions": 0,
+      "successful_logins": 0,
+      "failed_logins": 0,
+      "last_activity": null
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "timestamp": "2026-01-27T01:59:15.721615"
+  },
+  {
+    "check_id": "learning_service",
+    "category": "services",
+    "name": "Learning Service Check",
+    "status": "error",
+    "message": "Learning service error: No module named 'services.learning_service'",
+    "details": null,
+    "fix_available": false,
+    "fix_applied": false,
+    "timestamp": "2026-01-27T01:59:15.722727"
+  },
+  {
+    "check_id": "config_files",
+    "category": "configuration",
+    "name": "Config Files Check",
+    "status": "ok",
+    "message": "All config files exist",
+    "details": null,
+    "fix_available": false,
+    "fix_applied": false,
+    "timestamp": "2026-01-27T01:59:15.723459"
+  },
+  {
+    "check_id": "environment_vars",
+    "category": "configuration",
+    "name": "Environment Variables Check",
+    "status": "ok",
+    "message": "All required environment variables are set",
+    "details": null,
+    "fix_available": false,
+    "fix_applied": false,
+    "timestamp": "2026-01-27T01:59:15.723969"
+  },
+  {
+    "check_id": "python_packages",
+    "category": "dependencies",
+    "name": "Python Packages Check",
+    "status": "ok",
+    "message": "All required packages are installed",
+    "details": null,
+    "fix_available": false,
+    "fix_applied": false,
+    "timestamp": "2026-01-27T01:59:15.724968"
+  },
+  {
+    "check_id": "memory_usage",
+    "category": "performance",
+    "name": "Memory Usage Check",
+    "status": "ok",
+    "message": "Memory usage OK: 43.3%",
+    "details": {
+      "total_gb": 3.849040985107422,
+      "available_gb": 2.183837890625,
+      "percent_used": 43.3
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "timestamp": "2026-01-27T01:59:15.725832"
+  },
+  {
+    "check_id": "api_health",
+    "category": "api",
+    "name": "API Health Check",
+    "status": "ok",
+    "message": "API is healthy and responding",
+    "details": null,
+    "fix_available": false,
+    "fix_applied": false,
+    "timestamp": "2026-01-27T01:59:55.261968"
+  },
+  {
+    "check_id": "api_endpoints",
+    "category": "api",
+    "name": "API Endpoints Check",
+    "status": "ok",
+    "message": "All 8 endpoints are working",
+    "details": {
+      "checked_endpoints": 8
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "timestamp": "2026-01-27T01:59:55.272720"
+  },
+  {
+    "check_id": "data_directories",
+    "category": "file_system",
+    "name": "Data Directories Check",
+    "status": "ok",
+    "message": "All required directories exist",
+    "details": {
+      "checked_dirs": 7
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "timestamp": "2026-01-27T01:59:55.273616"
+  },
+  {
+    "check_id": "json_files_integrity",
+    "category": "file_system",
+    "name": "JSON Files Integrity",
+    "status": "ok",
+    "message": "All 30 JSON files are valid",
+    "details": {
+      "checked_files": 30
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "timestamp": "2026-01-27T01:59:55.277135"
+  },
+  {
+    "check_id": "disk_space",
+    "category": "file_system",
+    "name": "Disk Space Check",
+    "status": "ok",
+    "message": "Disk space OK: 31.15 GB free",
+    "details": {
+      "total_gb": 41.41561508178711,
+      "used_gb": 10.249454498291016,
+      "free_gb": 31.150535583496094,
+      "used_percent": 24.74780219501872
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "timestamp": "2026-01-27T01:59:55.277888"
+  },
+  {
+    "check_id": "indexing_service",
+    "category": "services",
+    "name": "Indexing Service Check",
+    "status": "ok",
+    "message": "Indexing service is working",
+    "details": {
+      "total_requests": 10,
+      "submitted": 0,
+      "indexed": 0,
+      "not_indexed": 0,
+      "errors": 0,
+      "queue_pending": 3,
+      "queue_total": 3,
+      "unique_domains": 3
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "timestamp": "2026-01-27T01:59:55.278996"
+  },
+  {
+    "check_id": "sessions_service",
+    "category": "services",
+    "name": "Sessions Service Check",
+    "status": "ok",
+    "message": "Sessions service is working",
+    "details": {
+      "total_accounts": 0,
+      "active_sessions": 0,
+      "successful_logins": 0,
+      "failed_logins": 0,
+      "last_activity": null
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "timestamp": "2026-01-27T01:59:55.279846"
+  },
+  {
+    "check_id": "learning_service",
+    "category": "services",
+    "name": "Learning Service Check",
+    "status": "error",
+    "message": "Learning service error: No module named 'services.learning_service'",
+    "details": null,
+    "fix_available": false,
+    "fix_applied": false,
+    "timestamp": "2026-01-27T01:59:55.280811"
+  },
+  {
+    "check_id": "config_files",
+    "category": "configuration",
+    "name": "Config Files Check",
+    "status": "ok",
+    "message": "All config files exist",
+    "details": null,
+    "fix_available": false,
+    "fix_applied": false,
+    "timestamp": "2026-01-27T01:59:55.281551"
+  },
+  {
+    "check_id": "environment_vars",
+    "category": "configuration",
+    "name": "Environment Variables Check",
+    "status": "ok",
+    "message": "All required environment variables are set",
+    "details": null,
+    "fix_available": false,
+    "fix_applied": false,
+    "timestamp": "2026-01-27T01:59:55.282524"
+  },
+  {
+    "check_id": "python_packages",
+    "category": "dependencies",
+    "name": "Python Packages Check",
+    "status": "ok",
+    "message": "All required packages are installed",
+    "details": null,
+    "fix_available": false,
+    "fix_applied": false,
+    "timestamp": "2026-01-27T01:59:55.283696"
+  },
+  {
+    "check_id": "memory_usage",
+    "category": "performance",
+    "name": "Memory Usage Check",
+    "status": "ok",
+    "message": "Memory usage OK: 42.7%",
+    "details": {
+      "total_gb": 3.849040985107422,
+      "available_gb": 2.2059783935546875,
+      "percent_used": 42.7
+    },
+    "fix_available": false,
+    "fix_applied": false,
+    "timestamp": "2026-01-27T01:59:55.285344"
+  }
+]

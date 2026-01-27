@@ -469,7 +469,7 @@ class IndexingService:
             Результаты обработки
         """
         results = []
-        pending = [item for item in self.queue if item["status"] == "pending"][:batch_size]
+        pending = [item for item in self.queue if item.get("status", "pending") == "pending"][:batch_size]
         
         for item in pending:
             # Отправляем ping
@@ -529,7 +529,7 @@ class IndexingService:
     def get_queue(self, status: str = None) -> List[Dict]:
         """Получение очереди индексации"""
         if status:
-            return [item for item in self.queue if item["status"] == status]
+            return [item for item in self.queue if item.get("status", "pending") == status]
         return self.queue
     
     def get_stats(self) -> Dict:
@@ -542,7 +542,7 @@ class IndexingService:
             "indexed": len([h for h in self.history if h["status"] == "indexed"]),
             "not_indexed": len([h for h in self.history if h["status"] == "not_indexed"]),
             "errors": len([h for h in self.history if h["status"] == "error"]),
-            "queue_pending": len([q for q in self.queue if q["status"] == "pending"]),
+            "queue_pending": len([q for q in self.queue if q.get("status", "pending") == "pending"]),
             "queue_total": len(self.queue),
         }
         

@@ -147,3 +147,17 @@ if __name__ == "__main__":
         port=8000,
         reload=settings.DEBUG
     )
+
+# System stats endpoint
+@app.get("/api/system/stats")
+async def get_system_stats():
+    """Get system statistics"""
+    return {
+        "total_sites": 0,
+        "total_platforms": 0,
+        "total_content": 0,
+        "published_content": 0,
+        "pending_tasks": 0,
+        "running_tasks": 0,
+        "success_rate": 0.0
+    }

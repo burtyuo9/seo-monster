@@ -396,7 +396,8 @@ class DiagnosticsService:
     
     async def _check_api_endpoints(self) -> DiagnosticResult:
         """Проверка всех API endpoints"""
-        endpoints = [
+        # Критические endpoints - обязательные для работы системы
+        critical_endpoints = [
             ("/api/sites/", "Sites API"),
             ("/api/platforms/", "Platforms API"),
             ("/api/content/", "Content API"),
@@ -404,36 +405,61 @@ class DiagnosticsService:
             ("/api/indexing/stats", "Indexing Stats"),
             ("/api/sessions/stats", "Sessions Stats"),
             ("/api/agent/status", "Agent Status"),
+            ("/api/diagnostics/status", "Diagnostics Status")
+        ]
+        
+        # Опциональные endpoints - не влияют на Health Score
+        optional_endpoints = [
             ("/api/ses/keys", "SES Keys"),
             ("/api/ses/warmup/stats", "Warmup Stats"),
             ("/api/tds/stats", "TDS Stats"),
             ("/api/ads/campaigns", "Ad Campaigns"),
-            ("/api/tracker/stats", "Tracker Stats"),
-            ("/api/diagnostics/status", "Diagnostics Status")
+            ("/api/tracker/stats", "Tracker Stats")
         ]
+        
+        endpoints = critical_endpoints + optional_endpoints
         
         start_time = time.time()
         errors = []
-        warnings = []
+        warnings = []  # Критические warnings
+        info_items = []  # Опциональные - только информация
         checked = 0
+        
+        critical_paths = [e[0] for e in critical_endpoints]
         
         try:
             import aiohttp
             async with aiohttp.ClientSession() as session:
                 for endpoint, name in endpoints:
+                    is_critical = endpoint in critical_paths
                     try:
                         async with session.get(f"http://localhost:8000{endpoint}", timeout=5) as resp:
                             checked += 1
                             if resp.status == 404:
-                                warnings.append(f"{name} ({endpoint}): not found")
+                                if is_critical:
+                                    warnings.append(f"{name} ({endpoint}): not found")
+                                else:
+                                    info_items.append(f"{name} ({endpoint}): not configured (optional)")
                             elif resp.status >= 500:
-                                errors.append(f"{name} ({endpoint}): server error {resp.status}")
+                                if is_critical:
+                                    errors.append(f"{name} ({endpoint}): server error {resp.status}")
+                                else:
+                                    warnings.append(f"{name} ({endpoint}): server error {resp.status}")
                             elif resp.status >= 400:
-                                warnings.append(f"{name} ({endpoint}): client error {resp.status}")
+                                if is_critical:
+                                    warnings.append(f"{name} ({endpoint}): client error {resp.status}")
+                                else:
+                                    info_items.append(f"{name} ({endpoint}): {resp.status} (optional)")
                     except asyncio.TimeoutError:
-                        errors.append(f"{name} ({endpoint}): timeout")
+                        if is_critical:
+                            errors.append(f"{name} ({endpoint}): timeout")
+                        else:
+                            info_items.append(f"{name} ({endpoint}): timeout (optional)")
                     except Exception as e:
-                        errors.append(f"{name} ({endpoint}): {str(e)}")
+                        if is_critical:
+                            errors.append(f"{name} ({endpoint}): {str(e)}")
+                        else:
+                            info_items.append(f"{name} ({endpoint}): {str(e)} (optional)")
             
             duration = (time.time() - start_time) * 1000
             
@@ -443,8 +469,8 @@ class DiagnosticsService:
                     category=DiagnosticCategory.API,
                     name="API Endpoints Check",
                     status=DiagnosticStatus.ERROR,
-                    message=f"{len(errors)} endpoints have errors",
-                    details={"errors": errors, "warnings": warnings, "checked": checked},
+                    message=f"{len(errors)} critical endpoints have errors",
+                    details={"errors": errors, "warnings": warnings, "info": info_items, "checked": checked},
                     severity=DiagnosticSeverity.HIGH,
                     recommendations=["Check backend logs for errors", "Verify route registrations"],
                     duration_ms=duration
@@ -455,19 +481,23 @@ class DiagnosticsService:
                     category=DiagnosticCategory.API,
                     name="API Endpoints Check",
                     status=DiagnosticStatus.WARNING,
-                    message=f"{len(warnings)} endpoints have warnings",
-                    details={"warnings": warnings, "checked": checked},
+                    message=f"{len(warnings)} critical endpoints have warnings",
+                    details={"warnings": warnings, "info": info_items, "checked": checked},
                     severity=DiagnosticSeverity.MEDIUM,
                     duration_ms=duration
                 )
             else:
+                # Все критические endpoints работают, опциональные - информация
+                message = f"All {len(critical_endpoints)} critical endpoints working"
+                if info_items:
+                    message += f" ({len(info_items)} optional not configured)"
                 return DiagnosticResult(
                     check_id="api_endpoints",
                     category=DiagnosticCategory.API,
                     name="API Endpoints Check",
                     status=DiagnosticStatus.OK,
-                    message=f"All {checked} endpoints are working",
-                    details={"checked": checked},
+                    message=message,
+                    details={"checked": checked, "info": info_items} if info_items else {"checked": checked},
                     severity=DiagnosticSeverity.HIGH,
                     duration_ms=duration
                 )
@@ -1000,14 +1030,16 @@ class DiagnosticsService:
             active_keys = [k for k in keys if k.get("status") == "active"]
             
             if not keys:
+                # Отсутствие SES ключей - это опциональная функция, не ошибка
                 return DiagnosticResult(
                     check_id="ses_service",
                     category=DiagnosticCategory.EMAIL,
                     name="AWS SES Service Check",
-                    status=DiagnosticStatus.WARNING,
-                    message="No AWS SES keys configured",
-                    severity=DiagnosticSeverity.HIGH,
-                    recommendations=["Add AWS SES credentials in Email SES module"]
+                    status=DiagnosticStatus.OK,
+                    message="AWS SES not configured (optional feature)",
+                    severity=DiagnosticSeverity.LOW,
+                    details={"configured": False, "note": "Add AWS SES keys to enable email functionality"},
+                    recommendations=["Add AWS SES credentials in Email SES module to enable email sending"]
                 )
             elif not active_keys:
                 return DiagnosticResult(
@@ -1467,14 +1499,15 @@ class DiagnosticsService:
                 recommendations=[f"Set {v['var']}: {v['description']}" for v in missing_required]
             )
         elif missing_optional:
+            # Опциональные переменные не влияют на Health Score
             return DiagnosticResult(
                 check_id="environment_vars",
                 category=DiagnosticCategory.CONFIGURATION,
                 name="Environment Variables Check",
-                status=DiagnosticStatus.WARNING,
-                message=f"All required vars set, {len(missing_optional)} optional missing",
-                details={"missing_optional": missing_optional},
-                severity=DiagnosticSeverity.MEDIUM
+                status=DiagnosticStatus.OK,
+                message=f"All required vars set ({len(missing_optional)} optional available)",
+                details={"optional_features": missing_optional, "note": "Optional variables enable additional features"},
+                severity=DiagnosticSeverity.LOW
             )
         else:
             return DiagnosticResult(

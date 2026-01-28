@@ -293,3 +293,159 @@ async def get_available_styles():
             }
         ]
     }
+
+
+# === Manus Integration Endpoints ===
+
+@router.get("/pending")
+async def get_pending_landings():
+    """
+    Get all landings pending publication to MANUS.space
+    This endpoint is called by Manus Scheduled Task to fetch content for publishing
+    
+    Returns:
+        List of landings with status 'ready_to_publish' including full HTML content
+    """
+    pending = []
+    
+    # Check in-memory landings
+    for landing in published_landings:
+        if landing.get("status") == "ready_to_publish":
+            pending.append({
+                "id": landing["id"],
+                "slug": landing["slug"],
+                "title": landing["title"],
+                "html": landing["html"],
+                "meta_description": landing["meta_description"],
+                "keywords": landing.get("keywords", []),
+                "language": landing["language"],
+                "word_count": landing["word_count"],
+                "created_at": landing["created_at"]
+            })
+    
+    # Also check landings directory for saved but not published
+    landings_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "landings")
+    if os.path.exists(landings_dir):
+        for filename in os.listdir(landings_dir):
+            if filename.endswith('.json'):
+                slug = filename[:-5]
+                # Skip if already in pending list
+                if any(p["slug"] == slug for p in pending):
+                    continue
+                
+                meta_path = os.path.join(landings_dir, filename)
+                html_path = os.path.join(landings_dir, f"{slug}.html")
+                
+                if os.path.exists(html_path):
+                    with open(meta_path, 'r', encoding='utf-8') as f:
+                        meta = json.load(f)
+                    with open(html_path, 'r', encoding='utf-8') as f:
+                        html_content = f.read()
+                    
+                    # Check if not yet published (no published_at field)
+                    if not meta.get("published_at"):
+                        pending.append({
+                            "id": meta.get("id", slug),
+                            "slug": slug,
+                            "title": meta.get("title", "Unknown"),
+                            "html": html_content,
+                            "meta_description": meta.get("meta_description", ""),
+                            "keywords": meta.get("keywords", []),
+                            "language": meta.get("language", "en"),
+                            "word_count": meta.get("word_count", 0),
+                            "created_at": meta.get("created_at", "")
+                        })
+    
+    return {
+        "count": len(pending),
+        "landings": pending
+    }
+
+
+@router.post("/mark-published/{slug}")
+async def mark_as_published(slug: str, published_url: str = None):
+    """
+    Mark a landing as published after Manus successfully deploys it
+    
+    Args:
+        slug: The landing slug
+        published_url: The actual published URL on MANUS.space
+    """
+    global published_landings
+    
+    # Update in-memory
+    for landing in published_landings:
+        if landing["slug"] == slug:
+            landing["status"] = "published"
+            landing["published_at"] = datetime.utcnow().isoformat()
+            if published_url:
+                landing["published_url"] = published_url
+            break
+    
+    # Update in file
+    landings_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "landings")
+    meta_path = os.path.join(landings_dir, f"{slug}.json")
+    
+    if os.path.exists(meta_path):
+        with open(meta_path, 'r', encoding='utf-8') as f:
+            meta = json.load(f)
+        
+        meta["status"] = "published"
+        meta["published_at"] = datetime.utcnow().isoformat()
+        if published_url:
+            meta["published_url"] = published_url
+        
+        with open(meta_path, 'w', encoding='utf-8') as f:
+            json.dump(meta, f, ensure_ascii=False, indent=2)
+    
+    return {
+        "success": True,
+        "slug": slug,
+        "status": "published",
+        "published_url": published_url
+    }
+
+
+@router.get("/stats")
+async def get_publishing_stats():
+    """
+    Get publishing statistics for dashboard
+    """
+    total = 0
+    published = 0
+    pending = 0
+    
+    # Count in-memory
+    for landing in published_landings:
+        total += 1
+        if landing.get("status") == "published":
+            published += 1
+        elif landing.get("status") == "ready_to_publish":
+            pending += 1
+    
+    # Count in files
+    landings_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "landings")
+    if os.path.exists(landings_dir):
+        for filename in os.listdir(landings_dir):
+            if filename.endswith('.json'):
+                slug = filename[:-5]
+                # Skip if already counted
+                if any(l["slug"] == slug for l in published_landings):
+                    continue
+                
+                total += 1
+                meta_path = os.path.join(landings_dir, filename)
+                with open(meta_path, 'r', encoding='utf-8') as f:
+                    meta = json.load(f)
+                
+                if meta.get("published_at"):
+                    published += 1
+                else:
+                    pending += 1
+    
+    return {
+        "total": total,
+        "published": published,
+        "pending": pending,
+        "success_rate": round(published / total * 100, 1) if total > 0 else 0
+    }

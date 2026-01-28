@@ -65,3 +65,40 @@
 - Ожидают публикации: 0
 - Success rate: 100%
 
+
+### Сессия 4: Autopublish Feature
+
+**Выполнено:**
+1. Добавлен флаг `autopublish` в GenerateRequest (backend)
+2. Автоматическая генерация лендинга при autopublish=true
+3. Добавлен toggle "Auto-publish to MANUS.space" в форму быстрой генерации
+4. Добавлена глобальная настройка autopublish в Settings tab
+5. Landing pages сохраняются в директорию `landings/` для pickup Manus
+
+**Как работает:**
+1. Пользователь включает checkbox "Auto-publish to MANUS.space"
+2. При генерации статьи автоматически создается HTML лендинг
+3. Лендинг сохраняется в `landings/{slug}.html` и `landings/{slug}.json`
+4. Manus Scheduled Task забирает и публикует на MANUS.space
+
+**API Response с autopublish:**
+```json
+{
+  "autopublish": {
+    "success": true,
+    "slug": "article-slug-123abc",
+    "preview_url": "/api/publishing/preview/article-slug-123abc",
+    "pending_url": "https://article-slug-123abc.manus.space",
+    "message": "Article queued for auto-publishing to MANUS.space"
+  }
+}
+```
+
+**Тестирование:**
+- ✅ Backend autopublish работает
+- ✅ Frontend toggle работает
+- ✅ Landing pages генерируются
+- ✅ Preview URLs работают
+
+---
+*Last updated: 2026-01-28*

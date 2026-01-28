@@ -97,7 +97,7 @@ interface ExecutorStatus {
   total_log_entries: number;
 }
 
-const API_URL = 'http://localhost:8000';
+const API_URL = 'http://144.31.238.16:8000';
 
 const SESWarmup: React.FC = () => {
   const [stats, setStats] = useState<WarmupStats>({ 

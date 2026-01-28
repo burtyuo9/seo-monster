@@ -31,7 +31,7 @@ interface Campaign {
   next_action: string;
 }
 
-const API_URL = 'http://localhost:8000';
+const API_URL = 'http://144.31.238.16:8000';
 
 const SitesManager: React.FC = () => {
   const { language } = useLanguage();

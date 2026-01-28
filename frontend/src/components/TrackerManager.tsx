@@ -35,7 +35,7 @@ interface RealtimeStats {
   countries: Record<string, number>;
 }
 
-const API_URL = 'http://localhost:8000';
+const API_URL = 'http://144.31.238.16:8000';
 
 const TrackerManager: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'overview' | 'bot-detection' | 'stats' | 'filters' | 'routing'>('overview');

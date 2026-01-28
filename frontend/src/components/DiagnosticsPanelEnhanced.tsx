@@ -51,7 +51,7 @@ interface CategoryInfo {
   description: string;
 }
 
-const API_URL = 'http://localhost:8000';
+const API_URL = 'http://144.31.238.16:8000';
 
 // Категории для группировки
 const CORE_CATEGORIES = ['api', 'file_system', 'services', 'dependencies', 'performance', 'network', 'security'];

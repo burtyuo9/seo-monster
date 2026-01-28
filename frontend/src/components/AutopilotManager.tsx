@@ -44,7 +44,7 @@ interface LogEntry {
   details: Record<string, any>;
 }
 
-const API_BASE = 'http://localhost:8000';
+const API_BASE = 'http://144.31.238.16:8000';
 
 const AutopilotManager: React.FC = () => {
   const { t } = useLanguage();

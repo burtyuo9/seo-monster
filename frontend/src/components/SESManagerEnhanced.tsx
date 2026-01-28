@@ -5,7 +5,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { useTheme } from './ThemeToggle';
 import { FeatureHint } from './OptionalFeatures';
 
-const API_URL = 'http://localhost:8000';
+const API_URL = 'http://144.31.238.16:8000';
 
 interface AWSKey {
   id: string;

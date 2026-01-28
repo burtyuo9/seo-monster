@@ -49,7 +49,7 @@ interface ABTestingStats {
   auto_optimization_enabled: boolean;
 }
 
-const API_URL = 'http://localhost:8000';
+const API_URL = 'http://144.31.238.16:8000';
 
 const EmailABTesting: React.FC = () => {
   const [tests, setTests] = useState<ABTest[]>([]);

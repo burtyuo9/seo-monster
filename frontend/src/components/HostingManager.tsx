@@ -72,7 +72,7 @@ const HostingManager: React.FC = () => {
     rotation_mode: 'single'
   });
 
-  const API_BASE = 'http://localhost:8000/api/hosting';
+  const API_BASE = 'http://144.31.238.16:8000/api/hosting';
 
   useEffect(() => {
     loadData();

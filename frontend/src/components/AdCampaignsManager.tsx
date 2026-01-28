@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8000/api/ad-campaigns';
+const API_URL = 'http://144.31.238.16:8000/api/ad-campaigns';
 
 interface AdAccount {
   id: string;

@@ -43,7 +43,7 @@ interface QueueItem {
   processed_at?: string
 }
 
-const API_BASE = 'http://localhost:8000/api/indexing'
+const API_BASE = 'http://144.31.238.16:8000/api/indexing'
 
 export default function IndexingManager() {
   const [activeTab, setActiveTab] = useState<'submit' | 'check' | 'sitemap' | 'history' | 'queue'>('submit')

@@ -3,7 +3,7 @@ import axios from 'axios'
 import { useLanguage } from '../contexts/LanguageContext'
 import { useTheme } from './ThemeToggle'
 
-const API_URL = 'http://localhost:8000/api'
+const API_URL = 'http://144.31.238.16:8000/api'
 
 interface Feature {
   id: string

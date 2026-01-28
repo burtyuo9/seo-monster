@@ -7,7 +7,7 @@ interface Message {
   actionResult?: any;
 }
 
-const API_BASE = 'http://localhost:8000';
+const API_BASE = 'http://144.31.238.16:8000';
 
 const AIChat: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([]);

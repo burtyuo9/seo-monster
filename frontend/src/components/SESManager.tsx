@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import EmailABTesting from './EmailABTesting';
 import SESWarmup from './SESWarmup';
 
-const API_URL = 'http://localhost:8000';
+const API_URL = 'http://144.31.238.16:8000';
 
 interface AWSKey {
   id: string;

@@ -13,7 +13,7 @@ import { LanguageProvider, useLanguage, LanguageSwitcher } from './contexts/Lang
 import { OptionalFeaturesCard, SetupProgressBar } from './components/OptionalFeatures'
 import './theme.css'
 
-const API_URL = 'http://localhost:8000/api'
+const API_URL = 'http://144.31.238.16:8000/api'
 
 function AppContent() {
   const [currentPage, setCurrentPage] = useState('dashboard')

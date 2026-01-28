@@ -23,7 +23,7 @@ interface Subscriber {
   is_admin: boolean;
 }
 
-const API_BASE = 'http://localhost:8000';
+const API_BASE = 'http://144.31.238.16:8000';
 
 const TelegramSettings: React.FC = () => {
   const [status, setStatus] = useState<TelegramStatus | null>(null);

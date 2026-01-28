@@ -14,6 +14,10 @@ try:
     PLAYWRIGHT_AVAILABLE = True
 except ImportError:
     PLAYWRIGHT_AVAILABLE = False
+    # Создаём заглушки для типов когда Playwright не установлен
+    Browser = None
+    BrowserContext = None
+    Page = None
     print("Warning: Playwright not installed. Run: pip install playwright && playwright install chromium")
 
 from .session_manager import session_manager

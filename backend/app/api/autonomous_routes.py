@@ -165,6 +165,16 @@ async def get_articles():
     return {"articles": autonomous_content_engine.get_generated_articles()}
 
 
+@router.get("/articles/{article_id}")
+async def get_article_by_id(article_id: str):
+    """Получить статью по ID с полным контентом"""
+    articles = autonomous_content_engine.get_generated_articles()
+    for article in articles:
+        if article.get('id') == article_id:
+            return article
+    raise HTTPException(status_code=404, detail="Article not found")
+
+
 @router.post("/analyze-topic")
 async def analyze_topic(topic: str):
     """Анализ темы для генерации контента"""

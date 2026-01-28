@@ -30,6 +30,7 @@ interface Article {
   id: string;
   topic: string;
   title: string;
+  content?: string;
   content_type: string;
   language: string;
   word_count: number;
@@ -60,6 +61,9 @@ const AutopilotManager: React.FC = () => {
   const [newSiteName, setNewSiteName] = useState('');
   const [newSiteLanguage, setNewSiteLanguage] = useState('en');
   const [showAddSiteModal, setShowAddSiteModal] = useState(false);
+  const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
+  const [showArticleModal, setShowArticleModal] = useState(false);
+  const [loadingArticle, setLoadingArticle] = useState(false);
   
   // Быстрая генерация
   const [quickGenTopic, setQuickGenTopic] = useState('');
@@ -244,6 +248,50 @@ const AutopilotManager: React.FC = () => {
       loadData();
     } catch (error) {
       console.error('Error updating settings:', error);
+    }
+  };
+
+  const viewArticle = async (article: Article) => {
+    setLoadingArticle(true);
+    setShowArticleModal(true);
+    try {
+      const res = await fetch(`${API_BASE}/api/autonomous/articles/${article.id}`);
+      if (res.ok) {
+        const fullArticle = await res.json();
+        setSelectedArticle(fullArticle);
+      } else {
+        // Если API не вернул контент, используем заглушку
+        setSelectedArticle({
+          ...article,
+          content: `# ${article.title}\n\n${t('content_loading_failed')}\n\nТема: ${article.topic}\nТип: ${article.content_type}\nСлов: ${article.word_count}`
+        });
+      }
+    } catch (error) {
+      console.error('Error loading article:', error);
+      setSelectedArticle({
+        ...article,
+        content: `# ${article.title}\n\nОшибка загрузки контента.\n\nТема: ${article.topic}\nТип: ${article.content_type}\nСлов: ${article.word_count}`
+      });
+    } finally {
+      setLoadingArticle(false);
+    }
+  };
+
+  const copyArticleContent = () => {
+    if (selectedArticle?.content) {
+      navigator.clipboard.writeText(selectedArticle.content);
+    }
+  };
+
+  const downloadArticle = () => {
+    if (selectedArticle) {
+      const blob = new Blob([selectedArticle.content || ''], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${selectedArticle.title.replace(/[^a-zA-Z0-9]/g, '_')}.txt`;
+      a.click();
+      URL.revokeObjectURL(url);
     }
   };
 
@@ -469,15 +517,22 @@ const AutopilotManager: React.FC = () => {
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">📝 {t('recent_articles')}</h3>
               <div className="space-y-2">
                 {articles.slice(0, 5).map((article) => (
-                  <div key={article.id} className="p-3 bg-gray-50 dark:bg-gray-700 rounded-lg flex justify-between items-center">
+                  <div 
+                    key={article.id} 
+                    onClick={() => viewArticle(article)}
+                    className="p-3 bg-gray-50 dark:bg-gray-700 rounded-lg flex justify-between items-center cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors"
+                  >
                     <div>
                       <div className="font-medium text-gray-900 dark:text-white">{article.title}</div>
                       <div className="text-sm text-gray-500 dark:text-gray-400">
                         {article.content_type} • {article.word_count} {t('words')} • {article.language.toUpperCase()}
                       </div>
                     </div>
-                    <div className="text-sm text-gray-400">
-                      {new Date(article.generated_at).toLocaleString()}
+                    <div className="flex items-center gap-2">
+                      <span className="text-sm text-gray-400">
+                        {new Date(article.generated_at).toLocaleString()}
+                      </span>
+                      <span className="text-blue-500">👁️</span>
                     </div>
                   </div>
                 ))}
@@ -548,7 +603,11 @@ const AutopilotManager: React.FC = () => {
             
             <div className="space-y-3">
               {articles.map((article) => (
-                <div key={article.id} className="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                <div 
+                  key={article.id} 
+                  className="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors"
+                  onClick={() => viewArticle(article)}
+                >
                   <div className="flex justify-between items-start">
                     <div>
                       <div className="font-medium text-gray-900 dark:text-white">{article.title}</div>
@@ -556,13 +615,14 @@ const AutopilotManager: React.FC = () => {
                         {t('topic')}: {article.topic}
                       </div>
                     </div>
-                    <div className="flex gap-2">
+                    <div className="flex gap-2 items-center">
                       <span className="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded text-xs">
                         {article.content_type}
                       </span>
                       <span className="px-2 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded text-xs">
                         {article.language.toUpperCase()}
                       </span>
+                      <span className="text-blue-500 text-lg">👁️</span>
                     </div>
                   </div>
                   <div className="flex gap-4 mt-2 text-sm text-gray-500 dark:text-gray-400">
@@ -768,6 +828,97 @@ const AutopilotManager: React.FC = () => {
               >
                 {t('add')}
               </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Модальное окно просмотра статьи */}
+      {showArticleModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-xl w-full max-w-4xl max-h-[90vh] flex flex-col">
+            <div className="p-4 border-b dark:border-gray-700 flex justify-between items-center">
+              <div>
+                <h3 className="font-semibold text-gray-900 dark:text-white text-lg">
+                  {selectedArticle?.title || t('loading')}
+                </h3>
+                {selectedArticle && (
+                  <div className="flex gap-2 mt-1">
+                    <span className="px-2 py-0.5 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded text-xs">
+                      {selectedArticle.content_type}
+                    </span>
+                    <span className="px-2 py-0.5 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded text-xs">
+                      {selectedArticle.language.toUpperCase()}
+                    </span>
+                    <span className="px-2 py-0.5 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded text-xs">
+                      {selectedArticle.word_count} {t('words')}
+                    </span>
+                  </div>
+                )}
+              </div>
+              <button 
+                onClick={() => {
+                  setShowArticleModal(false);
+                  setSelectedArticle(null);
+                }} 
+                className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 text-2xl"
+              >
+                ✕
+              </button>
+            </div>
+            
+            <div className="flex-1 overflow-y-auto p-6">
+              {loadingArticle ? (
+                <div className="flex items-center justify-center py-12">
+                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+                  <span className="ml-3 text-gray-500 dark:text-gray-400">{t('loading')}...</span>
+                </div>
+              ) : selectedArticle?.content ? (
+                <div className="prose dark:prose-invert max-w-none">
+                  <pre className="whitespace-pre-wrap font-sans text-gray-800 dark:text-gray-200 text-base leading-relaxed">
+                    {selectedArticle.content}
+                  </pre>
+                </div>
+              ) : (
+                <div className="text-center py-12 text-gray-500 dark:text-gray-400">
+                  <div className="text-4xl mb-2">📝</div>
+                  <p>{t('no_content_available')}</p>
+                </div>
+              )}
+            </div>
+            
+            <div className="p-4 border-t dark:border-gray-700 flex justify-between items-center">
+              <div className="text-sm text-gray-500 dark:text-gray-400">
+                {selectedArticle && (
+                  <>
+                    {t('topic')}: {selectedArticle.topic} • 
+                    {new Date(selectedArticle.generated_at).toLocaleString()}
+                  </>
+                )}
+              </div>
+              <div className="flex gap-2">
+                <button
+                  onClick={copyArticleContent}
+                  className="px-4 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 flex items-center gap-2"
+                >
+                  📋 {t('copy')}
+                </button>
+                <button
+                  onClick={downloadArticle}
+                  className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 flex items-center gap-2"
+                >
+                  ⬇️ {t('download')}
+                </button>
+                <button
+                  onClick={() => {
+                    setShowArticleModal(false);
+                    setSelectedArticle(null);
+                  }}
+                  className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+                >
+                  {t('close')}
+                </button>
+              </div>
             </div>
           </div>
         </div>

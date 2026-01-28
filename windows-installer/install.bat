@@ -165,7 +165,7 @@ if exist "%INSTALL_DIR%" (
     echo %YELLOW%[!] Директория уже существует: %INSTALL_DIR%%RESET%
     echo %YELLOW%    Обновляем репозиторий...%RESET%
     cd /d "%INSTALL_DIR%"
-    git pull origin main
+    git pull origin master
 ) else (
     echo %BLUE%    Клонирование из %REPO_URL%...%RESET%
     git clone "%REPO_URL%" "%INSTALL_DIR%"

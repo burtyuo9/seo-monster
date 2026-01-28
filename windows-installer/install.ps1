@@ -227,7 +227,7 @@ if (Test-Path $InstallPath) {
         Write-Warning "Директория уже существует: $InstallPath"
         Write-Info "Обновляем репозиторий..."
         Set-Location $InstallPath
-        git pull origin main
+        git pull origin master
     }
 }
 
@@ -255,13 +255,24 @@ Set-Location "$InstallPath\backend"
 
 # Создаём виртуальное окружение
 if (-not (Test-Path "venv")) {
+    Write-Info "Создание виртуального окружения Python..."
     python -m venv venv
+    if (-not $?) {
+        Write-Error "Не удалось создать виртуальное окружение"
+        exit 1
+    }
 }
 
 # Активируем и устанавливаем зависимости
+Write-Info "Установка Python зависимостей (requirements.txt)..."
 & ".\venv\Scripts\Activate.ps1"
-python -m pip install --upgrade pip | Out-Null
-pip install -r requirements.txt | Out-Null
+python -m pip install --upgrade pip 2>&1 | Out-Null
+
+# Устанавливаем зависимости с отображением прогресса
+pip install -r requirements.txt
+if (-not $?) {
+    Write-Warning "Некоторые зависимости могли не установиться. Проверьте логи."
+}
 deactivate
 
 # Создаём .env если не существует
@@ -286,8 +297,19 @@ Write-Success "Backend настроен"
 # Frontend
 Write-Info "Настройка Frontend..."
 Set-Location "$InstallPath\frontend"
-pnpm install | Out-Null
-pnpm run build | Out-Null
+
+Write-Info "Установка Node.js зависимостей (package.json)..."
+pnpm install
+if (-not $?) {
+    Write-Warning "Ошибка при установке Node.js зависимостей"
+}
+
+Write-Info "Сборка Frontend..."
+pnpm run build
+if (-not $?) {
+    Write-Warning "Ошибка при сборке Frontend. Проверьте логи."
+}
+
 Write-Success "Frontend настроен"
 
 # Создаём скрипты запуска

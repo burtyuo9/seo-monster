@@ -19,7 +19,14 @@
     "start_hour": 8,
     "end_hour": 22
   },
-  "sites": [],
+  "sites": [
+    {
+      "url": "https://binance.com",
+      "name": "Binance",
+      "language": "en",
+      "added_at": "2026-01-27T20:39:45.932780"
+    }
+  ],
   "external_ai_enabled": false,
   "external_ai_provider": null
 }

@@ -46,5 +46,51 @@
     "last_activity": "2026-01-26T22:58:53.064263",
     "next_action": "analyze_site",
     "learning_data": {}
+  },
+  "camp_20260127203912_5105": {
+    "id": "camp_20260127203912_5105",
+    "domain": "binance.com",
+    "status": "created",
+    "settings": {
+      "languages": [
+        "ru",
+        "en"
+      ],
+      "content_per_day": 5,
+      "platforms_per_content": 3,
+      "auto_index": true,
+      "check_positions_daily": true,
+      "learning_enabled": true,
+      "keywords": [],
+      "target_platforms": [],
+      "posting_schedule": {
+        "start_hour": 9,
+        "end_hour": 21,
+        "days": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      "language": "ru"
+    },
+    "stats": {
+      "content_generated": 0,
+      "content_posted": 0,
+      "urls_indexed": 0,
+      "positions_checked": 0,
+      "average_position": 0,
+      "best_position": 0,
+      "clicks": 0,
+      "impressions": 0
+    },
+    "created_at": "2026-01-27T20:39:12.941029",
+    "last_activity": "2026-01-27T20:39:12.941053",
+    "next_action": "analyze_site",
+    "learning_data": {}
   }
 }

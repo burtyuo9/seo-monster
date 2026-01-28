@@ -16,5 +16,11 @@
     "campaign_id": "camp_20260126225847_3480",
     "level": "info",
     "message": "🚀 Автопилот запущен"
+  },
+  {
+    "timestamp": "2026-01-27T20:39:12.941734",
+    "campaign_id": "camp_20260127203912_5105",
+    "level": "info",
+    "message": "Создана кампания для домена binance.com"
   }
 ]

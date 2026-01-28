@@ -5,6 +5,9 @@ import AdCampaignsManager from './components/AdCampaignsManager'
 import TrackerManager from './components/TrackerManager'
 import AdsTrackerIntegration from './components/AdsTrackerIntegration'
 import SESManagerEnhanced from './components/SESManagerEnhanced'
+import SitesManager from './components/SitesManager'
+import ContentManager from './components/ContentManager'
+import AutopilotManager from './components/AutopilotManager'
 import ThemeToggle, { useTheme } from './components/ThemeToggle'
 import { LanguageProvider, useLanguage, LanguageSwitcher } from './contexts/LanguageContext'
 import { OptionalFeaturesCard, SetupProgressBar } from './components/OptionalFeatures'
@@ -31,6 +34,8 @@ function AppContent() {
       }
     }
     checkApi()
+    const interval = setInterval(checkApi, 30000)
+    return () => clearInterval(interval)
   }, [])
 
   const navigation = [
@@ -213,63 +218,13 @@ function AppContent() {
           </div>
         )}
 
-        {currentPage === 'autopilot' && (
-          <div className={`p-6 rounded-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-white shadow'}`}>
-            <div className="space-y-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <h3 className={`text-xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
-                    {t('autopilot.status')}
-                  </h3>
-                  <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
-                    {t('autopilot.description')}
-                  </p>
-                </div>
-                <button className="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors">
-                  {t('autopilot.start')}
-                </button>
-              </div>
-              <div className="grid grid-cols-3 gap-4">
-                <div className={`p-4 rounded-lg ${theme === 'dark' ? 'bg-gray-700' : 'bg-gray-50'}`}>
-                  <h4 className={`font-medium ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
-                    {language === 'ru' ? 'Задач выполнено' : 'Tasks Completed'}
-                  </h4>
-                  <p className="text-2xl font-bold text-green-500">0</p>
-                </div>
-                <div className={`p-4 rounded-lg ${theme === 'dark' ? 'bg-gray-700' : 'bg-gray-50'}`}>
-                  <h4 className={`font-medium ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
-                    {language === 'ru' ? 'В очереди' : 'In Queue'}
-                  </h4>
-                  <p className="text-2xl font-bold text-blue-500">0</p>
-                </div>
-                <div className={`p-4 rounded-lg ${theme === 'dark' ? 'bg-gray-700' : 'bg-gray-50'}`}>
-                  <h4 className={`font-medium ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
-                    {language === 'ru' ? 'Успешность' : 'Success Rate'}
-                  </h4>
-                  <p className="text-2xl font-bold text-purple-500">100%</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
+        {/* Autopilot - использует полнофункциональный компонент */}
+        {currentPage === 'autopilot' && <AutopilotManager />}
 
-        {currentPage === 'sites' && (
-          <div className={`p-6 rounded-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-white shadow'}`}>
-            <div className="flex justify-between items-center mb-6">
-              <h3 className={`text-xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
-                {t('sites.title')}
-              </h3>
-              <button className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-                + {t('sites.addSite')}
-              </button>
-            </div>
-            <div className={`text-center py-12 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
-              <span className="text-4xl">🌐</span>
-              <p className="mt-4">{language === 'ru' ? 'Нет добавленных сайтов' : 'No sites added yet'}</p>
-            </div>
-          </div>
-        )}
+        {/* Sites - использует полнофункциональный компонент */}
+        {currentPage === 'sites' && <SitesManager />}
 
+        {/* Platforms - заглушка с TODO */}
         {currentPage === 'platforms' && (
           <div className={`p-6 rounded-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-white shadow'}`}>
             <div className="flex justify-between items-center mb-6">
@@ -282,27 +237,19 @@ function AppContent() {
             </div>
             <div className={`text-center py-12 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
               <span className="text-4xl">📱</span>
-              <p className="mt-4">{language === 'ru' ? 'Нет добавленных платформ' : 'No platforms added yet'}</p>
+              <p className="mt-4">{language === 'ru' ? 'Платформы управляются через раздел Сайты' : 'Platforms are managed through Sites section'}</p>
+              <button 
+                onClick={() => setCurrentPage('sites')}
+                className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+              >
+                {language === 'ru' ? 'Перейти к Сайтам' : 'Go to Sites'}
+              </button>
             </div>
           </div>
         )}
 
-        {currentPage === 'content' && (
-          <div className={`p-6 rounded-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-white shadow'}`}>
-            <div className="flex justify-between items-center mb-6">
-              <h3 className={`text-xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
-                {t('content.title')}
-              </h3>
-              <button className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors">
-                ✨ {t('content.generate')}
-              </button>
-            </div>
-            <div className={`text-center py-12 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
-              <span className="text-4xl">📝</span>
-              <p className="mt-4">{language === 'ru' ? 'Нет созданного контента' : 'No content created yet'}</p>
-            </div>
-          </div>
-        )}
+        {/* Content - использует полнофункциональный компонент */}
+        {currentPage === 'content' && <ContentManager />}
 
         {currentPage === 'adcampaigns' && <AdCampaignsManager />}
         {currentPage === 'tracker' && <TrackerManager />}

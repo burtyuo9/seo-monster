@@ -31,6 +31,7 @@ class GenerateRequest(BaseModel):
     content_type: Optional[str] = "guide"
     language: Optional[str] = "en"
     word_count: Optional[int] = 1000
+    autopublish: Optional[bool] = False  # Auto-publish to MANUS.space after generation
 
 
 class RunNowRequest(BaseModel):
@@ -148,7 +149,7 @@ async def get_analysis_history():
 
 @router.post("/generate")
 async def generate_content(request: GenerateRequest):
-    """Сгенерировать статью"""
+    """Сгенерировать статью с опциональной автопубликацией на MANUS.space"""
     result = autonomous_content_engine.generate_article(
         topic=request.topic,
         keywords=request.keywords,
@@ -156,6 +157,62 @@ async def generate_content(request: GenerateRequest):
         word_count=request.word_count,
         language=request.language
     )
+    
+    # Auto-publish if enabled
+    if request.autopublish and result.get('id'):  # Check if article was generated (has id)
+        try:
+            from services.landing_generator import landing_generator
+            import os
+            import json
+            from datetime import datetime
+            
+            # Generate landing page
+            landing_result = landing_generator.generate_landing(
+                title=result.get('title', request.topic),
+                content=result.get('content', ''),
+                language=request.language,
+                style='glassmorphism_dark',
+                keywords=request.keywords,
+                author='SEO Monster'
+            )
+            
+            # Save to landings directory for Manus to pick up
+            landings_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "landings")
+            os.makedirs(landings_dir, exist_ok=True)
+            
+            slug = landing_result['slug']
+            html_path = os.path.join(landings_dir, f"{slug}.html")
+            meta_path = os.path.join(landings_dir, f"{slug}.json")
+            
+            with open(html_path, 'w', encoding='utf-8') as f:
+                f.write(landing_result['html'])
+            
+            with open(meta_path, 'w', encoding='utf-8') as f:
+                json.dump({
+                    'id': f"autopublish_{slug[:20]}",
+                    'slug': slug,
+                    'title': landing_result['title'],
+                    'meta_description': landing_result['meta_description'],
+                    'keywords': landing_result.get('keywords', []),
+                    'language': request.language,
+                    'word_count': landing_result['word_count'],
+                    'created_at': datetime.utcnow().isoformat(),
+                    'autopublished': True
+                }, f, ensure_ascii=False, indent=2)
+            
+            result['autopublish'] = {
+                'success': True,
+                'slug': slug,
+                'preview_url': f'/api/publishing/preview/{slug}',
+                'pending_url': f'https://{slug}.manus.space',
+                'message': 'Article queued for auto-publishing to MANUS.space'
+            }
+        except Exception as e:
+            result['autopublish'] = {
+                'success': False,
+                'error': str(e)
+            }
+    
     return result
 
 

@@ -81,8 +81,12 @@ const AutopilotManager: React.FC = () => {
     articles_per_day: 5,
     min_word_count: 800,
     max_word_count: 2000,
-    external_ai_enabled: false
+    external_ai_enabled: false,
+    autopublish: false  // Auto-publish to MANUS.space
   });
+  
+  // Autopublish toggle for quick generation
+  const [quickGenAutopublish, setQuickGenAutopublish] = useState(false);
 
   const loadData = useCallback(async () => {
     try {
@@ -226,13 +230,20 @@ const AutopilotManager: React.FC = () => {
           topic: quickGenTopic,
           language: quickGenLanguage,
           content_type: quickGenType,
-          word_count: 1000
+          word_count: 1000,
+          autopublish: quickGenAutopublish || settings.autopublish
         })
       });
       
       if (res.ok) {
+        const data = await res.json();
         setQuickGenTopic('');
         loadData();
+        
+        // Show autopublish result if enabled
+        if (data.autopublish?.success) {
+          alert(`Article auto-published! Preview: ${API_BASE}${data.autopublish.preview_url}`);
+        }
       }
     } catch (error) {
       console.error('Error generating content:', error);
@@ -550,20 +561,35 @@ const AutopilotManager: React.FC = () => {
               </div>
             </div>
             
-            <button
-              onClick={generateContent}
-              disabled={!quickGenTopic || generating}
-              className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 disabled:opacity-50 flex items-center gap-2"
-            >
-              {generating ? (
-                <>
-                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
-                  {t('generating')}...
-                </>
-              ) : (
-                <>✨ {t('generate_article')}</>
-              )}
-            </button>
+            <div className="flex items-center gap-4">
+              <button
+                onClick={generateContent}
+                disabled={!quickGenTopic || generating}
+                className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 disabled:opacity-50 flex items-center gap-2"
+              >
+                {generating ? (
+                  <>
+                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                    {t('generating')}...
+                  </>
+                ) : (
+                  <>✨ {t('generate_article')}</>
+                )}
+              </button>
+              
+              {/* Autopublish Toggle */}
+              <label className="flex items-center gap-2 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={quickGenAutopublish}
+                  onChange={(e) => setQuickGenAutopublish(e.target.checked)}
+                  className="w-5 h-5 rounded border-gray-300 text-green-600 focus:ring-green-500"
+                />
+                <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                  🚀 Auto-publish to MANUS.space
+                </span>
+              </label>
+            </div>
 
             {/* Последние статьи */}
             <div className="mt-8">
@@ -781,6 +807,28 @@ const AutopilotManager: React.FC = () => {
                   max={5000}
                   className="w-full border dark:border-gray-600 rounded-lg px-3 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                 />
+              </div>
+            </div>
+            
+            {/* Auto-publish Settings */}
+            <div className="bg-green-50 dark:bg-green-900/30 p-4 rounded-lg border border-green-200 dark:border-green-800">
+              <div className="flex items-start gap-2">
+                <span className="text-green-600">🚀</span>
+                <div>
+                  <div className="font-medium text-green-800 dark:text-green-200">Auto-publish to MANUS.space</div>
+                  <p className="text-sm text-green-700 dark:text-green-300 mt-1">
+                    Automatically publish generated articles to MANUS.space subdomains for instant SEO indexing.
+                  </p>
+                  <label className="flex items-center gap-2 mt-2 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={settings.autopublish}
+                      onChange={(e) => setSettings({ ...settings, autopublish: e.target.checked })}
+                      className="w-4 h-4 text-green-600 rounded"
+                    />
+                    <span className="text-green-800 dark:text-green-200">Enable auto-publish for all generated content</span>
+                  </label>
+                </div>
               </div>
             </div>
             

@@ -64,6 +64,9 @@ const AutopilotManager: React.FC = () => {
   const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
   const [showArticleModal, setShowArticleModal] = useState(false);
   const [loadingArticle, setLoadingArticle] = useState(false);
+  const [publishing, setPublishing] = useState(false);
+  const [publishedUrl, setPublishedUrl] = useState<string | null>(null);
+  const [publishedLandings, setPublishedLandings] = useState<any[]>([]);
   
   // Быстрая генерация
   const [quickGenTopic, setQuickGenTopic] = useState('');
@@ -293,6 +296,56 @@ const AutopilotManager: React.FC = () => {
       a.click();
       URL.revokeObjectURL(url);
     }
+  };
+
+  const publishToManus = async () => {
+    if (!selectedArticle) return;
+    
+    setPublishing(true);
+    setPublishedUrl(null);
+    try {
+      const res = await fetch(`${API_BASE}/api/publishing/publish`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          title: selectedArticle.title,
+          content: selectedArticle.content || '',
+          language: selectedArticle.language,
+          style: 'glassmorphism_dark',
+          keywords: [selectedArticle.topic],
+          author: 'SEO Monster'
+        })
+      });
+      
+      if (res.ok) {
+        const data = await res.json();
+        setPublishedUrl(data.url);
+        // Refresh landings list
+        loadPublishedLandings();
+      } else {
+        console.error('Failed to publish');
+      }
+    } catch (error) {
+      console.error('Error publishing to MANUS:', error);
+    } finally {
+      setPublishing(false);
+    }
+  };
+
+  const loadPublishedLandings = async () => {
+    try {
+      const res = await fetch(`${API_BASE}/api/publishing/list`);
+      if (res.ok) {
+        const data = await res.json();
+        setPublishedLandings(data);
+      }
+    } catch (error) {
+      console.error('Error loading published landings:', error);
+    }
+  };
+
+  const previewLanding = (slug: string) => {
+    window.open(`${API_BASE}/api/publishing/preview/${slug}`, '_blank');
   };
 
   const getStatusColor = (status: string) => {
@@ -887,6 +940,31 @@ const AutopilotManager: React.FC = () => {
               )}
             </div>
             
+            {/* Отображение опубликованной ссылки */}
+            {publishedUrl && (
+              <div className="mx-6 mb-4 p-4 bg-green-50 dark:bg-green-900/30 border border-green-200 dark:border-green-800 rounded-lg">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-green-800 dark:text-green-200 font-medium">✅ Статья опубликована!</p>
+                    <a 
+                      href={publishedUrl} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-blue-600 dark:text-blue-400 hover:underline text-sm"
+                    >
+                      {publishedUrl}
+                    </a>
+                  </div>
+                  <button
+                    onClick={() => navigator.clipboard.writeText(publishedUrl)}
+                    className="px-3 py-1 bg-green-600 text-white rounded hover:bg-green-700 text-sm"
+                  >
+                    📋 Копировать
+                  </button>
+                </div>
+              </div>
+            )}
+            
             <div className="p-4 border-t dark:border-gray-700 flex justify-between items-center">
               <div className="text-sm text-gray-500 dark:text-gray-400">
                 {selectedArticle && (
@@ -895,8 +973,7 @@ const AutopilotManager: React.FC = () => {
                     {new Date(selectedArticle.generated_at).toLocaleString()}
                   </>
                 )}
-              </div>
-              <div className="flex gap-2">
+              </div>             <div className="flex gap-2">
                 <button
                   onClick={copyArticleContent}
                   className="px-4 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 flex items-center gap-2"
@@ -910,9 +987,25 @@ const AutopilotManager: React.FC = () => {
                   ⬇️ {t('download')}
                 </button>
                 <button
+                  onClick={publishToManus}
+                  disabled={publishing || !selectedArticle?.content}
+                  className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 disabled:opacity-50 flex items-center gap-2"
+                >
+                  {publishing ? (
+                    <>
+                      <span className="animate-spin">⏳</span> Публикация...
+                    </>
+                  ) : (
+                    <>
+                      🚀 Опубликовать на MANUS.im
+                    </>
+                  )}
+                </button>
+                <button
                   onClick={() => {
                     setShowArticleModal(false);
                     setSelectedArticle(null);
+                    setPublishedUrl(null);
                   }}
                   className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
                 >

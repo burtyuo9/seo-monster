@@ -48,6 +48,8 @@ const SESManager: React.FC = () => {
   const [showGenerateContent, setShowGenerateContent] = useState(false);
   const [showUploadList, setShowUploadList] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState<string | null>(null);
 
   // Form states
   const [newKey, setNewKey] = useState({ access_key_id: '', secret_access_key: '', region: 'us-east-1', name: '' });
@@ -75,19 +77,26 @@ const SESManager: React.FC = () => {
 
   const addKey = async () => {
     setLoading(true);
+    setError(null);
+    setSuccess(null);
     try {
       const res = await fetch(`${API_URL}/api/ses/keys`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newKey)
       });
-      if (res.ok) {
+      const data = await res.json();
+      if (res.ok && data.success) {
         setShowAddKey(false);
         setNewKey({ access_key_id: '', secret_access_key: '', region: 'us-east-1', name: '' });
+        setSuccess('AWS key added successfully!');
         fetchData();
+      } else {
+        setError(data.detail || data.error || 'Failed to add key. Please check your credentials.');
       }
     } catch (e) {
       console.error('Error adding key:', e);
+      setError('Network error. Please check your connection.');
     }
     setLoading(false);
   };
@@ -413,6 +422,16 @@ const SESManager: React.FC = () => {
         <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.8)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000 }}>
           <div style={{ background: '#1e1e1e', padding: '30px', borderRadius: '10px', width: '500px' }}>
             <h3 style={{ marginTop: 0 }}>Add AWS SES Key</h3>
+            {error && (
+              <div style={{ padding: '10px 15px', background: '#f4433620', border: '1px solid #f44336', borderRadius: '5px', marginBottom: '15px', color: '#f44336' }}>
+                ⚠️ {error}
+              </div>
+            )}
+            {success && (
+              <div style={{ padding: '10px 15px', background: '#4CAF5020', border: '1px solid #4CAF50', borderRadius: '5px', marginBottom: '15px', color: '#4CAF50' }}>
+                ✅ {success}
+              </div>
+            )}
             <div style={{ marginBottom: '15px' }}>
               <label style={{ display: 'block', marginBottom: '5px', color: '#888' }}>Name (optional)</label>
               <input
@@ -459,11 +478,11 @@ const SESManager: React.FC = () => {
               </select>
             </div>
             <div style={{ display: 'flex', gap: '10px', justifyContent: 'flex-end' }}>
-              <button onClick={() => setShowAddKey(false)} style={{ padding: '10px 20px', background: '#444', border: 'none', borderRadius: '5px', color: 'white', cursor: 'pointer' }}>
+              <button onClick={() => { setShowAddKey(false); setError(null); }} style={{ padding: '10px 20px', background: '#444', border: 'none', borderRadius: '5px', color: 'white', cursor: 'pointer' }}>
                 Cancel
               </button>
-              <button onClick={addKey} disabled={loading} style={{ padding: '10px 20px', background: '#4CAF50', border: 'none', borderRadius: '5px', color: 'white', cursor: 'pointer' }}>
-                {loading ? 'Adding...' : 'Add Key'}
+              <button onClick={addKey} disabled={loading || !newKey.access_key_id || !newKey.secret_access_key} style={{ padding: '10px 20px', background: loading ? '#666' : '#4CAF50', border: 'none', borderRadius: '5px', color: 'white', cursor: loading ? 'wait' : 'pointer', opacity: (!newKey.access_key_id || !newKey.secret_access_key) ? 0.5 : 1 }}>
+                {loading ? '⏳ Validating...' : '✅ Save'}
               </button>
             </div>
           </div>

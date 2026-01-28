@@ -8,18 +8,20 @@
 
 ```powershell
 Set-ExecutionPolicy Bypass -Scope Process -Force
-irm https://raw.githubusercontent.com/burtyuo9/seo-monster/main/windows-installer/install.ps1 | iex
+irm https://raw.githubusercontent.com/burtyuo9/seo-monster-windows-installer/main/install.ps1 | iex
 ```
+
+📦 **Публичный репозиторий**: [github.com/burtyuo9/seo-monster-windows-installer](https://github.com/burtyuo9/seo-monster-windows-installer)
 
 ### Вариант 2: CMD
 
-1. Скачайте [install.bat](windows-installer/install.bat)
+1. Скачайте [install.bat](https://raw.githubusercontent.com/burtyuo9/seo-monster-windows-installer/main/install.bat)
 2. Запустите **от имени администратора**
 3. Следуйте инструкциям
 
 ### Вариант 3: GUI Приложение
 
-1. Скачайте `SEO Monster.exe` из [Releases](https://github.com/burtyuo9/seo-monster/releases)
+1. Скачайте `SEO Monster.exe` из [Releases](https://github.com/burtyuo9/seo-monster-windows-installer/releases)
 2. Запустите приложение
 3. Нажмите "Запустить всё"
 

@@ -13,7 +13,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, RedirectResponse
 
 from app.core.config import settings
 from app.core.database import init_db, close_db
@@ -131,16 +131,23 @@ app.include_router(features_router)
 app.include_router(autonomous_router)
 
 
-# Корневой эндпоинт
+# Корневой эндпоинт - редирект на Frontend
 @app.get("/")
 async def root():
+    """Редирект на Frontend UI."""
+    return RedirectResponse(url="http://localhost:5200", status_code=302)
+
+
+@app.get("/api/info")
+async def api_info():
     """Информация о приложении."""
     return {
         "name": settings.APP_NAME,
         "version": settings.APP_VERSION,
         "status": "running",
         "docs": "/docs",
-        "api": "/api"
+        "api": "/api",
+        "frontend": "http://localhost:5200"
     }
 
 

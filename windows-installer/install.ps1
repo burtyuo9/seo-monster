@@ -366,16 +366,24 @@ echo ========================================
 echo    Starting SEO Monster...
 echo ========================================
 echo.
+echo [1/3] Запуск Backend (API)...
 start "SEO Monster Backend" cmd /c "cd /d %~dp0backend && call venv\Scripts\activate.bat && python -m uvicorn main:app --host 0.0.0.0 --port 8000"
-timeout /t 5 /nobreak >nul
+echo     Ожидание запуска Backend (10 сек)...
+timeout /t 10 /nobreak >nul
+echo [2/3] Запуск Frontend (UI)...
 start "SEO Monster Frontend" cmd /c "cd /d %~dp0frontend && pnpm preview --host 0.0.0.0 --port 5200"
-timeout /t 3 /nobreak >nul
+echo     Ожидание запуска Frontend (5 сек)...
+timeout /t 5 /nobreak >nul
+echo [3/3] Открытие браузера...
 start http://localhost:5200
 echo.
-echo SEO Monster запущен!
+echo ========================================
+echo    SEO Monster запущен!
+echo ========================================
 echo.
-echo Backend:  http://localhost:8000
-echo Frontend: http://localhost:5200
+echo Backend API:  http://localhost:8000
+echo Frontend UI:  http://localhost:5200
+echo API Docs:     http://localhost:8000/docs
 echo.
 echo Нажмите любую клавишу для закрытия этого окна...
 pause >nul
@@ -400,21 +408,30 @@ pause
 # SEO Monster - PowerShell Launcher
 `$ErrorActionPreference = 'SilentlyContinue'
 
-Write-Host "Starting SEO Monster..." -ForegroundColor Cyan
+Write-Host ""
+Write-Host "========================================" -ForegroundColor Cyan
+Write-Host "   Starting SEO Monster..." -ForegroundColor Cyan
+Write-Host "========================================" -ForegroundColor Cyan
+Write-Host ""
 
 # Start Backend
+Write-Host "[1/3] Запуск Backend (API)..." -ForegroundColor Yellow
 `$backendPath = "`$PSScriptRoot\backend"
 Start-Process powershell -ArgumentList "-NoExit", "-Command", "cd '`$backendPath'; .\venv\Scripts\Activate.ps1; python -m uvicorn main:app --host 0.0.0.0 --port 8000" -WindowStyle Normal
 
-Start-Sleep -Seconds 5
+Write-Host "    Ожидание запуска Backend (10 сек)..." -ForegroundColor Gray
+Start-Sleep -Seconds 10
 
 # Start Frontend
+Write-Host "[2/3] Запуск Frontend (UI)..." -ForegroundColor Yellow
 `$frontendPath = "`$PSScriptRoot\frontend"
 Start-Process powershell -ArgumentList "-NoExit", "-Command", "cd '`$frontendPath'; pnpm preview --host 0.0.0.0 --port 5200" -WindowStyle Normal
 
-Start-Sleep -Seconds 3
+Write-Host "    Ожидание запуска Frontend (5 сек)..." -ForegroundColor Gray
+Start-Sleep -Seconds 5
 
 # Open browser
+Write-Host "[3/3] Открытие браузера..." -ForegroundColor Yellow
 Start-Process "http://localhost:5200"
 
 Write-Host ""

@@ -97,7 +97,7 @@ $frontendPath = Join-Path $ScriptDir "frontend"
 Start-Process powershell -ArgumentList @(
     "-NoExit",
     "-Command",
-    "Set-Location '$frontendPath'; pnpm preview --host 0.0.0.0 --port $FrontendPort"
+    "Set-Location '$frontendPath'; npx vite preview --host 0.0.0.0 --port $FrontendPort"
 ) -WindowStyle Normal
 
 Write-Host "    Ожидание запуска Frontend..." -ForegroundColor Gray

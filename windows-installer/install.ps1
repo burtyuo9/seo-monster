@@ -371,7 +371,7 @@ start "SEO Monster Backend" cmd /c "cd /d %~dp0backend && call venv\Scripts\acti
 echo     Ожидание запуска Backend (10 сек)...
 timeout /t 10 /nobreak >nul
 echo [2/3] Запуск Frontend (UI)...
-start "SEO Monster Frontend" cmd /c "cd /d %~dp0frontend && pnpm preview --host 0.0.0.0 --port 5200"
+start "SEO Monster Frontend" cmd /c "cd /d %~dp0frontend && npx vite preview --host 0.0.0.0 --port 5200"
 echo     Ожидание запуска Frontend (5 сек)...
 timeout /t 5 /nobreak >nul
 echo [3/3] Открытие браузера...
@@ -425,7 +425,7 @@ Start-Sleep -Seconds 10
 # Start Frontend
 Write-Host "[2/3] Запуск Frontend (UI)..." -ForegroundColor Yellow
 `$frontendPath = "`$PSScriptRoot\frontend"
-Start-Process powershell -ArgumentList "-NoExit", "-Command", "cd '`$frontendPath'; pnpm preview --host 0.0.0.0 --port 5200" -WindowStyle Normal
+Start-Process powershell -ArgumentList "-NoExit", "-Command", "cd '`$frontendPath'; npx vite preview --host 0.0.0.0 --port 5200" -WindowStyle Normal
 
 Write-Host "    Ожидание запуска Frontend (5 сек)..." -ForegroundColor Gray
 Start-Sleep -Seconds 5

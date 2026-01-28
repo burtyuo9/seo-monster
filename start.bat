@@ -87,7 +87,7 @@ echo %BLUE%[2/3] Ожидание запуска Backend...%RESET%
 timeout /t 5 /nobreak >nul
 
 echo %BLUE%[3/3] Запуск Frontend (UI)...%RESET%
-start "SEO Monster - Frontend" cmd /c "cd /d "%SCRIPT_DIR%frontend" && pnpm preview --host 0.0.0.0 --port 5200"
+start "SEO Monster - Frontend" cmd /c "cd /d "%SCRIPT_DIR%frontend" && npx vite preview --host 0.0.0.0 --port 5200"
 
 timeout /t 3 /nobreak >nul
 

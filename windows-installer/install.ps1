@@ -253,27 +253,45 @@ Write-Step "7/7 Установка зависимостей проекта..."
 Write-Info "Настройка Backend..."
 Set-Location "$InstallPath\backend"
 
+# Проверяем наличие requirements.txt
+if (-not (Test-Path "requirements.txt")) {
+    Write-Error "Файл requirements.txt не найден в $InstallPath\backend"
+    exit 1
+}
+
 # Создаём виртуальное окружение
 if (-not (Test-Path "venv")) {
     Write-Info "Создание виртуального окружения Python..."
-    python -m venv venv
-    if (-not $?) {
+    $venvResult = Start-Process -FilePath "python" -ArgumentList "-m", "venv", "venv" -NoNewWindow -Wait -PassThru
+    if ($venvResult.ExitCode -ne 0) {
         Write-Error "Не удалось создать виртуальное окружение"
         exit 1
     }
+    Write-Success "Виртуальное окружение создано"
 }
 
 # Активируем и устанавливаем зависимости
 Write-Info "Установка Python зависимостей (requirements.txt)..."
+Write-Host "    Это может занять несколько минут..." -ForegroundColor Gray
+
+# Активируем venv
 & ".\venv\Scripts\Activate.ps1"
+
+# Обновляем pip
+Write-Host "    Обновление pip..." -ForegroundColor Gray
 python -m pip install --upgrade pip 2>&1 | Out-Null
 
-# Устанавливаем зависимости с отображением прогресса
-pip install -r requirements.txt
-if (-not $?) {
-    Write-Warning "Некоторые зависимости могли не установиться. Проверьте логи."
+# Устанавливаем зависимости
+Write-Host "    Установка пакетов..." -ForegroundColor Gray
+$pipResult = pip install -r requirements.txt 2>&1
+if ($LASTEXITCODE -ne 0) {
+    Write-Warning "Некоторые зависимости могли не установиться."
+} else {
+    Write-Success "Python зависимости установлены"
 }
-deactivate
+
+# Деактивируем venv
+try { deactivate } catch { }
 
 # Создаём .env если не существует
 if (-not (Test-Path ".env")) {
@@ -298,16 +316,39 @@ Write-Success "Backend настроен"
 Write-Info "Настройка Frontend..."
 Set-Location "$InstallPath\frontend"
 
+# Проверяем наличие package.json
+if (-not (Test-Path "package.json")) {
+    Write-Error "Файл package.json не найден в $InstallPath\frontend"
+    exit 1
+}
+
 Write-Info "Установка Node.js зависимостей (package.json)..."
-pnpm install
-if (-not $?) {
-    Write-Warning "Ошибка при установке Node.js зависимостей"
+Write-Host "    Это может занять несколько минут..." -ForegroundColor Gray
+
+try {
+    # Запускаем pnpm install с выводом
+    $pnpmInstall = Start-Process -FilePath "pnpm" -ArgumentList "install", "--no-frozen-lockfile" -NoNewWindow -Wait -PassThru
+    if ($pnpmInstall.ExitCode -ne 0) {
+        Write-Warning "pnpm install завершился с кодом $($pnpmInstall.ExitCode)"
+    } else {
+        Write-Success "Node.js зависимости установлены"
+    }
+} catch {
+    Write-Warning "Ошибка при установке Node.js зависимостей: $_"
 }
 
 Write-Info "Сборка Frontend..."
-pnpm run build
-if (-not $?) {
-    Write-Warning "Ошибка при сборке Frontend. Проверьте логи."
+Write-Host "    Это может занять 1-2 минуты..." -ForegroundColor Gray
+
+try {
+    $pnpmBuild = Start-Process -FilePath "pnpm" -ArgumentList "run", "build" -NoNewWindow -Wait -PassThru
+    if ($pnpmBuild.ExitCode -ne 0) {
+        Write-Warning "pnpm build завершился с кодом $($pnpmBuild.ExitCode)"
+    } else {
+        Write-Success "Сборка завершена"
+    }
+} catch {
+    Write-Warning "Ошибка при сборке Frontend: $_"
 }
 
 Write-Success "Frontend настроен"
